@@ -9,4 +9,4 @@ CCM Documentation
    :maxdepth: 2
    :hidden:
 
-   /interlink
+   /getting-started
