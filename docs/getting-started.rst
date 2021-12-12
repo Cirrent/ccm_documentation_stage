@@ -59,7 +59,7 @@ Follow the instructions in Amazon documentation (`Set up your AWS Account <https
 4.4	Register the kit to your AWS development account
 *****************************************************
 
-1.	Open the AWS IoT Console.
+1.	Open the `AWS IoT Console <http://console.aws.amazon.com/iot>`_.
 2.	Select Manage, and then select Things.  
 3.	Choose Create Things. 
 4.	Select Create single thing, and then click Next.
@@ -73,7 +73,7 @@ Follow the instructions in Amazon documentation (`Set up your AWS Account <https
 9.	In the terminal application, type the following command: 
 	:: 
 		AT+CONF? Certificate 
-		
+
 	You will receive the device certificate in PEM format as part of the response.  
 
 10.	Copy the returned string (a longer sequence of alphanumeric symbols), and save it into a text file on your host machine as “ThingName.cert.pem”.
@@ -99,6 +99,102 @@ Follow the instructions in Amazon documentation (`Set up your AWS Account <https
 23.	Type the following AT command in the serial terminal to configure the endpoint:
 	:: 
 		AT+CONF EndPoint=<endpoint copied in step 22 >.
+
+
+4.5	Connect the kit to Wi-Fi
+******************************
+
+You can either follow Section 4.5.1 or Section 4.5.2 to connect the IFW956810 CCM evaluation kit to Wi-Fi.
+A Wi-Fi onboarding mechanism is required for IoT products that do not have a display to enter Wi-Fi SSID and password. Use one of the following to connect the IFW956810 CCM evaluation kit to Wi-Fi. 
+
+.. note::	Connect the kit only to a 2.4-GHz Wi-Fi network. 
+
+
+4.5.1	Using Cirrent Wi-Fi onboarding app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Cirrent cloud solution from Infineon provides an effective Wi-Fi onboarding service through the Cirrent Wi-Fi onboarding app for any IoT product. The IFW956810 CCM evaluation kit supports onboarding through either Bluetooth® LE or SoftAP. 
+
+1.	Download and install the Cirrent Wi-Fi onboarding app from Google Play Store for Android or iOS App Store for iOS on your mobile phone. Scan the following QR code relevant to your mobile device: 
+
+	.. figure:: img/and-qr.png
+	    :align: center
+
+	    Android
+
+	.. figure:: img/ios-qr.png
+	    :align: center
+
+	    IOS    	 
+
+2.	Type the following command in the serial terminal on the PC. 
+	::
+		AT+CONFMODE
+
+	You should receive the “OK CONFMODE Enabled” response from the module.
+
+3.	Open the Cirrent Wi-Fi onboarding app.
+	You can skip the sign in to perform Wi-Fi onboarding. 
+
+4.	From the menu, select **Configuration** and then choose either **BLE** or **Soft AP** onboarding. 
+5.	Follow the onscreen instructions and enter the Wi-Fi router’s SSID and password. 
+
+4.5.2	Using AT commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+AT commands provide a simple method of Wi-Fi onboarding in a development environment. 
+
+* Type the following commands in sequence in the terminal application:
+  :: 
+  	AT+CONF SSID=<your router ssid>
+	AT+CONF Passphrase=<your router passphrase>
+
+.. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (i.e., for debugging purposes), any attempt to retrieve the passphrase will return an error.
+
+
+
+4.6	Connect and interact with the AWS Cloud
+*********************************************
+
+Use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
+
+1.	Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
+2.	In the navigation pane, choose Test and then click MQTT Test Client.
+3.	In Subscribe to a topic panel, enter #, and then click Subscribe. 
+
+4.6.1	Connect
+^^^^^^^^^^^^^^^^^
+
+* Enter the following command in the serial terminal to establish a secure connection:
+  :: 
+	AT+CONNECT
+
+  After a short time, you will receive the message “OK 1 CONNECTED”.
+
+4.6.2	Send data to the AWS Cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Enter the following command in the serial terminal to send the “Hello World!” message: 
+  ::
+  	AT+SEND data Hello World!
+
+  After a short time, you will receive the message “OK”. You should see the “Hello World!” message appear on the AWS IoT Console under the topic “data”.
+
+4.6.3	Receive data and commands from the cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, the device subscribes to a topic called “state”.
+
+1.	Do the following on the AWS IoT Console:
+	a)	Select the MQTT client, and then select Publish to a topic.
+	b)	Type state in Topic name field. Keep “Hello from the AWS IoT Console” message.
+	c)	Click Publish.
+
+2.	Type the following command in the serial terminal:
+	:: 
+		AT+GET
+
+	You will receive the message “OK Hello from the AWS IoT Console”.
 
 
 
