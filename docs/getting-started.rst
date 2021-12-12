@@ -186,9 +186,10 @@ Use the MQTT client in the AWS IoT Console to monitor the communication between 
 By default, the device subscribes to a topic called “state”.
 
 1.	Do the following on the AWS IoT Console:
-	a)	Select the MQTT client, and then select Publish to a topic.
-	b)	Type state in Topic name field. Keep “Hello from the AWS IoT Console” message.
-	c)	Click Publish.
+
+	a.	Select the MQTT client, and then select Publish to a topic.
+	b.	Type state in Topic name field. Keep “Hello from the AWS IoT Console” message.
+	c.	Click Publish.
 
 2.	Type the following command in the serial terminal:
 	:: 
