@@ -159,8 +159,8 @@ AT commands provide a simple method of Wi-Fi onboarding in a development environ
 Use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
 
 1.	Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
-2.	In the navigation pane, choose Test and then click MQTT Test Client.
-3.	In Subscribe to a topic panel, enter #, and then click Subscribe. 
+2.	In the navigation pane, choose **Test** and then click **MQTT Test Client**.
+3.	In **Subscribe to a topic** panel, enter #, and then click **Subscribe**. 
 
 4.6.1	Connect
 ^^^^^^^^^^^^^^^^^
@@ -187,15 +187,16 @@ By default, the device subscribes to a topic called “state”.
 
 1.	Do the following on the AWS IoT Console:
 
-	a.	Select the MQTT client, and then select Publish to a topic.
-	b.	Type state in Topic name field. Keep “Hello from the AWS IoT Console” message.
-	c.	Click Publish.
+	a.	Select the MQTT client, and then select **Publish to a topic**.
+	b.	Type **state** in **Topic name** field. Keep “Hello from the AWS IoT Console” message.
+	c.	Click **Publish**.
 
 2.	Type the following command in the serial terminal:
 	:: 
 		AT+GET
 
 	You will receive the message “OK Hello from the AWS IoT Console”.
+
 
 
 
