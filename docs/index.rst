@@ -10,3 +10,7 @@ CCM Documentation
    :hidden:
 
    /getting-started
+   /ccm_main_page
+   /ccm_api
+   /api_sample_commands
+   
