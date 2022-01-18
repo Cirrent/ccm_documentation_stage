@@ -2,7 +2,7 @@ CCM Documentation
 ===============================
 
 What is CCM
-************
+============
 
 The AIROC™ Cloud Connectivity Manager (CCM) module provides a simple, secure Wi-Fi networking subsystem that allows Product Companies to develop new products that connect to their Product Cloud without extensive firmware development, testing, or maintenance. CCM modules include secure cloud-based device provisioning and authentication and cloud-based device monitoring.
 With INFINEON, the leader in Wi-Fi for IoT, managing the connectivity, cloud networking, and security pieces, customers get their connected products to market faster and with reduced risk.

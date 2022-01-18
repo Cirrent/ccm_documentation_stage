@@ -70,13 +70,8 @@ Storage humidity                     less than 60% R.H.
 ==================================   ===============================================================
 
 
-
-Hardware integration
-^^^^^^^^^^^^^^^^^^^^^
-
-
 Wireless Features
-"""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^
 
 Every CCM module includes industry-leading INFINEON Wi-Fi technology for long range, robust connectivity. CCM modules support:
 
@@ -88,7 +83,7 @@ Every CCM module includes industry-leading INFINEON Wi-Fi technology for long ra
 * On-module flash memory to store second FW image for safe over-the-air updates
 
 Software description
-"""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^
 
 * Cloud Management Features
 * AWS IoT Express Link compatible
@@ -99,6 +94,7 @@ Software description
 
 
 Datasheet and Quick Start Guide
-""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Post links to datasheet and guide for kit
+You can find additional documentation on the CCM here: 
+https://www.infineon.com/cms/en/design-support/tools/hardware-development/wireless-connectivity-hardware/airoc-cloud-connectivity-manager/?redirId=158897 
