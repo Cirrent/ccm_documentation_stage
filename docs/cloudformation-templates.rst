@@ -16,6 +16,7 @@ Do the following to execute the Infineon-provided CloudFormation template:
 	You can change the region in which you want to execute this template by changing the region=us-west-1 in this link to your required region. See Choosing a Region on AWS documentation. 
 
 2.	On the **Create Stack** page in the AWS CloudFormation service with the Infineon CloudFormation template preloaded, click **Next**. 
+
 	.. image:: img/cft-1.png
 	    :align: center
 
@@ -24,12 +25,14 @@ Do the following to execute the Infineon-provided CloudFormation template:
 4.	On the Step 3 page, retain all parameters at their default values, and click **Next**.
 
 5.	Select the boxes to provide permissions to access the resources required by the CloudFormation template. 
+
 	.. image:: img/cft-2.png
 	    :align: center
 
 6.	Click **Create stack**. 
 
 7.	Wait for up to five minutes for the stack creation to complete.  
+
 	.. image:: img/cft-3.png
 	    :align: center 
 
@@ -37,6 +40,7 @@ This stack creates an infrastructure to enable provisioning the required resourc
 
 8.	Click **Outputs**. 
 	The output of the stack that you created is shown on this page. You will require these details to be entered in the CIRRENT Console in Step 3 of Section 4.4.1.3. 
+	
 	.. image:: img/cft-4.png
 	    :align: center
 

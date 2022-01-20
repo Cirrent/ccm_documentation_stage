@@ -10,6 +10,5 @@ CCM Documentation
    /what-is-ccm
    /how-ccm-works
    /cirrent-services
-   /cloudformation-templates
 
    
