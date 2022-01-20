@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'CCM Docs'
-copyright = u'Infineon. All rights reserved.'
+copyright = u'1999 - 2021 Infineon Technologies AG. All rights reserved.'
 author = u'Tahir Mushtaq'
 
 #github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/docs/'
