@@ -295,7 +295,7 @@ texinfo_documents = [
 html_static_path = ['_static']
 html_theme_path = ['_themes']
 
-html_logo = '_static/image/IFX_LOGO_RGB'
+html_logo = '_static/image/IFX_LOGO_RGB.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
