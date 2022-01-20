@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'CCM Docs'
-copyright = u'Cypress Semiconductor Corporation. All rights reserved.'
+copyright = u'Infineon. All rights reserved.'
 author = u'Tahir Mushtaq'
 
 #github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/docs/'
@@ -295,7 +295,7 @@ texinfo_documents = [
 html_static_path = ['_static']
 html_theme_path = ['_themes']
 
-html_logo = '_static/image/IFX_ICON.png'
+html_logo = '_static/image/IFX_LOGO_RGB'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
