@@ -393,7 +393,8 @@ Check if a Thing is present in the AWS IoT Console for your device
 1. Run the following command in the serial terminal to get the ThingName of your device. 
    
    ::
-      AT+CONF? ThingName
+      
+       AT+CONF? ThingName
 
 2. Open the `AWS IoT Console <http://console.aws.amazon.com/iot>`_.
 
