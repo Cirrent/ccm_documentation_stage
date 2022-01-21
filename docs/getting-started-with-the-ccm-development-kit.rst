@@ -131,45 +131,69 @@ How the CCM module interacts with AWS
 **************************************
 
 The Infineon AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect the CCM to your AWS Account, you’ll need to connect your CIRRENT™ account with your AWS account so that devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  You can follow the instructions in the CIRRENT™ Cloud ID documentation to set that up. 
+
 Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ console, and then creating a Thing in your AWS account, using the certificate you just downloaded
-The CIRRENT™ Cloud flow uses the Cloud ID solution to simplify the process of connecting the kit to your AWS developer account. This method eliminates several manual steps that need to be performed in the AWS flow. Learn more about the Cloud ID solution here.
+
+The CIRRENT™ Cloud flow uses the Cloud ID solution to simplify the process of connecting the kit to your AWS developer account. This method eliminates several manual steps that need to be performed in the AWS flow. Learn more about the Cloud ID solution `here <https://swdocs.cypress.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_.
+
 At a high level, the CIRRENT™ Cloud flow performs the following functions to connect the kit to your AWS developer account: 
-Binds your kit to your CIRRENT™ account.
-Provisions the AWS resources for the kit on your AWS account, including the Thing (cloud representation of your physical device), device certificate (associates the device certificate from the CIRRENT™ Cloud to your Thing), policies (creates and associates AWS IoT Thing access policies to your Thing)
 
+1. Binds your kit to your CIRRENT™ account.
 
-The CIRRENT™ Cloud pulls the AWS endpoint required from your AWS account and automatically pushes it to the kit. This enables the kit to connect to your AWS development account.  
+2. Provisions the AWS resources for the kit on your AWS account, including the Thing (cloud representation of your physical device), device certificate (associates the device certificate from the CIRRENT™ Cloud to your Thing), policies (creates and associates AWS IoT Thing access policies to your Thing)
+
+3. The CIRRENT™ Cloud pulls the AWS endpoint required from your AWS account and automatically pushes it to the kit. This enables the kit to connect to your AWS development account.  
+
 The CIRRENT™ Cloud flow we describe above is very close to the production flow and demonstrates the ease of securely connecting your products to the product cloud. The CIRRENT™ Cloud is preloaded with the device certificate of all CCM/IFW56810 modules, thus offloading the effort of managing device certificates away from product manufacturers. 
+
 Get connected to AWS
+*********************
 
 You need to follow a few steps to ensure you’re able to interact with your AWS developer account while using the CIRRENT™ Cloud ID flow for device onboarding. The following diagram illustrates the process:
 
-
+.. image:: img/gsd-7.png
+	    :align: center
 
 You’ve already confirmed that the CCM kit binded to your Cloud ID account in the previous step. We’ll now outline the steps you need to take to set up your AWS instance so that you can connect your CCM kit to your Product Cloud.
 
-Execute the CloudFormation template
-CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources.  
-The template for creating AWS resources required for connecting the IFW956810 evaluation kit to the AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end cloud communication between your CIRRENT™ account and your AWS account. 
-You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the Infineon-provided CloudFormation template can be found here. 
-Create a Product Cloud API
-A Product Cloud API is a software interface that allows the CIRRENT™ Cloud to communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details including the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API must be executed once per CIRRENT™ account. The same API can be used to provision production CCM devices from your CIRRENT™ account to your AWS account.  
-Instructions for configuring the Product Cloud API are here. 
-Provision and prepare to connect the kit to your AWS account. 
+1. Execute the CloudFormation template
 
-When new devices are bound to your account, they will be automatically configured in your AWS account, but for this first device you will need to initiate the provisioning manually.  To provision follow these steps: 
+   CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. 
 
+   The template for creating AWS resources required for connecting the IFW956810 evaluation kit to the AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end cloud communication between your CIRRENT™ account and your AWS account. 
 
-In the CIRRENT™ Console, navigate to Device Management and Cloud ID, click on the Binding tab, or following this link.
+   You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the Infineon-provided CloudFormation template can be found here. 
 
+2. Create a Product Cloud API
+   A Product Cloud API is a software interface that allows the CIRRENT™ Cloud to communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details including the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API must be executed once per CIRRENT™ account. The same API can be used to provision production CCM devices from your CIRRENT™ account to your AWS account.  
 
+   Instructions for configuring the Product Cloud API are here. 
 
+3. Provision and prepare to connect the kit to your AWS account. 
 
-Click the Edit button .
-Click the drop-down list in the API Endpoint column.
-Choose the Product Cloud API created in the previous step.
-Click Save.
-Click the Provision now button 
+   When new devices are bound to your account, they will be automatically configured in your AWS account, but for this first device you will need to initiate the provisioning manually.  To provision follow these steps: 
+
+   1. In the CIRRENT™ Console, navigate to Device Management and Cloud ID, click on the Binding tab, or following this link.
+
+      .. image:: img/gsd-7.png
+	    :align: center
+
+   2. Click the **Edit button**.
+
+      .. image:: img/edit.png
+	    :align: center
+
+   3. Click the drop-down list in the **API Endpoint** column.
+
+   4. Choose the Product Cloud API created in the previous step.
+
+   5. Click Save.
+
+   6. Click the Provision now button 
+
+   .. image:: img/p-btn.png
+	    :align: center
+
 Provisioning via the Product Cloud API performs two functions. First, it creates the Thing for your device in the AWS Console and attaches the related policy and device certificate. It also pulls the AWS endpoint required by the device to connect to your AWS account and pushes it to the device so that the device connects to the AWS Cloud automatically. 
 Connect and interact with the AWS Cloud
 Use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
