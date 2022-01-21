@@ -66,12 +66,14 @@ The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP us
 First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
 
 Android
+
 .. figure:: img/gsd-4.png
     :align: center
 
 	Android
 
 IOS
+
 .. figure:: img/gsd-5.png
     :align: center
     
@@ -191,7 +193,7 @@ You’ve already confirmed that the CCM kit binded to your Cloud ID account in t
 
    6. Click the Provision now button 
 
-   .. image:: img/p-btn.png
+      .. image:: img/p-btn.png
 	    :align: center
 
 Provisioning via the Product Cloud API performs two functions. First, it creates the Thing for your device in the AWS Console and attaches the related policy and device certificate. It also pulls the AWS endpoint required by the device to connect to your AWS account and pushes it to the device so that the device connects to the AWS Cloud automatically. 
