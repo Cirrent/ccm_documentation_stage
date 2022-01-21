@@ -44,6 +44,7 @@ End of Line        Line Feed
 See the Setting up a serial terminal on your PC section for more details.
 
 Once you open the serial terminal, type 
+
 :: 
 	AT+CONF? About 
 
@@ -61,35 +62,36 @@ The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP us
 First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
 
 .. figure:: img/gsd-4.png
-	:align: center
+    :align: center
+
 	Android
 
 .. figure:: img/gsd-5.png
-	:align: center
+    :align: center
+    
 	IOS
 
 
 1. To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
-   ::
-	   AT+CONFMODE
 
-	You should receive this response from the module:
+   ::
+	  AT+CONFMODE
+
+   You should receive this response from the module:
 
    :: 
-       OK CONFMODE Enabled
+      OK CONFMODE Enabled
 
 2. Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in.
 
-
-3. From the menu, select **Configuration** and then choose **BLE** onboarding for the best
- experience. 
-
+3. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
 
 4. Follow the onscreen instructions and enter the Wi-Fi router’s SSID and password
 
 At the end of this process you should see ??? and that means your CCM is connected to your Wi-Fi network. 
 
 If prefer configuring the Wi-Fi networking using AT commands, type the following commands in sequence in the terminal application:
+
 ::
 	AT+CONF SSID=<your router ssid>
 	AT+CONF Passphrase=<your router passphrase>
