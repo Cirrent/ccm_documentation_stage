@@ -855,6 +855,10 @@ footer.footer--slim .hidden-print {
     margin: 20px 0 10px !important;
 }
 
+figure img {
+	margin-top:0!important;
+}
+
 @media (max-width: 1023px) {
     footer .apps {
         background-color:#f4f2f3;

@@ -177,7 +177,7 @@ You’ve already confirmed that the CCM kit binded to your Cloud ID account in t
 
    1. In the CIRRENT™ Console, navigate to Device Management and Cloud ID, click on the Binding tab, or following this link.
 
-      .. image:: img/gsd-7.png
+      .. image:: img/gsd-8.png
 	    :align: center
 
    2. Click the **Edit button**.
@@ -197,130 +197,268 @@ You’ve already confirmed that the CCM kit binded to your Cloud ID account in t
 	    :align: center
 
 Provisioning via the Product Cloud API performs two functions. First, it creates the Thing for your device in the AWS Console and attaches the related policy and device certificate. It also pulls the AWS endpoint required by the device to connect to your AWS account and pushes it to the device so that the device connects to the AWS Cloud automatically. 
+
 Connect and interact with the AWS Cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
-Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
-In the navigation pane, select Test and then click MQTT Test Client.
-In Subscribe to a topic panel, enter #, and then click Subscribe. 
+
+1. Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
+
+2. In the navigation pane, select Test and then click MQTT Test Client.
+
+3. In Subscribe to a topic panel, enter #, and then click Subscribe. 
+
 Skip Section 4.6.1 if you used CIRRENT Wi-Fi onboarding app to connect the kit to Wi-Fi. 
-Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core.  You will receive “OK 1 CONNECTED” in the serial terminal once the device is connected to the AWS IoT Core.  
+
+Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core. You will receive “OK 1 CONNECTED” in the serial terminal once the device is connected to the AWS IoT Core.  
+
 Connect to the AWS IoT Core
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core
-AT+CONNECT
-You will receive a response depending on the method of connection. If you used Cloud ID for registration it may take a minute or more to connect and you may see a message 
-OK Waiting for Cloud ID registration.
- After it is configured, then the device will connect to the AWS IoT Core and you will receive the message 
-OK 1 CONNECTED
+
+::
+
+	AT+CONNECT
+
+You will receive a response depending on the method of connection. If you used Cloud ID for registration it may take a minute or more to connect and you may see a message
+
+::
+
+	OK Waiting for Cloud ID registration.
+
+After it is configured, then the device will connect to the AWS IoT Core and you will receive the message 
+
+::
+
+	OK 1 CONNECTED
+
 Now you’re able to send and receive data from your AWS IoT Core account. To send data: 
-AT+SEND data Hello World!
+
+::
+
+	AT+SEND data Hello World!
+
 After a short time, you will receive the message “OK”. You should see the “Hello World!” message appears on the AWS IoT Console under the topic “data”. 
+
 To receive data, you’ll need to subscribe to a topic.  By default, the device subscribes to a topic called “state”. To send a message to the CCM: 
-On the AWS IoT Console, select the MQTT client, and then select Publish to a topic. Type state in Topic name field. Keep the “Hello from the AWS IoT Console” message. Click Publish.
+
+1. On the AWS IoT Console, select the MQTT client, and then select **Publish to a topic**. Type **state** in **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
 
 
-Type the following command in the serial terminal:
-AT+GET
-You will receive the message 
+2. Type the following command in the serial terminal:
+   
+   ::
+   	  
+   	    AT+GET
 
-OK Hello from the AWS IoT Console
+   You will receive the message 
+
+   ::
+
+		OK Hello from the AWS IoT Console
+
 Further Exploration
-Now that your CCM module is connected and you can try out the different capabilities of the product. Here are a few suggestions: 
-Run an Over-the-Air firmware update process
-Try out other CCM Commands
+********************
 
+Now that your CCM module is connected and you can try out the different capabilities of the product. Here are a few suggestions:
+
+* Run an Over-the-Air firmware update process
+* Try out other CCM Commands
 
 Setting up a serial terminal on the PC
-The following instructions are only for a Windows PC. 
-The IFW956810 CCM evaluation kit should be recognized by the PC when connected to it. If the device is recognized, COM ports will be available in the Device Manager. 
-If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this link. For more information, see the Troubleshooting section. 
+*****************************************
+
+.. note:: The following instructions are only for a Windows PC. 
+
+
+The IFW956810 CCM evaluation kit should be recognized by the PC when connected to it. If the device is recognized, COM ports will be available in the Device Manager.
+
+If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this `link <https://ftdichip.com/drivers/vcp-drivers/>`_. For more information, see the Troubleshooting section. 
+
 Determine the COM port number
-Determine the COM port number from the Device Manager. 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
+* Determine the COM port number from the Device Manager. 
+  
+  .. image:: img/gsd-9.png
+	    :align: center
 
 Serial terminal settings
-Open a terminal such as Tera Term.
-Choose the higher of the COM port numbers for the IFW956810 CCM evaluation kit.
-Select Set Up > Serial port.
-Select the settings as follows:
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1. Open a terminal such as Tera Term.
 
+2. Choose the higher of the COM port numbers for the IFW956810 CCM evaluation kit.
 
+3. Select **Set Up** > **Serial port**.
 
-Select Set Up > Terminal. 
-Do the following:
-Set End of Line as Line Feed. 
-Enable Local Echo to view the commands that you type on the terminal.  
+4. Select the settings as follows:
+   
+   .. image:: img/gsd-10.png
+	    :align: center
 
+5. Select **Set Up** > **Terminal**. 
 
+6. Do the following:
+   
+   * Set **End of Line** as **Line Feed**. 
+   * Enable **Local Echo** to view the commands that you type on the terminal.  
 
+     .. image:: img/gsd-11.png
+	    :align: center
 
 Troubleshooting the CCM Kit
+****************************
+
 If two COM ports were enumerated when the kit is connected
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The IFW956810 CCM evaluation kit has a FT2232H chip capable of supporting USB to dual-channel UART (USB serial converter A and USB serial converter B). Only USB serial converter B is configured in the kit for USB-to-UART conversion. Therefore, use the higher-number COM port among the enumerated COM ports to communicate with the kit. 
+
 Diagnosing errors when commands are entered
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 For example: 
-AT+SUBSCRIBE
+
+::
+
+	AT+SUBSCRIBE
+
 returns
 
-ERR01 Invalid cmd
-Make sure that you have typed the command correctly. 
-Note the error codes and refer to this guide for details of the error code and to determine the cause. 
+::
+
+	ERR01 Invalid cmd
+
+1. Make sure that you have typed the command correctly. 
+
+2. Note the error codes and refer to this guide for details of the error code and to determine the cause. 
+
+
 Onboarding fails when using the CIRRENT™ mobile app
-Check if CONFMODE was enabled using the AT+CONFMODE command.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Check if CONFMODE was enabled using the AT+CONFMODE command.
+
+
 ERR 14 UNABLE TO CONNECT received when using the AT+CONNECT command
+
 The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. 
-Check the Wi-Fi connection.
-Check the entered Wi-Fi credentials. 
-Type the following command to verify whether the kit connects to Wi-Fi:
-AT+DIAG PING 8.8.8.8
-If the connection is successful, the device will respond with 
-OK Received ping response in <ping latency ms>
-If the Wi-Fi connection test is successful, check the AWS IoT connection. 
-Check the device certificate uploaded to the AWS IoT Core in Section 4.4.
+
+1. heck the Wi-Fi connection.
+
+2. Check the entered Wi-Fi credentials. 
+
+3. Type the following command to verify whether the kit connects to Wi-Fi:
+
+   ::
+
+	  AT+DIAG PING 8.8.8.8
+
+   If the connection is successful, the device will respond with 
+
+   ::
+
+	  OK Received ping response in <ping latency ms>
+
+4. If the Wi-Fi connection test is successful, check the AWS IoT connection. 
+
+5. Check the device certificate uploaded to the AWS IoT Core in Section 4.4.
+
+
 Changing the Wi-Fi network the device is connected to
-Execute 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AT+DISCONNECT 
+1. Execute 
+   
+   ::
 
- on the serial terminal to disconnect from the current Wi-Fi network. 
+	  AT+DISCONNECT 
 
-See this section  to configure the required Wi-Fi credentials.  
+   on the serial terminal to disconnect from the current Wi-Fi network. 
+
+2. See this section  to configure the required Wi-Fi credentials.  
+
+
 Determine the device connection status to AWS IoT Core
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These steps will help you to verify whether the device is waiting for the endpoint from the CIRRENT™ Cloud after the device is connected to Wi-Fi  To complete the following you needed to onboard the device using the CIRRENT™ Cloud flow, and ensure that you received an “OK 1 CONNECTED” message. 
+
 Check if a Thing is present in the AWS IoT Console for your device
-Run the following command in the serial terminal to get the ThingName of your device. 
-AT+CONF? ThingName
-Open the AWS IoT Console.
-From the left pane, select Manage, and then select Things.  
-Note the Name of the Thing.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+1. Run the following command in the serial terminal to get the ThingName of your device. 
+   
+   ::
+      AT+CONF? ThingName
+
+2. Open the `AWS IoT Console <http://console.aws.amazon.com/iot>`_.
+
+3. From the left pane, select **Manage**, and then select **Things**.  
+
+4. Note the **Name** of the Thing.
+
+
 The ThingName shown on the serial terminal and the AWS IoT Console must be the same.  
+
 Check for a job in the CIRRENT™ Console
+"""""""""""""""""""""""""""""""""""""""""
+
 This job should be for sending the endpoint to your device. Do the following:
-In the CIRRENT™ Console, go to Product Analytics > Device Fleet.
-Click the Jobs tab, and check the following columns for the new job created:
-Action: ccm_config
-Action Details: Endpoint should be the same as your AWS account endpoint.
-      In the AWS IoT Console, choose Settings, check the endpoint under Device data endpoint.
-Created Time: This should be the current time when you clicked Provision now in the CIRRENT™ Console.
-Status: Active
-Device IDs: Note the value in the Device ID field. 
+
+1. In the CIRRENT™ Console, go to **Product Analytics** > **Device Fleet**.
+
+2. Click the **Jobs** tab, and check the following columns for the new job created:
+
+   * Action: ccm_config
+
+   * Action Details: Endpoint should be the same as your AWS account endpoint.
+     In the AWS IoT Console, choose **Settings**, check the endpoint under **Device data endpoint**.
+
+   * Created Time: This should be the current time when you clicked **Provision now** in the CIRRENT™ Console.
+
+   * Status: Active
+
+   * Device IDs: Note the value in the Device ID field.
+
 Check the pending state of the job
+"""""""""""""""""""""""""""""""""""""""""
+
 Do the following if a new job is available for your device. 
-Go to Product Analytics > Device Inspector in the CIRRENT™ Console.
-Click the Jobs tab, and do the following:
-Type the device ID noted in the previous section in the Device ID text box. 
-Under the Pending Jobs section, verify that the Job ID, Action, and Action Details are the same as shown in the previous section.
-If the “OK 1 CONNECTED” message is received in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. 
-If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account
-Execute the following command in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
-AT+CLOUD_SYNC
+
+1. Go to **Product Analytics** > **Device Inspector** in the CIRRENT™ Console.
+
+2. Click the **Jobs** tab, and do the following:
+
+   * Type the device ID noted in the previous section in the Device ID text box. 
+
+   * Under the Pending Jobs section, verify that the Job ID, Action, and Action Details are the same as shown in the previous section.
+
+     If the “OK 1 CONNECTED” message is received in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. 
+
+     If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account
+
+     Execute the following command in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
+
+     ::
+
+         AT+CLOUD_SYNC
+
 
 Device registration with CloudID service failed 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 This message appears after connecting to Wi-Fi. The cause depends on the method of connection used.
+
 There is an error in the provisioning step. Do the following:
-Redo Step  Provision and prepare to connect the kit to your AWS account
-Execute the following command in the serial terminal to pull the endpoint to the device after connecting to Wi-Fi. 
-AT+CLOUD_SYNC
+
+1. Redo Step  Provision and prepare to connect the kit to your AWS account
+
+2. Execute the following command in the serial terminal to pull the endpoint to the device after connecting to Wi-Fi. 
+
+   ::
+
+      AT+CLOUD_SYNC
