@@ -65,11 +65,13 @@ The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP us
 
 First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
 
+Android
 .. figure:: img/gsd-4.png
     :align: center
 
 	Android
 
+IOS
 .. figure:: img/gsd-5.png
     :align: center
     
@@ -111,23 +113,23 @@ View your CCM module connected to the CIRRENT™ Cloud
 
 Now you can see that the CCM module is connected to the internet by checking the binding to the CIRRENT™ Cloud: 
 
-Log in to your CIRRENT™  account at https://console.cirrent.com/. If you don’t already have a CIRRENT™ account, you can register one, follow these steps.
+1. Log in to your CIRRENT™  account at https://console.cirrent.com/. If you don’t already have a CIRRENT™ account, you can register one, follow these steps.
 
+2. On the panel on the left of the screen, select Device Management and Cloud ID, and then select the Binding tab. Alternatively, click this link to go directly to that tab. 
 
-On the panel on the left of the screen, select Device Management and Cloud ID, and then select the Binding tab. Alternatively, click this link to go directly to that tab. 
+3. Choose your account number as follows: 
+   
+   .. image:: img/gsd-6.png
+	    :align: center
 
+4. You should see your device listed on the page. 
 
-Choose your account number as follows: 
+.. note:: successful binding of the device to your CIRRENT™ account is required to provision the devices to the AWS developer account using Cloud ID. 
 
-
-
-
-
-You should see your device listed on the page. 
-
-Note: successful binding of the device to your CIRRENT™ account is required to provision the devices to the AWS developer account using Cloud ID. 
 
 How the CCM module interacts with AWS
+**************************************
+
 The Infineon AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect the CCM to your AWS Account, you’ll need to connect your CIRRENT™ account with your AWS account so that devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  You can follow the instructions in the CIRRENT™ Cloud ID documentation to set that up. 
 Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ console, and then creating a Thing in your AWS account, using the certificate you just downloaded
 The CIRRENT™ Cloud flow uses the Cloud ID solution to simplify the process of connecting the kit to your AWS developer account. This method eliminates several manual steps that need to be performed in the AWS flow. Learn more about the Cloud ID solution here.
