@@ -45,12 +45,16 @@ See the Setting up a serial terminal on your PC section for more details.
 
 Once you open the serial terminal, type 
 
+
 :: 
+
 	AT+CONF? About 
 
 in the serial terminal.  You should see a response 
 
+
 ::
+
 	OK Infineon IFW56810 CCM
 
 
@@ -75,11 +79,13 @@ First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google P
 1. To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
 
    ::
+
 	  AT+CONFMODE
 
    You should receive this response from the module:
 
    :: 
+
       OK CONFMODE Enabled
 
 2. Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in.
@@ -93,6 +99,7 @@ At the end of this process you should see ??? and that means your CCM is connect
 If prefer configuring the Wi-Fi networking using AT commands, type the following commands in sequence in the terminal application:
 
 ::
+
 	AT+CONF SSID=<your router ssid>
 	AT+CONF Passphrase=<your router passphrase>
 
