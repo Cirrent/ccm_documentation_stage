@@ -7,75 +7,99 @@ Kit Contents
 
 The IFW956810 CCM evaluation kit consists of an IFW56810 single-band Wi-Fi 4 Cloud Connectivity Manager module with powerful processing capability, a PCB antenna, an FTDI chip for the USB to serial interface, and an 8x2 pin header.
 
-
+.. image:: img/gsd-1.png
+	    :align: center
 
 Ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12 of header J60 are closed as shown in the figure before connecting the USB dongle to the PC. The PC can be used as a host for evaluation. AT commands can be sent through a serial terminal on the PC to the IFW956810 CCM kit. 
 
+.. image:: img/gsd-2.png
+	    :align: center
+
 Getting Online
+****************
+
 Connect the CCM module to your PC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to your PC using either the Type-C connector or Type-A male to Type-C female cable.
 
+.. image:: img/gsd-3.png
+	    :align: center
 
 Run a serial terminal to communicate with the kit over USB by choosing the higher of the two enumerated COM ports with the following configuration:
 
-  Baud rate: 
-115200
-Bits
-8
-Parity
-None
-Stop
-1
-Flow control
-None
-Local  Echo
-Yes
-End of   Line
-Line Feed
+================   ===========================
+
+----------------   ---------------------------
+Baud rate:         115200
+Bits               8
+Parity             None
+Stop               1
+Flow control       None
+Local Echo         Yes
+End of Line        Line Feed
+================   ===========================
 
 
 See the Setting up a serial terminal on your PC section for more details.
+
 Once you open the serial terminal, type 
-AT+CONF? About 
+:: 
+	AT+CONF? About 
+
 in the serial terminal.  You should see a response 
-OK Infineon IFW56810 CCM
+
+::
+	OK Infineon IFW56810 CCM
 
 
 Connect the CCM module to Wi-Fi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP using an app available in the app store, and Infineon also provides a mobile app SDK to make it easier for you to deliver an app to your customer.  
 
-First,  Download and install the CIRRENT™  Wi-Fi onboarding app from Google Play Store for Android or iOS App Store for iOS on your mobile phone. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
+First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
+
+.. figure:: img/gsd-4.png
+	:align: center
+	Android
+
+.. figure:: img/gsd-5.png
+	:align: center
+	IOS
 
 
-Android
-              iOS
+1. To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
+   ::
+	   AT+CONFMODE
+
+	You should receive this response from the module:
+
+   :: 
+       OK CONFMODE Enabled
+
+2. Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in.
 
 
-
-
-To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
-AT+CONFMODE
-You should receive this response from the module:
-
-OK CONFMODE Enabled
-
-Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in.
-
-
-From the menu, select Configuration and then choose BLE onboarding for the best
+3. From the menu, select **Configuration** and then choose **BLE** onboarding for the best
  experience. 
 
 
-Follow the onscreen instructions and enter the Wi-Fi router’s SSID and password
+4. Follow the onscreen instructions and enter the Wi-Fi router’s SSID and password
 
 At the end of this process you should see ??? and that means your CCM is connected to your Wi-Fi network. 
-If prefer configuring the Wi-Fi networking using AT commands, type the following commands in sequence in the terminal application:
-AT+CONF SSID=<your router ssid>
-AT+CONF Passphrase=<your router passphrase>
-Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (i.e., for debugging purposes), any attempt to retrieve the passphrase will return an error.   
 
-                                                     
+If prefer configuring the Wi-Fi networking using AT commands, type the following commands in sequence in the terminal application:
+::
+	AT+CONF SSID=<your router ssid>
+	AT+CONF Passphrase=<your router passphrase>
+
+.. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (i.e., for debugging purposes), any attempt to retrieve the passphrase will return an error.   
+
+
 View your CCM module connected to the CIRRENT™ Cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Now you can see that the CCM module is connected to the internet by checking the binding to the CIRRENT™ Cloud: 
 
 Log in to your CIRRENT™  account at https://console.cirrent.com/. If you don’t already have a CIRRENT™ account, you can register one, follow these steps.
