@@ -34,87 +34,48 @@ The above format contains the following elements:
                   return ‘PARSE ERROR’.
 ===============   ===============================================================================================================
 
-Note: The parameter includes every byte between the separator and eol, but does not include either separator or eol. ASCII values from 0 to 0x1F are valid for the parameter string.
-Note: The complete formatted command string is capped to 5KB in length.
-Note: The maximum runtime for every command must be listed in the datasheet. No command can take more than 120 seconds to complete (the maximum time for a TCP connection timeout).
+.. note:: The parameter includes every byte between the separator and eol, but does not include either separator or eol. ASCII values from 0 to 0x1F are valid for the parameter string.
+
+.. note:: The complete formatted command string is capped to 5KB in length.
+
+.. note:: The maximum runtime for every command must be listed in the datasheet. No command can take more than 120 seconds to complete (the maximum time for a TCP connection timeout).
 
 Command error codes
+********************
 
 The standard format for error codes is:
-OK|ERR{#}{separator}[detail]{eol}
+
+::
+
+ 	OK|ERR{#}{separator}[detail]{eol}
+
 Where ERR is the error code, responding to the list of errors below:
 
-1
-OVERFLOW
-More bytes have been received than fit in the receive buffer.
-2
-PARSE ERROR
-Message not formatted correctly.
-3
-COMMAND NOT FOUND
-Invalid command.
-4
-PARAMETER ERROR
-Command does not recognize the parameters.
-5
-INVALID ESCAPE
-An incorrect escape sequence was detected.
-6
-NO CONNECTION
-Command requires an active connection to AWS IoT.
-7
-TOPIC OUT OF RANGE
-The topic index is larger than the maximum valid topic index.
-8
-TOPIC UNDEFINED
-The topic index provided references an empty topic position.
-9
-INVALID KEY LENGTH
-Key is longer than 16 characters.
-10
-INVALID KEY NAME
-A non-alphanumeric character was used in the key name.
-11
-UNKNOWN KEY
-The supplied key cannot be found in the system.
-12
-KEY READONLY
-The key cannot be written.
-13
-KEY WRITEONLY
-The key cannot be read.
-14
-UNABLE TO CONNECT
-The module is unable to connect.
-15
-TIME NOT AVAILABLE
-A time fix could not be obtained.
-16
-LOCATION NOT AVAILABLE
-A location fix could not be obtained.
-17
-MODE NOT AVAILABLE
-The requested mode is not available.
-18
-ACTIVE CONNECTION
-An active connection prevents the command from running.
-19
-HOST IMAGE NOT AVAILABLE
-A host OTA command was issued but no valid HOTA image is present in the OTA buffer.
-20
-INVALID ADDRESS
-The OTA buffer pointer is out of bounds (> image size).
-21
-INVALID OTA UPDATE
-The OTA update failed.
-22
-INVALID QUERY
-The command does provide a query option.
-23
-INVALID SIGNATURE
-A signature verification failed.
-
-
+=======   ============================   =====================================================================================
+1         OVERFLOW                       More bytes have been received than fit in the receive buffer.
+2         PARSE ERROR                    Message not formatted correctly.
+3         COMMAND NOT FOUND              Invalid command.
+4         PARAMETER ERROR                Command does not recognize the parameters.
+5         INVALID ESCAPE                 An incorrect escape sequence was detected.
+6         NO CONNECTION                  Command requires an active connection to AWS IoT.
+7         TOPIC OUT OF RANGE             The topic index is larger than the maximum valid topic index.
+8         TOPIC UNDEFINED                The topic index provided references an empty topic position.
+9         INVALID KEY LENGTH             Key is longer than 16 characters.
+10        INVALID KEY NAME               A non-alphanumeric character was used in the key name.
+11        UNKNOWN KEY                    The supplied key cannot be found in the system.
+12        KEY READONLY                   The key cannot be written.
+13        KEY WRITEONLY                  The key cannot be read.
+14        UNABLE TO CONNECT              The module is unable to connect.
+15        TIME NOT AVAILABLE             A time fix could not be obtained.
+16        LOCATION NOT AVAILABLE         A location fix could not be obtained.
+17        MODE NOT AVAILABLE             The requested mode is not available.
+18        ACTIVE CONNECTION              An active connection prevents the command from running.
+19        HOST IMAGE NOT AVAILABLE       A host OTA command was issued but no valid HOTA image is present in the OTA buffer.
+20        INVALID ADDRESS                The OTA buffer pointer is out of bounds (> image size).
+21        INVALID OTA UPDATE             The OTA update failed.
+22        INVALID QUERY                  The command does provide a query option.
+23        INVALID SIGNATURE              A signature verification failed.
+=======   ============================   =====================================================================================
 
 
 AT operational commands
