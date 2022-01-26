@@ -6,16 +6,25 @@ Overview
 **************
 
 The Cloud Connectivity Manager provides secure cloud connectivity for IoT products. The Development Kit is built to walk you through the main capabilities of the CCM product, including:
+
 * Cloud ID for secure cloud authentication using the pre-programmed CCM device certificate
+
 * Wi-Fi onboarding, including the Infineon CIRRENT mobile app for testing, and the mobile app SDK to simplify development of your own app
+
 * Secure and reliable full network stack, including Wi-Fi, TCP/IP, HTTP, MQTT, TLS, and other networking features
+
 * Secure and reliable Over-The-Air (OTA) firmware update of the CCM firmware
+
 * Optional CIRRENT™ IoT Network Intelligence (INI) for monitoring and managing your CCM fleet and monitoring connectivity reliability  
+
 * Robust AT command set to connect your host to the cloud 
 
 This Getting Started section walks you through: 
+
 # :ref:`Getting the CCM Bound to Your Infineon Account`
+
 # :ref:`Getting the CCM Online`
+
 # :ref:`Getting the CCM Connected to Your AWS Account`
 
 Kit Contents
