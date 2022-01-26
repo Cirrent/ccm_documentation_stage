@@ -21,11 +21,11 @@ The Cloud Connectivity Manager provides secure cloud connectivity for IoT produc
 
 This Getting Started section walks you through: 
 
-# :ref:`Getting the CCM Bound to Your Infineon Account`
+1. :ref:`Getting the CCM Bound to Your Infineon Account`
 
-# :ref:`Getting the CCM Online`
+2. :ref:`Getting the CCM Online`
 
-# :ref:`Getting the CCM Connected to Your AWS Account`
+3. :ref:`Getting the CCM Connected to Your AWS Account`
 
 Kit Contents
 **************
@@ -49,8 +49,9 @@ The CCM Device ID is embedded in the QR code on the CCM device itself.  To bind 
 
 Once you enter the url, you will log in and choose a Group (or create an Account and a Group).  At the end of the process your CCM is bound to your Group.  Later in the process you'll be able to validate this in the CIRRENT™ console. 
 
-You can `learn more about CIRRENT™ Groups here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`, and you can `learn more about Cloud ID here https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html`.  
+You can `learn more about CIRRENT™ Groups here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>` , and you can `learn more about Cloud ID here https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html` .  
 
+.. note:: you can use the CCM independent of your Infineon Account and the CIRRENT™ services by pulling the Device Certificate from the AT command directly and manually provisioning that in the cloud.
 
 Getting the CCM Online
 ************************ 
