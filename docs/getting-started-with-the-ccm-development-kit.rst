@@ -2,6 +2,22 @@ Getting Started With the CCM Development Kit
 ==============================================
 
 
+Overview
+**************
+
+The Cloud Connectivity Manager provides secure cloud connectivity for IoT products. The Development Kit is built to walk you through the main capabilities of the CCM product, including:
+* Cloud ID for secure cloud authentication using the pre-programmed CCM device certificate
+* Wi-Fi onboarding, including the Infineon CIRRENT mobile app for testing, and the mobile app SDK to simplify development of your own app
+* Secure and reliable full network stack, including Wi-Fi, TCP/IP, HTTP, MQTT, TLS, and other networking features
+* Secure and reliable Over-The-Air (OTA) firmware update of the CCM firmware
+* Optional CIRRENT™ IoT Network Intelligence (INI) for monitoring and managing your CCM fleet and monitoring connectivity reliability  
+* Robust AT command set to connect your host to the cloud 
+
+This Getting Started section walks you through: 
+# :ref:`Getting the CCM Bound to Your Infineon Account`
+# :ref:`Getting the CCM Online`
+# :ref:`Getting the CCM Connected to Your AWS Account`
+
 Kit Contents
 **************
 
@@ -15,8 +31,20 @@ Ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12
 .. image:: img/gsd-2.png
 	    :align: center
 
-Getting Online
-****************
+Getting the CCM Bound to your Infineon Accounts
+************************************************************************************************
+
+Infineon's CIRRENT™  Cloud ID service lets you download the CCM Device Certificate from the Cloud or automatically provision the Device Certificate to your product cloud.  To enable the Cloud ID service, you will log into your Infineon Account and choose a Group for the CCM device. If you don't have an Infineon Account or Group, you can create one for free during the setup process.  
+
+The CCM Device ID is embedded in the QR code on the CCM device itself.  To bind the CCM to your Group, point your mobile phone camera at the QR code and follow the link.  You can also manually type in the url printed on the CCM to go through this process on a computer. 
+
+Once you enter the url, you will log in and choose a Group (or create an Account and a Group).  At the end of the process your CCM is bound to your Group.  Later in the process you'll be able to validate this in the CIRRENT™ console. 
+
+You can `learn more about CIRRENT™ Groups here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`, and you can `learn more about Cloud ID here https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html`.  
+
+
+Getting the CCM Online
+************************ 
 
 Connect the CCM module to your PC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -128,9 +156,11 @@ Now you can see that the CCM module is connected to the internet by checking the
 
 .. note:: successful binding of the device to your CIRRENT™ account is required to provision the devices to the AWS developer account using Cloud ID. 
 
+Getting the CCM Connected to Your AWS Account
+****************************************************************************
 
 How the CCM module interacts with AWS
-**************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Infineon AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect the CCM to your AWS Account, you’ll need to connect your CIRRENT™ account with your AWS account so that devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  You can follow the instructions in the CIRRENT™ Cloud ID documentation to set that up. 
 
@@ -149,7 +179,7 @@ At a high level, the CIRRENT™ Cloud flow performs the following functions to c
 The CIRRENT™ Cloud flow we describe above is very close to the production flow and demonstrates the ease of securely connecting your products to the product cloud. The CIRRENT™ Cloud is preloaded with the device certificate of all CCM/IFW56810 modules, thus offloading the effort of managing device certificates away from product manufacturers. 
 
 Get connected to AWS
-*********************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You need to follow a few steps to ensure you’re able to interact with your AWS developer account while using the CIRRENT™ Cloud ID flow for device onboarding. The following diagram illustrates the process:
 
