@@ -649,7 +649,9 @@ Returns:
 
 The device entered CONFMODE and is ready to proceed with SoftAP onboarding.
 
+
 ::
+
 	ERR18 CURRENT CONNECTION
 
 The device cannot enter CONFMODE due to a current connection, first use DISCONNECT.
