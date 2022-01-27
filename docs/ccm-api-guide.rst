@@ -525,79 +525,32 @@ You can use key-value pairs to set default values for command parameters. You ca
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Non-persistent keys
+^^^^^^^^^^^^^^^^^^^^^^
 
 Additional configuration parameters are non-persistent, and they are re-initialized at power up, or following any reset event. Among these are the topics list items, see the section on AT messaging. The host processor has to re-initialize them following any reset, and possibly a deep-sleep awakening (depending on the implementation).
+
 Configuration dictionary for non-persistent keys
 
-Configuration Parameter
-Type
-Persist
-Initial Value
-Description
-IPv4Address
-R
-N
-0.0.0.0
-The IPv4 address of the device
-IPv6Address
-R
-N
-::
-Current device IPv6 address
-DNSAddress
-R
-N
-0.0.0.0
-Current DNS address (IPv4 or IPv6)
-GatewayAddress
-R
-N
-0.0.0.0
-Current router IP address (IPv4 or IPv6)
-Topic1
-R/W
-N
-{Empty}
-Custom defined topic 1
-Topic2
-R/W
-N
-{Empty}
-Custom defined topic 2
-...
-
-
-
-
-
-
-
-
-Topic<Max Topic>
-R/W
-N
-{Empty}
-Custom defined topic MaxTopic
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| Configuration Parameter  | Type  | Persist  | Initial Value                | Description                                 |
++==========================+=======+==========+==============================+=============================================+
+| IPv4Address              | R     | N        | 0.0.0.0                      | The IPv4 address of the device              |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| IPv6Address              | R     | N        | ::                           | Current device IPv6 address                 |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| DNSAddress               | R     | N        | 0.0.0.0                      | Current DNS address (IPv4 or IPv6)          |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| GatewayAddress           | R     | N        | 0.0.0.0                      | Current router IP address (IPv4 or IPv6)    |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| Topic1                   | R/W   | N        | {Empty}                      | Custom defined topic 1                      |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| Topic2                   | R/W   | N        | {Empty}                      | Custom defined topic 2                      |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| ...                      |       |          |                              |                                             |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
+| Topic<Max Topic>         | R/W   | N        | {Empty}                      | Custom defined topic MaxTopic               |
++--------------------------+-------+----------+------------------------------+---------------------------------------------+
 
 
 
