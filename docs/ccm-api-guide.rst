@@ -555,79 +555,108 @@ Configuration dictionary for non-persistent keys
 
 
 Assign a value to selected configuration parameter
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Command
-AT+CONF key=value
+
+::
+
+	AT+CONF key=value
+
 Returns
-OK
+
+::
+
+	OK
+
 If the command was successful, the module returns 'OK'.
-ERR# {message}
+
+::
+
+	ERR# {message}
+
 If the command was not successful, the module returns an error.
 
 Example:
-AT+CONF SSID=MY_SSID    # Assign the preferred (local) Wi-Fi router SSID
-If the write is successful, then the module returns 'OK'.
 
+::
+
+	AT+CONF SSID=MY_SSID    # Assign the preferred (local) Wi-Fi router SSID
+
+If the write is successful, then the module returns 'OK'.
 
 Possible errors:
 
-ERR9 INVALID KEY LENGTH
-The key is too long
-ERR10 INVALID KEY NAME
-
-
-The key contains incorrect characters
-ERR11 UNKNOWN KEY
-The key is not present in the system
-ERR13 KEY READONLY
-The key is read-only and can’t be written to
-
+==================================   ==============================================
+ERR9 INVALID KEY LENGTH              The key is too long
+ERR10 INVALID KEY NAME               The key contains incorrect characters
+ERR11 UNKNOWN KEY                    The key is not present in the system
+ERR13 KEY READONLY                   The key is read-only and can’t be written to
+==================================   ==============================================
 
 
 Read value of selected configuration parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Command:
 
-AT+CONF? key
+::
+
+	AT+CONF? key
+
 Returns:
-OK {value}
+
+::
+
+	OK {value}
+
 If the command was successful, the module returns 'OK' followed by the value.
-ERR# {message}
+
+::
+
+	ERR# {message}
+
 If the command was not successful, the module returns an error.
+
 Possible errors:
 
-ERR9 INVALID KEY LENGTH
-The key is too long
-ERR10 INVALID KEY NAME
-
-
-The key contains incorrect characters
-ERR11 UNKNOWN KEY
-The key is not present in the system
-ERR13 KEY WRITEONLY
-The key is write-only and can’t be read
-
-
-
-
+==================================   ==============================================
+ERR9 INVALID KEY LENGTH              The key is too long
+ERR10 INVALID KEY NAME               The key contains incorrect characters
+ERR11 UNKNOWN KEY                    The key is not present in the system
+ERR13 KEY WRITEONLY                  The key is write-only and can’t be read
+==================================   ==============================================
 
 
 Entering Wi-Fi credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AIROC™ CCM module supports Wi-Fi SoftAP onboarding. To enable this feature you are expected to use CONFMODE to receive additional connection credentials from user input.
+
 Use this command to enter SoftAP mode, where the host temporarily assumes the role of an Access Point. After enabling Wi-Fi SoftAP onboarding, user needs to use CIRRENT™ Wi-Fi Onboarding mobile app to onboard the AIROC™ CCM module. See the Wi-Fi onboarding section.
 
 Command:
-CONFMODE [parameter]
+
+::
+
+	CONFMODE [parameter]
 
 Returns:
-OK CONFMODE ENABLED
+
+::
+
+	OK CONFMODE ENABLED
+
 The device entered CONFMODE and is ready to proceed with SoftAP onboarding.
-ERR18 CURRENT CONNECTION
+
+::
+	ERR18 CURRENT CONNECTION
+
 The device cannot enter CONFMODE due to a current connection, first use DISCONNECT.
+
 A CONFMODE notification event is generated once the SoftAP process is complete. Only after that can the host issue a CONNECT command to establish a connection using the newly entered credentials. See the Event handling section.
 
 
-Note: While in CONFMODE, the CCM module can continue to respond to commands, with the exception of commands that require an active connection such as ‘AT+CONF? Version’. Where the device in CONFMODE a command that requires an active connection will return an error   'ERR6 NO CONNECTION'. Likewise, if you try to use a CONNECT command while in CONFMODE you will get a response stating:  'ERR14 UNABLE TO CONNECT'.
-Note: use the RESET command at any time to shut down CONFMODE.
+.. note:: While in CONFMODE, the CCM module can continue to respond to commands, with the exception of commands that require an active connection such as ‘AT+CONF? Version’. Where the device in CONFMODE a command that requires an active connection will return an error   'ERR6 NO CONNECTION'. Likewise, if you try to use a CONNECT command while in CONFMODE you will get a response stating:  'ERR14 UNABLE TO CONNECT'.
+
+.. note:: use the RESET command at any time to shut down CONFMODE.
