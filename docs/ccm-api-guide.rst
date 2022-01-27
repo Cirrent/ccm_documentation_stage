@@ -458,119 +458,71 @@ Configuration Dictionary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The configuration dictionary is a key-value store containing all the options necessary for the proper functioning of ExpressLink modules. Maximum key length is 16 characters. A key can be from 1 to 16 characters. You will receive the following error if you send a command with a key that is longer than 16 characters:
-ERR9 INVALID KEY LENGTH
+
+::
+
+	ERR9 INVALID KEY LENGTH
+
 Valid key characters are 0-9, A-Z, a-z, a key may only contain alphanumeric characters in any order. If you use non-alphanumeric characters in a key name the CCM module will return:
-ERR10 INVALID KEY NAME
+
+::
+
+	ERR10 INVALID KEY NAME
+
 All keys for the CCM module are predefined, if you use an invalid key is used the module returns this error:
-ERR11 UNKNOWN KEY
+
+::
+
+	ERR11 UNKNOWN KEY
 
 
 
 
 
 Persistent keys
+^^^^^^^^^^^^^^^^^
 
 You can use key-value pairs to set default values for command parameters. You can also use key-value pairs to set credentials, for selecting connectivity options and for timing preferences. The following persistent configuration key-value pairs should be long-lived and constant for the life of your application, and stored in non-volatile memory. A basic set of pairs is defined for all CCM devices. That includes the AP endpoint and the certificate. 
-Note: Some of the below key-value pairs have factory presets, may be read only, or both.
 
-Configuration dictionary for persistent keys
-
-
-Configuration Parameter
-Type
-Persist
-Initial Value
-Factory Reset
-Description
-About
-R
-Y
-Vendor - Model
-N
-A string that identifies the device make and model
+.. note:: Some of the below key-value pairs have factory presets, may be read only, or both.
 
 
-Version
-R
-Y
-Module firmware version
-N
-The specific CCM firmware version.
-TechSpec
-R
-Y
-Technical Specification 
-N
-Your CCM module’s technical specification version number - e.g v1.1
-
-
-ThingName
-R
-Y
-UID
-N
-
-A unique identifier specific to the device, the unique ID (UID) is hard-coded to every device, delivered natively by the module’s hardware root of trust.
-
-
-Certificate
-R
-Y
-Device Birth Certificate
-N
-
-Device certificate used to authenticate your CCM module with Cloud ID, signed by the INFINEON CA.
-
-
-EndPoint
-R/W
-Y
-Product Cloud endpoint
-Y
-The endpoint of the Product Cloud account to which the CCM module connects.
-TopicRoot
-R/W
-Y
-UID
-Y
-A default prefix that is used for user-defined topics.
-
-
-
-
-
-
-
-
-
-
-
-
-HOTAcertificate
-R/W
-Y
-{empty}
-Y
-Host OTA certificate
-OTAcertificate
-R/W
-Y
-Vendor OTA Certificate
-N
-Module OTA certificate.
-SSID
-R/W
-Y
-{Empty}
-Y
-SSID for the Wi-Fi router the device is connected to .
-Passphrase
-W
-Y
-{Empty}
-Y
-Passphrase for the Wi-Fi router the device is connected to .
-
++=============================================================================================+====================================================+
+| Configuration dictionary for persistent keys                                                |                                                    |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| Configuration Parameter  | Type  | Persist  | Initial Value                | Factory Reset  | Description                                        |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| About                    | R     | Y        | Vendor - Model               | N              | A string that identifies the device make and model |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| Version                  | R     | Y        | Module firmware version      | N              | The specific CCM firmware version.                 |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| TechSpec                 | R     | Y        | Technical Specification      | N              | Your CCM module’s technical specification version  |
+|                          |       |          |                              |                | number - e.g v1.1                                  |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| ThingName                | R     | Y        | UID                          | N              | A unique identifier specific to the device, the    |
+|                          |       |          |                              |                | unique ID (UID) is hard-coded to every device,     |
+|                          |       |          |                              |                | delivered natively by the module’s hardware root   |
+|                          |       |          |                              |                | of trust.                                          |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| Certificate              | R     | Y        | Device Birth Certificate     | N              | Device certificate used to authenticate your CCM   |
+|                          |       |          |                              |                | module with Cloud ID, signed by the INFINEON CA.   |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| EndPoint                 | R/W   | Y        | Product Cloud endpoint       | Y              | The endpoint of the Product Cloud account to       |
+|                          |       |          |                              |                | which the CCM module connects.                     |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| TopicRoot                | R/W   | Y        | UID                          | Y              | A default prefix that is used for user-defined     |
+|                          |       |          |                              |                | topics.                                            |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| HOTAcertificate          | R/W   | Y        | {empty}                      | Y              | Host OTA certificate                               |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| OTAcertificate           | R/W   | Y        | Vendor OTA Certificate       | N              | Module OTA certificate.                            |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| SSID                     | R/W   | Y        | {Empty}                      | Y              | SSID for the Wi-Fi router the device is            |
+|                          |       |          |                              |                | connected to.                                      |
++--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
+| Passphrase               | W     | Y        | {Empty}                      | Y              | Passphrase for the Wi-Fi router the device is      |
+|                          |       |          |                              |                | connected to.                                      |
++=============================================================================================+====================================================+
 
 
 
