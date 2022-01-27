@@ -79,171 +79,274 @@ Where ERR is the error code, responding to the list of errors below:
 
 
 AT operational commands
+**************************
 
 Here is a complete list of AT commands supported by AIROC™ CCM modules.
 
-Function
-Command
-CCM-to-host communication test
-AT
-Connect to the Product Cloud
-AT+CONNECT
-Disconnect from the Product Cloud
-AT+DISCONNECT
-Check Product Cloud connection status
-AT+CONNECT?
-Request to enter a low power mode
-AT+SLEEP
-Reset internal state of the module
-AT+RESET
-Perform a factory reset of the CCM module
-AT+FACTORY_RESET
-Request current time
-AT+TIME?
-Request current location
-AT+WHERE?
-Diagnostic commands
-AT+DIAG
-Configuration commands
-AT+CONF
-Read configuration
-AT+CONF?
-Enter WiFi credentials, SoftAP mode
-AT+CONFMODE
-Publish msg on the specified topic
-AT+SEND
-Request next message pending on a topic
-AT+GET
-
-
-
-
-Subscribe to a specific topic
-AT+SUBSCRIBE
-Unsubscribe from Topic
-AT+UNSUBSCRIBE
-Request the next event in the queue 
-AT+EVENT
-OTA update
-AT+OTA
-
+================================================   ================================================
+Function                                           Command
+------------------------------------------------   ------------------------------------------------
+CCM-to-host communication test                     AT
+Connect to the Product Cloud                       AT+CONNECT
+Disconnect from the Product Cloud                  AT+DISCONNECT
+Check Product Cloud connection status              AT+CONNECT?
+Request to enter a low power mode                  AT+SLEEP
+Reset internal state of the module                 AT+RESET
+Perform a factory reset of the CCM module          AT+FACTORY_RESET
+Request current time                               AT+TIME?
+Request current location                           AT+WHERE?
+Diagnostic commands                                AT+DIAG
+Configuration commands                             AT+CONF
+Read configuration                                 AT+CONF?
+Enter WiFi credentials, SoftAP mode                AT+CONFMODE
+Publish msg on the specified topic                 AT+SEND
+Request next message pending on a topic            AT+GET
+Subscribe to a specific topic                      AT+SUBSCRIBE
+Unsubscribe from Topic                             AT+UNSUBSCRIBE
+Request the next event in the queue                AT+EVENT
+OTA update                                         AT+OTA
+================================================   ================================================
 
 Communication Test
+^^^^^^^^^^^^^^^^^^^
 
 When you simply send the 'AT' (attention) command the host verifies that the module command parser is ready and present.
 Example:
-AT    # requests the module’s attention
+
+::
+
+	AT    # requests the module’s attention
+
 Returns:
-OK
+
+::
+
+	OK
+
 So, if the module is connected and if the command parser is active, the module will respond with 'OK'.
 
 Connect to the AWS IoT Core
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Request a connection to the cloud, which also brings the active device into a higher power consumption mode to communicate with the cloud endpoint.
+
 Command: 
-AT CONNECT
+
+::
+
+	AT CONNECT
+
 Returns:
-OK 1 CONNECTED
+
+::
+
+	OK 1 CONNECTED
+
 If the connection the cloud endpoint was successful, or 
-ERR14 UNABLE TO CONNECT [detail]
+
+::
+
+	ERR14 UNABLE TO CONNECT [detail]
+
 Where the module could not connect, including additional details such as “Invalid Endpoint”. 
-Note: if the module is already connected sending a CONNECT won’t return an error – it would simply return “OK CONNECTED”. 
-Note: if connection fails a timestamp of the event will be retained to ensure that subsequent connection attempts do not exceed backoff timing limits. Any request to reconnect falling foul of the timing limits will simply be delayed by the module, and attempted automatically according to the backoff algorithm.
+
+.. note:: if the module is already connected sending a CONNECT won’t return an error – it would simply return “OK CONNECTED”. 
+
+.. note:: if connection fails a timestamp of the event will be retained to ensure that subsequent connection attempts do not exceed backoff timing limits. Any request to reconnect falling foul of the timing limits will simply be delayed by the module, and attempted automatically according to the backoff algorithm.
+
 Example code:
-AT+CONNECT        # request to connect
-OK 1 CONNECTED    # connection established successfully
-Or
-ERR14 UNABLE TO CONNECT Invalid Endpoint
+
+::
+
+	AT+CONNECT        # request to connect
+	OK 1 CONNECTED    # connection established successfully
+	Or
+	ERR14 UNABLE TO CONNECT Invalid Endpoint
+
 
 Check Product Cloud Connection Status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Requests the status of the CCM module’s connection to your Product Cloud.
+
 Command:
-AT CONNECT?
+
+::
+
+	AT CONNECT?
+
 Returns: 
+
 If the connection is active the module returns
-OK 1  
+
+::
+
+	OK 1  
+
 If the connection is inactive the module returns
-OK 0
+
+::
+
+	OK 0
 
 Disconnect from the Product Cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can use this command to allow your host to prepare to transition to low power (you would use this command before the SLEEP command). You can also use this command to update connection parameters before a new connection is made using updated parameters. 
+
 Command: 
-AT DISCONNECT
+
+::
+
+	AT DISCONNECT
+
 Returns:
-OK 0 DISCONNECTED
-Note: If a module is already disconnected the command will simply return ('OK').
+
+::
+
+	OK 0 DISCONNECTED
+
+.. note:: If a module is already disconnected the command will simply return ('OK').
 
 Enter a low power mode
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sending this command enters your module into low power mode. If you do not specify a duration the module will remain in low power mode until an external reset event is triggered, or a new AT+CONNECT command is received.
+
 Command:
-AT+SLEEP 
+
+::
+
+	AT+SLEEP 
+
 Returns:
-OK
+
+::
+
+	OK
+
 If the device is ready, indicates the device is going to immediately enter into low power mode.
-ERR18 ACTIVE CONNECTION
+
+::
+
+	ERR18 ACTIVE CONNECTION
+
 This error is returned when an active connection to your Product Cloud exists. The device will not enter into low power mode. Use the DISCONNECT command first to terminate the active connection.
+
 Code sample:
-AT+SLEEP 100 		 # Disconnect and suspend all activities for 100 seconds
-OK 		               # Drop connections and goes to sleep 
-AT+CONNECT    		# Resume connection and all pending activities 
+
+::
+
+	AT+SLEEP 100 		 # Disconnect and suspend all activities for 100 seconds
+	OK 		               # Drop connections and goes to sleep 
+	AT+CONNECT    		# Resume connection and all pending activities 
 
 
 Reset the CCM internal state
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use this command to disconnect the device - if it is connected - and to reset its internal state. Any configuration parameters that are non-persistent are reinitialized and all subscriptions are terminated. This command also emptied the message queue.
+
 Command:
-AT+RESET
+
+::
+
+	AT+RESET
+
 Returns:
-OK
+
+::
+
+	OK
+
 Indicating that the command is successful.
 
 Factory reset
+^^^^^^^^^^^^^^^
 
 This command executes a full factory reset of the CCM module, re-initializing all non-persistent configuration parameters, and also specific persistent keys as specified in the configuration dictionary.
+
 Command:
-AT+FACTORY_RESET
+
+::
+
+	AT+FACTORY_RESET
+
 Returns:
-OK
+
+::
+
+	OK
+
 Indicating that the command is successful.
 
 Get the time
+^^^^^^^^^^^^^^
 
 This command requests the current time information on the device, or returns an error if for some reason the time information could not be determined.
+
 Command:
-AT+TIME?
+
+::
+
+	AT+TIME?
+
 Returns:
-OK {date YYYY/MM/DD} {time hh:mm:ss.xx} {source}
+
+::
+
+	OK {date YYYY/MM/DD} {time hh:mm:ss.xx} {source}
+
 If time information is available and if it was recently obtained.
 
-ERR15 TIME NOT AVAILABLE
+::
+
+	ERR15 TIME NOT AVAILABLE
+
 If a recent time fix could not be obtained.
 
 Request CCM location 
+^^^^^^^^^^^^^^^^^^^^^
 
 This command requests the last location information as available alongside a timestamp that specifies when that location reading was taken. An error is returned if a location fix cannot be determined.
+
 Command:
-AT+LOCATION?
+
+::
+
+	AT+LOCATION?
+
 Returns:
-OK {date} {time} {lat} {long} {elev} {accuracy} {source}
+
+::
+
+	OK {date} {time} {lat} {long} {elev} {accuracy} {source}
+
 If location coordinates could be obtained at date/time.
 
-ERR16 LOCATION NOT AVAILABLE
+::
+
+	ERR16 LOCATION NOT AVAILABLE
+
 If a location fix could not be obtained.
 
 
-
 CCM diagnostic commands
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Cloud Connectivity Manager (CCM) offers a set of AT commands that can help you understand the networking environment of the device. For CCM devices, the AT DIAG offers users four different functions – LOG, PING, ECHO and SCAN.
+
+
 AT+DIAG LOG
+"""""""""""""
 
 You can enable and disable logging for a device by using the DIAG LOG command. This command is executed as follows:
+
 AT+DIAG LOG X
+"""""""""""""
 
 Where parameter X has a value of 0, 1, 2… 9. For each value of X, the level of logging is as follows: 
+
 0. "LOG_OFF"
 1. "LOG_ERR"
 2. "LOG_WARNING"
@@ -256,51 +359,103 @@ Where parameter X has a value of 0, 1, 2… 9. For each value of X, the level of
 9. "LOG_DEBUG4"
 
 Command
-AT+DIAG LOG 4
+
+::
+
+	AT+DIAG LOG 4
+
 Response
-OK
+
+::
+
+	OK
 
 
 AT+DIAG PING
+"""""""""""""
 
 With this command you initiate a ping to a specified IPv4 address from the CCM module.
+
 Command
-AT+DIAG PING x.x.x.x
+
+::
+
+	AT+DIAG PING x.x.x.x
+
 Where the parameter x.x.x.x is the IPv4 address
+
 For example:
-AT+DIAG PING 8.8.8.8
+
+::
+
+	AT+DIAG PING 8.8.8.8
+
 Response
-OK Received ping response in 34ms
+
+::
+
+	OK Received ping response in 34ms
+
 
 AT+DIAG ECHO
+"""""""""""""
 
 By default, the echo command is disabled in the CCM module. You can enable the echo command using the follow AT sequence:
+
 Command
-AT+DIAG ECHO
+
+::
+
+	AT+DIAG ECHO
+
 Response
-OK
+
+::
+
+	OK
 
 
 AT+DIAG SCAN
+"""""""""""""
 
 Initiates a scan of nearby Wi-Fi access points, with a timeout parameter of X seconds. Returns a list of Wi-Fi access points.
+
 Command
-AT+DIAG SCAN X
+
+::
+
+	AT+DIAG SCAN X
+
 Parameter
+
 X - Specifies number of seconds
+
 Response
-OK SSID :XXXXX DB :YY Channel :ZZ
+
+:: 
+
+	OK SSID :XXXXX DB :YY Channel :ZZ
+
 Code sample:
-AT+DIAG SCAN 5
+
+::
+
+	AT+DIAG SCAN 5
+
 Response:
-OK SSID :IFX_AP_01 DB :-74 Channel :11\n OK SSID :IFX_AP_02 DB :-71 Channel :11\n
+
+::
+
+	OK SSID :IFX_AP_01 DB :-74 Channel :11\n OK SSID :IFX_AP_02 DB :-71 Channel :11\n
 
 
 AT configuration commands
+***************************
 
 You perform configuration tasks by submitting configuration data with AT+CONF, and by retrieving configuration data via using AT+CONF?
 
 Configuration Dictionary
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The configuration dictionary is a key-value store containing all the options necessary for the proper functioning of ExpressLink modules. Maximum key length is 16 characters. A key can be from 1 to 16 characters. You will receive the following error if you send a command with a key that is longer than 16 characters:
 ERR9 INVALID KEY LENGTH
