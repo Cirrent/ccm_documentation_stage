@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5 {
   overflow-y: auto;
   padding-bottom: 3% !important;
   border-right: 2px solid #e9e6e7;
+  backgroung-color: white;
 }
 
 .version {
@@ -147,21 +148,23 @@ code, .rst-content tt, .rst-content code {
 {
 	background: #fff !important;
 	font-size: 0.88em;
-    padding: 0.4045em 6.75em;
+   	padding: 0.4045em 6.75em;
+	color: #AB337A !important;
 }
 
 .wy-menu-vertical li.toctree-l4 li.toctree-l5>a
 {
 	background: #b4a8ab !important;
 	font-size: 0.88em;
-    padding: 0.4045em 6.75em;
+    	padding: 0.4045em 6.75em;
+	color: #AB337A !important;
 }
 
 .wy-menu-vertical li.toctree-l5 li.toctree-l6>a
 {
-	background: #aa9da0 !important;
 	font-size: 0.85em;
-    padding: 0.4045em 7.50em;
+   	padding: 0.4045em 7.50em;
+	color: #AB337A !important;
 }
 
 .wy-menu-vertical li.toctree-l5 li.toctree-l6>a.current
@@ -171,9 +174,9 @@ code, .rst-content tt, .rst-content code {
 
 .wy-menu-vertical li.toctree-l5.current li.toctree-l6>a
 {
-	background: #aa9da0 !important;
 	font-size: 0.85em;
-    padding: 0.4045em 7.50em;
+    	padding: 0.4045em 7.50em;
+	color: #AB337A !important;
 }
 
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4>ul, .wy-menu-vertical li.toctree-l4.current li.toctree-l5>ul
@@ -476,18 +479,18 @@ h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend
 	border-bottom: 2px solid #e9e6e7;
 }
 .new-nav .logo {
-	float: left;
-	width: 140px !important;
-	position: absolute;
-	top: 7px;
-	left: 20px;
+    float: left;
+    width: 105px !important;
+    position: absolute;
+    top: 20%;
+    left: 5%;
 }
 .themetitle {
 	color:  #928285;
 	font-size: 20px;
 	position: absolute;
     top: 24px;
-    left: 173px;
+    left: 243px;
 }
 .top-search {
 	float: right;
@@ -522,7 +525,7 @@ h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend
 	display: none !important;
 }
 .wy-grid-for-nav {
-	padding-top:78px;
+	margin-top:78px;
 }
 
 .wy-nav-side {
@@ -724,7 +727,6 @@ ul li p {
 }
 
 footer {
-    color: #fff;
     background-color: #fff;
     margin-top: 0
 }
@@ -853,10 +855,6 @@ footer.footer--slim .hidden-print {
 .rst-content .topic-title {
 	font-size: 24px !important;
     margin: 20px 0 10px !important;
-}
-
-figure img {
-	margin-top:0!important;
 }
 
 @media (max-width: 1023px) {
@@ -1711,4 +1709,10 @@ footer a  {
 
 .glyphicon-zoom3d:before {
     content: ""
+}
+
+img.home-icon
+{
+    width: 75% !important;
+    margin-top: -20% !important;
 }

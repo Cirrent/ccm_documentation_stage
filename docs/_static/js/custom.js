@@ -12,52 +12,6 @@
 $(document).ready(function(){
 	try{
 		
-	var settings = {
-		title: '<u>Use of Cookies</u>',
-        	class: '',
-        	backdrop: 'static',
-		message: 'Cypress uses cookies to enhance the user experience and collect visitor statistics. When you use this website, you are accepting our use of cookies.',
-		moreLinkLabel: '<u>Read Our Cookie Policy</u>',
-		moreLink: 'https://www.cypress.com/cookie-policy',
-		moreLinkActive: true,
-		moreLinkNewTab: true,
-		delay: 500,
-		expireDays: 2 * 365,
-		acceptButtonLabel: 'Accept all cookies',
-        	advancedButtonLabel: 'Save preferences',
-		advancedCookiesToSelect: [
-			{
-				name: 'necessary',
-				title: 'Technically required cookies - always selected by default',
-				description: 'By technically required cookies we mean cookies without those the technical provision of the online service cannot be ensured. These include e.g. cookies supporting essential services like a smooth reproduction of video or audio footage. So-called ‘functional cookies’ are also assigned belonging to this category. Functional cookies store information in order to provide you comfortable use of our online services.',
-				isFixed: true
-			},
-			{
-				name: 'marketing',
-				title: 'Performance and marketing cookies',
-				description: 'By performance and marketing cookies we mean cookies which are technically not required. We use performance and marketing cookies only if you have given us your prior consent. With such cookies, we collect information about how users interact with our website and which pages have been visited. This helps us to understand user activity on our website on an aggregated as well as on a personal level to provide you relevant content and services.',
-				isFixed: false
-			}
-		],
-		OnUserAction : function() {
-			console.log('Yay! User accepted your cookies.');
-			console.log('User preferences');
-			if($.fn.bsgdprcookies.PreferenceExists("marketing"))
-			{
-				executeMarketingCookiesLogic();
-				//console.log('google tag logic will execute here after save preferences');
-			}
-		}
-	}
-	
-	$('body').bsgdprcookies(settings);
-		
-	if($.fn.bsgdprcookies.PreferenceExists("marketing"))
-	{
-		executeMarketingCookiesLogic();
-		//console.log('google tag logic will execute here');
-	}
-
 	$('a[href*="cypresssemiconductorco"]').each(function(){ 
 		var oldUrl = $(this).attr("href"); 
 		var sampleText = $(this).text().replace("cypresssemiconductorco", "Infineon");
@@ -79,7 +33,7 @@ $(document).ready(function(){
 	
 	//display hr line after heading which is replaced in xml with conf.pf code block
     	var isToolguid=false;
-	$( "ul[class='wy-breadcrumbs']" ).find("li").each(function(){
+	$( ".section > h1" ).each(function(){
 		//console.log('li text :: '+$(this).text());
 		//console.log('is contains Tool Guide :: '+($(this).text().indexOf('Tool Guide')));
 
@@ -123,9 +77,16 @@ $(document).ready(function(){
 		
 		if($( ".section li > p > em" ).next().is( "hr" ))
 		{
-			$( ".section li > p > em" ).next().is( "hr" ).remove();
+			$( ".section li > p > em" ).next().remove();
 			$( ".section li > p > em" ).removeClass( "headingclass" );
 		}
+
+		if( $( ".section td > p > em" ).next().is( "hr" ) )
+		{
+			$( ".section td > p > em" ).next().remove();
+			$( ".section td > p > em" ).removeClass( "headingclass" );
+		}
+
 	}
 	
 	$('.highlight-default .highlight pre').each(function (e) {
@@ -169,17 +130,5 @@ function toctreeSettingFunction()
 			$(this).addClass("current");
 		}
 	});
-}
-
-
-function executeMarketingCookiesLogic()
-{
-
-	//Google tag manager Tracking Code as follows
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-186719284-1');
-
 }
 
