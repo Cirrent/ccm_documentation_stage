@@ -313,16 +313,10 @@ def setup(app):
         'enable_auto_doc_ref': True,
     }, True)
     app.add_transform(AutoStructify)
-    app.add_css_file('https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.1/flatly/bootstrap.min.css')
     app.add_css_file('css/theme_overrides.css')
-    app.add_css_file('css/cookie_style.css')
+    app.add_css_file('css/cookieConsent.css')
+    app.add_css_file('css/bootstrapHelper.css')
     app.add_js_file('js/searchtools.js')
     app.add_js_file('js/custom.js')
-    app.add_js_file('js/cookies_script.js')
-
-html_js_files = [('https://www.googletagmanager.com/gtag/js?id=UA-186719284-1', {'async': 'async'}),
-                ('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', {'crossorigin': 'anonymous'}),
-                ('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', {'crossorigin': 'anonymous'})]
-
-
-
+    app.add_js_file('js/changeModal.js')
+    app.add_js_file('js/privacyHelper.js')
