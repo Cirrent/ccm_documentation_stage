@@ -14,7 +14,7 @@ The process also automatically configures Product Cloud requirements, e.g. confi
 
 * Building on Infineon’s long history with wireless connectivity, including extensive experience acquired through Cypress Semiconductor. That includes access to solutions with a BLE-based or Soft AP onboarding option, which smooths out the process of joining Wi-Fi at customer sites. It removes a key element of friction in getting your IoT devices onboarded and unblocks the ability to earn revenue.
 
-* Developers can develop products that use simple AT commands such as “connect” and “send” to connect and stream data to their Product Cloud and to do so within hours, not weeks..
+* Developers can develop products that use simple AT commands such as “connect” and “send” to connect and stream data to their Product Cloud and to do so within hours, not weeks.
 
 
 * Original equipment manufacturers (OEMs) can easily transform  existing products into IoT devices without the need for a deep understanding of communications and security implementation requirements, and without merging large amounts of code.
@@ -26,7 +26,7 @@ The process also automatically configures Product Cloud requirements, e.g. confi
 * Support for CIRRENT™ Cloud ID, which ensures that each device has a unique device identity and is assigned to a specific Product Company. This device identity is stored in a secure hardware element to ensure a fail-proof mechanism.
 
 
-* Maintaining fleet security and health at scale by providing an out-of-the-box solution that securely transmits data to and from the cloud via Wi-Fi, including online device monitoring
+* Maintaining fleet security and health at scale by providing an out-of-the-box solution that securely transmits data to and from the cloud via Wi-Fi, including online device monitoring.
 
 
 Hardware Description
@@ -55,7 +55,7 @@ Operating conditions
 ^^^^^^^^^^^^^^^^^^^^^
 
 ==================================   ===============================================================
-
+Factor                               Description 
 ----------------------------------   ---------------------------------------------------------------
 Voltage                              VBAT: 3.2V~4.8V (3.6V typical); VDD: 1.7V~3.6V
 Operating temperature                -30°C to 85°C (optimal RF performance guarantee -30°C to 80°C)
@@ -83,13 +83,14 @@ Software description
 * Cloud Management Features
 * AWS IoT Express Link compatible
 * Supports over-the-air updates
-* Networking Features include:
+
+Networking Features include:
+
 * Full network stack offload from host: TCP/IP, TLS, DNS, HTTP, and MQTT
 * Fully documented command set for simple configuration from host processor
 
 
-Datasheet and Quick Start Guide
+CCM datasheet
 ******************
 
-You can find additional documentation on the CCM here: 
-https://www.infineon.com/cms/en/design-support/tools/hardware-development/wireless-connectivity-hardware/airoc-cloud-connectivity-manager/?redirId=158897 
+We publish a complete datasheet for the CCM module here: https://www.infineon.com/cms/en/design-support/tools/hardware-development/wireless-connectivity-hardware/airoc-cloud-connectivity-manager/?redirId=158897 
