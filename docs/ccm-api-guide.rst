@@ -662,3 +662,329 @@ A CONFMODE notification event is generated once the SoftAP process is complete. 
 .. note:: While in CONFMODE, the CCM module can continue to respond to commands, with the exception of commands that require an active connection such as ‘AT+CONF? Version’. Where the device in CONFMODE a command that requires an active connection will return an error   'ERR6 NO CONNECTION'. Likewise, if you try to use a CONNECT command while in CONFMODE you will get a response stating:  'ERR14 UNABLE TO CONNECT'.
 
 .. note:: use the RESET command at any time to shut down CONFMODE.
+
+
+AT messaging commands
+**********************
+
+CCM modules have a messaging system that uses a list of topics that are defined by a configuration dictionary. See configuration dictionary in the previous section. Each of these topics is assigned a specific index that can be used to access the string value. Index 0 is reserved, other index values can be used by the device to define additional topics.
+
+Topic usage rules
+^^^^^^^^^^^^^^^^^^
+
+The following rules apply to CCM modules when using topics:
+
+Default TopicRoot
+"""""""""""""""""""
+
+Use the topic root to prefix topics used during SEND/GET and SUBSCRIBE commands, it is intended to simplify the work your device needs to do to put together a path containing its UID (ThingName).
+
+Prefix topic strings with '/' to indicate they are complete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Any topic string which is prefixed with a ‘/’ are seen as complete, the topic root won’t be added to that topic name. Note the leading ‘/’ will be stripped.
+
+Data topics for publishing: <TopicRoot>/<Topic@Index>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+To create a topic name for publishing you combine the TopicRoot as set in the CONF dictionary with the values at the indexed position in the topic table.
+
+Data topics for receiving <TopicRoot>/<Topic@Index>
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+To create a topic name for subscription you combine the TopicRoot as set in the CONF dictionary with the value at the indexed position in the topic.
+
+.. note:: Topic Index 0 is reserved. It acts as a catch-all when your device sends a message that does not match another, existing topic. Therefore, the list of topics cannot contain an entry for Topic0.
+
+.. note:: Topic Index{MaxTopic} is a value that depends on your implementation, it must be ≥ 16.
+
+
+Publish a message on the specified topic
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command:
+
+::
+
+	AT+SEND {topic} message
+
+Where:
+
+::
+
+	{topic}
+
+A string formatted according to topic rules.
+
+::
+
+	message
+
+The message to publish (string).
+
+Sample:
+
+::
+
+	AT+SEND data Hello World    # Publish the classic 'Hello World' message on topic 'data'
+	OK                          # Message sent
+
+Publish msg on a topic selected from topic list
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command:
+
+::
+
+	AT+SEND{#} message: 
+
+Where {#} is the index number of a topic in CONFIG dictionary (1..MaxTopic), and message the message to publish (string).
+
+Sample
+
+::
+
+	AT+SEND2 Hello World    # Publish 'Hello World' on Topic2
+	OK                      # Message Sent
+
+or
+
+::
+
+	ERR6 NO CONNECTION  #  no connection has been made
+
+or
+
+::
+
+	ERR7 TOPIC OUT OF RANGE  # If the supplied topic index is larger than the maximum allowed topic number
+
+Or 
+
+::
+
+	ERR8 TOPIC UNDEFINED #  If the supplied topic index points to a topic entry that has not been defined
+
+
+Retrieve the next message received
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command
+
+::
+
+	AT+GET
+
+Returns
+
+::
+
+	OK{separator}<Topic>{separator}<MESSAGE>{eol}    
+
+If there are any messages available on a topic the CCM module responds with OK, followed by the topic name and the message.
+
+Sample
+
+::
+
+	AT+GET                 # poll for messages received on any topic
+	OK data Hello World    # a message was received from topic 'data'
+	OK{eol} #  If no message was received on any topic
+
+
+
+Request next message pending on an unassigned topic
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command
+
+::
+
+	AT+GET0
+
+Returns
+
+::
+
+	OK{separator}<Topic>{separator}<MESSAGE>{eol}
+
+Sample
+
+::
+
+	AT+GET0                # this command polls for messages received on any unassigned topic
+	OK data Hello World    # a message was received from topic 'data'
+
+or
+
+::
+
+	OK{eol} #If no message was received on any unassigned topic, the module returns 'OK' followed by {eol}.
+
+Request next message pending on the indicated topic
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command:
+
+::
+
+	AT+GET{#}
+
+Retrieve the next message received on a topic at the specified index # (1..MaxTopic) in the topic list.
+
+Returns:
+
+::
+
+	OK{separator}{MESSAGE}{eol}
+
+If a message is available on the indicated topic, the module responds with 'OK' followed immediately by the message.
+
+Sample
+
+::
+
+	AT+GET2           # select messages received on Topic2
+	OK Hello World    # a message received on the topic at index 2 in the list of topics
+
+or
+
+::
+
+	OK{eol}  #If a message is NOT available matching the requested topic
+
+or
+
+::
+
+	ERR7 TOPIC OUT OF RANGE # If the supplied topic index is larger than the maximum allowed topic number
+
+or
+
+::
+
+	ERR8 TOPIC UNDEFINED # If the requested topic is not defined
+
+
+Message queue overflow conditions
+""""""""""""""""""""""""""""""""""
+
+If your device never retrieves a message, and never frees up space, the buffer capacity can be exceeded which leads to an overrun. When that happens the oldest message in the buffer is lost, and the condition is reported as an OVERFLOW event in the event queue. 
+
+Subscribe to the indicated topic
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command
+
+::
+
+	SUBSCRIBE{#}
+
+Subscribes to the topic number and starts receiving messages, any incoming messages will trigger an event. Messages can be read with a GET{#} command. 
+
+.. note:: it is a stateless feature as your device will request a subscription to the MQTT broker, but it will not retain information about its current state.
+
+.. note:: sending a message to a topic to which the device is subscribed results in the broker sending a copy back to the module.
+
+Example 1:
+
+::
+
+	AT+CONF TopicRoot=building1/floor1
+	AT+CONF Topic1=sensor1/state
+	AT+SUBSCRIBE1    # The module will subscribe to the topic building1/floor1/sensor1/state
+
+
+Example 2:
+
+::
+
+	AT+CONF Topic2=/sensor1/state
+	AT+SUBSCRIBE2    # The module will subscribe to the topic sensor1/state
+	Returns:
+	ERR6 NO CONNECTION # If no connection has been made
+	ERR8 TOPIC UNDEFINED # If the requested topic is not defined
+	ERR7 TOPIC OUT OF RANGE # If the supplied topic index is larger than the maximum allowed topic number
+
+
+Unsubscribe from Topic#
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Command
+
+::
+
+	UNSUBSCRIBE{#}
+
+Sample:
+
+::
+
+	AT+CONF TopicRoot=building1/floor1
+	AT+CONF Topic1=sensor1/state
+	AT+SUBSCRIBE1      # The module will subscribe to topic building1/floor1/sensor1/state
+	AT+UNSUBSCRIBE1    # The module will unsubscribe topic building1/floor1/sensor1/state
+
+Returns:
+
+::
+
+	ERR6 NO CONNECTION # if no connection has been made
+	ERR8 TOPIC UNDEFINED # If the requested topic is not defined
+	ERR7 TOPIC INDEX OUT OF RANGE # If the supplied topic index is larger than the maximum allowed topic number
+
+
+Request the next event in the queue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An event is essentially an asynchronous message on a topic that a CCM module has subscribed to and on which it is receiving and queuing messages. That includes error messages that reflect an unexpected change in the internal state of a device.
+
+You can poll events periodically, using the EVENT? command. Where there is more than one event in the queue, that value returned by the EVENT? command will reflect the last event that occurred. 
+
+.. note:: Sleep, reset, and factory reset commands automatically clear all pending events.
+
+Command:
+
+::
+
+	AT+EVENT?
+
+Returns:
+
+::
+
+	OK [{event_identifier} {parameter} {mnemonic [detail] }]{{eol}
+
+or
+
+::
+
+	OK{eol}  # If the event queue is empty, then the 'OK' response is followed immediately by {eol}.
+
+The table below outlines common event identifiers and error codes as used by CCM modules. 
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+| CCM event codes                                                                                                           |
++====================+================+==========================+==========================================================+
+| Event Identifier   | Parameter      | Mnemonic                 | Description                                              |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 1                  | Topic Index    | MSG                      | Indicates that a message was received on topic #.        |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 2                  | 0              | STARTUP                  | The module has entered the active state.                 |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 3                  | 0              | CONLOST                  | Connection lost.                                         |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 4                  | 0              | OVERRUN                  | Receive buffer overrun (topic in detail).                |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 5                  | 0              | OTA                      | OTA event (see OTA? for detail).                         |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 6                  | 0              | SHADOW                   | SHADOW event.                                            |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| 7                  | 0              | CONFMODE                 | CONFMODE exit with success.                              |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| ≤ 999              | -              |                          | RESERVED.                                                |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+| ≥1000              | -              |                          | Available for custom implementation.                     |
++--------------------+----------------+--------------------------+----------------------------------------------------------+
+
+
