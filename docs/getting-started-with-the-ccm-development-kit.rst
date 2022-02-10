@@ -5,27 +5,22 @@ Getting Started With the CCM Development Kit
 Overview
 **************
 
-The Cloud Connectivity Manager provides secure cloud connectivity for IoT products. The Development Kit is built to walk you through the main capabilities of the CCM product, including:
+INFINEON offers a CCM development kit containing a single AIROC™ CCM module which you can connect to any PC. It is designed to help you walk through the main capabilities of the CCM product, including:
 
-* Cloud ID for secure cloud authentication using the pre-programmed CCM device certificate
-
-* Wi-Fi onboarding, including the Infineon CIRRENT mobile app for testing, and the mobile app SDK to simplify development of your own app
-
+* CIRRENT™ Cloud ID for effortless, secure cloud authentication using the device certificate pre-programmed into the CCM module
+* Wi-Fi onboarding with additional assistance from the CIRRENT™ mobile app for testing, and a mobile app SDK which simplifies development of your own app
 * Secure and reliable full network stack, including Wi-Fi, TCP/IP, HTTP, MQTT, TLS, and other networking features
+* The ability to send secure and reliable Over-The-Air (OTA) firmware updates for CCM firmware
+* Optional use of CIRRENT™ IoT Network Intelligence (INI) for monitoring and managing your CCM fleet and monitoring connectivity reliability
+* Robust AT command set compatible with AWS IoT ExpressLink, making it easy to connect your host to the cloud
 
-* Secure and reliable Over-The-Air (OTA) firmware update of the CCM firmware
+This getting started section walks you through: 
 
-* Optional CIRRENT™ IoT Network Intelligence (INI) for monitoring and managing your CCM fleet and monitoring connectivity reliability  
+1. :ref:`Steps required to bind your CCM developer kit to an Infineon Account for access to CIRRENT™ Cloud ID`
 
-* Robust AT command set to connect your host to the cloud 
+2. :ref:`Steps to get your CCM developer kit online`
 
-This Getting Started section walks you through: 
-
-1. :ref:`Getting the CCM Bound to Your Infineon Account`
-
-2. :ref:`Getting the CCM Online`
-
-3. :ref:`Getting the CCM Connected to Your AWS Account`
+3. :ref:`Getting your CCM developer kit connected to your AWS account`
 
 Kit Contents
 **************
