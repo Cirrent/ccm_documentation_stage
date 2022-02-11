@@ -97,10 +97,9 @@ The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP us
 First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
 
 
-==============   =============================
-Android          .. image:: img/gsd-4.png
-IOS              .. image:: img/gsd-5.png
-==============   =============================
+==============   =============================   ==============   =============================
+Android          .. image:: img/gsd-4.png        IOS              .. image:: img/gsd-5.png
+==============   =============================   ==============   =============================
 
 
 1. To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
