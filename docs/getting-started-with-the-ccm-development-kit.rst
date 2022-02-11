@@ -35,8 +35,10 @@ Ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12
 .. image:: img/gsd-2.png
 	    :align: center
 
+.. _Getting the CCM Bound to your Infineon Accounts:
+
 Getting the CCM Bound to your Infineon Accounts
-************************************************************************************************
+***********************************************
 
 Infineon's CIRRENT™  Cloud ID service lets you download the CCM Device Certificate from the Cloud or automatically provision the Device Certificate to your product cloud.  To enable the Cloud ID service, you will log into your Infineon Account and choose a Group for the CCM device. If you don't have an Infineon Account or Group, you can create one for free during the setup process.  
 
@@ -47,6 +49,8 @@ Once you enter the url, you will log in and choose a Group (or create an Account
 You can `learn more about CIRRENT™ Groups here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`_ , and you can `learn more about Cloud ID here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_ .  
 
 .. note:: you can use the CCM independent of your Infineon Account and the CIRRENT™ services by pulling the Device Certificate from the AT command directly and manually provisioning that in the cloud.
+
+.. _Getting the CCM Online:
 
 Getting the CCM Online
 ************************ 
@@ -151,8 +155,11 @@ Now you can see that the CCM module is connected to the internet by checking the
 
 .. note:: successful binding of the device to your CIRRENT™ account is required to provision the devices to the AWS developer account using Cloud ID. 
 
+
+.. _Getting the CCM Connected to Your AWS Account:
+
 Getting the CCM Connected to Your AWS Account
-****************************************************************************
+*********************************************
 
 How the CCM module interacts with AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
