@@ -16,11 +16,11 @@ INFINEON offers a CCM development kit containing a single AIROC™ CCM module wh
 
 This getting started section walks you through: 
 
-1. :ref:`Steps required to bind your CCM developer kit to an Infineon Account for access to CIRRENT™ Cloud ID`
+1. :ref:`Steps required to bind your CCM developer kit to an Infineon Account for access to CIRRENT™ Cloud ID <Getting the CCM Bound to your Infineon Accounts>`
 
-2. :ref:`Steps to get your CCM developer kit online`
+2. :ref:`Steps to get your CCM developer kit online <Getting the CCM Online>`
 
-3. :ref:`Getting your CCM developer kit connected to your AWS account`
+3. :ref:`Getting your CCM developer kit connected to your AWS account <Getting the CCM Connected to Your AWS Account>`
 
 Kit Contents
 **************
@@ -97,9 +97,10 @@ The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP us
 First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
 
 
-==============   =============================   ==============   =============================
-Android          .. image:: img/gsd-4.png        IOS              .. image:: img/gsd-5.png
-==============   =============================   ==============   =============================
+=============================   =============================
+Android                         IOS
+.. image:: img/gsd-4.png        .. image:: img/gsd-5.png     
+=============================   =============================
 
 
 1. To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
