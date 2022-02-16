@@ -30,33 +30,41 @@ The IFW956810 CCM evaluation kit consists of an IFW56810 single-band Wi-Fi 4 Clo
 .. image:: img/gsd-1.png
 	    :align: center
 
-Ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12 of header J60 are closed as shown in the figure before connecting the USB dongle to the PC. The PC can be used as a host for evaluation. AT commands can be sent through a serial terminal on the PC to the IFW956810 CCM kit. 
-
-.. image:: img/gsd-2.png
-	    :align: center
-
 .. _Getting the CCM Bound to your Infineon Accounts:
 
-Getting the CCM Bound to your Infineon Accounts
-***********************************************
+Bind your CCM developer kit to your CIRRENT™ Cloud ID account
+*************************************************************
 
-Infineon's CIRRENT™  Cloud ID service lets you download the CCM Device Certificate from the Cloud or automatically provision the Device Certificate to your product cloud.  To enable the Cloud ID service, you will log into your Infineon Account and choose a Group for the CCM device. If you don't have an Infineon Account or Group, you can create one for free during the setup process.  
+CIRRENT™ Cloud ID provides the secure cloud-based device authentication that helps you to give your products secure and effortless access to your Product Cloud. This process works thanks to a unique device certificate embedded into every CCM module. These device certificates are pre-populated in CIRRENT™ Cloud ID.
 
-The CCM Device ID is embedded in the QR code on the CCM device itself.  To bind the CCM to your Group, point your mobile phone camera at the QR code and follow the link.  You can also manually type in the url printed on the CCM to go through this process on a computer. 
+Every CCM module shipped with the CCM developer kit also contains a unique device certificate. To get started with your developer kit you first need to bind your CCM developer kit to your CIRRENT™ Cloud ID account, which confirms ownership of the device.
 
-Once you enter the url, you will log in and choose a Group (or create an Account and a Group).  At the end of the process your CCM is bound to your Group.  Later in the process you'll be able to validate this in the CIRRENT™ console. 
+.. note:: CIRRENT™ Cloud ID is an INFINEON service and you access Cloud ID using your INFINEON account. If you do not already have an INFINEON account, you need to register one first. Follow the instructions here.
 
-You can `learn more about CIRRENT™ Groups here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`_ , and you can `learn more about Cloud ID here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_ .  
+Binding your CCM developer kit to a Cloud ID account is simple. The unique device ID is embedded in the QR code printed on your developer kit module. Simply scan the QR code located on the module, or use your browser and retype the URL printed below the QR code. 
 
-.. note:: you can use the CCM independent of your Infineon Account and the CIRRENT™ services by pulling the Device Certificate from the AT command directly and manually provisioning that in the cloud.
+ABCDEFGHIJKL - Tahir insert image CCM001 here ABCDEFGHJKLAAAAAAAAAAAAAAAA
+
+The QR code will redirect you to the INFINEON website. If  if you already have a CIRRENT™ Cloud ID account, you can simply select the Cloud ID account you want to bind your developer kit to. Alternatively, click Create Account to create a new CIRRENT™ account.
+
+.. note:: You can use the CCM development kit independent of an Infineon Account and independent of CIRRENT™ services by pulling the Device Certificate from your device directly using an AT command, and manually provisioning your device in your cloud using that certificate.
+
+You can `learn more about CIRRENT™ accounts here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`_ , and you can `learn more about Cloud ID here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_ .  
+
 
 .. _Getting the CCM Online:
 
-Getting the CCM Online
-************************ 
+Getting the CCM module online
+***************************** 
 
 Connect the CCM module to your PC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The PC can be used as a host for evaluation. AT commands can be sent through a serial terminal on the PC to the IFW956810 CCM kit. 
+
+Before you connect the CCM module to your PC ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12 of header J60 are closed as shown in the figure below. 
+
+ABCDEFGHIJKL*** Tahir, kindly insert images/gsd-2.png here ****
 
 Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to your PC using either the Type-C connector or Type-A male to Type-C female cable.
 
@@ -76,8 +84,7 @@ End of Line        Line Feed
 ================   ===========================
 
 
-See the Setting up a serial terminal on your PC section for more details.
-
+If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a serial terminal on your PC section for more details. 
 Once you open the serial terminal, type 
 
 
@@ -96,9 +103,9 @@ in the serial terminal.  You should see a response
 Connect the CCM module to Wi-Fi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The CCM has a built-in Wi-Fi onboarding process over Bluetooth® LE or SoftAP using an app available in the app store, and Infineon also provides a mobile app SDK to make it easier for you to deliver an app to your customer.  
+The CCM module has a built-in Wi-Fi onboarding process that works over Bluetooth® LE or SoftAP and which relies on an app available in the Android and iOS app stores. You can use this app to connect your CCM module to your Wi-Fi network.  
 
-First,  Download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. Scan the following QR code relevant to your mobile device to download the CIRRENT™ Wi-Fi onboarding app:
+First,  download and install the CIRRENT™  Wi-Fi onboarding app from `Google Play Store for Android <https://play.google.com/store/apps/details?id=com.cirrent.ZipKeyApp&hl=en_US&gl=US>`_ or `iOS App Store for iOS on your mobile phone <https://apps.apple.com/us/app/cirrent-wi-fi-onboarding/id1265896377>`_. The following QR codes link to the relevant app for your mobile device:
 
 
 =============================   =============================
@@ -107,7 +114,7 @@ Android                         IOS
 =============================   =============================
 
 
-1. To turn on the Wi-Fi onboarding process on the CCM, type the following command in the serial terminal on the PC: 
+1. To activate the Wi-Fi onboarding process on the CCM module type the following command in the serial terminal on your PC: 
 
    ::
 
@@ -123,26 +130,26 @@ Android                         IOS
 
 3. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
 
-4. Follow the onscreen instructions and enter the Wi-Fi router’s SSID and password
+4. Follow the onscreen instructions and enter your Wi-Fi router’s SSID and password.
 
-At the end of this process you should see ??? and that means your CCM is connected to your Wi-Fi network. 
+When you complete these steps you should see a ??? prompt which means that your CCM module has successfully connected to your Wi-Fi network. 
 
-If prefer configuring the Wi-Fi networking using AT commands, type the following commands in sequence in the terminal application:
+If you prefer to configure Wi-Fi networking using AT commands you can instead type the following command in sequence into your terminal application:
 
 ::
 
 	AT+CONF SSID=<your router ssid>
 	AT+CONF Passphrase=<your router passphrase>
 
-.. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (i.e., for debugging purposes), any attempt to retrieve the passphrase will return an error.   
+.. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (e.g. for debugging purposes), any attempt to retrieve the passphrase will return an error.   
 
 
-View your CCM module connected to the CIRRENT™ Cloud
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Verify that your CCM module is connected to CIRRENT™ Cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now you can see that the CCM module is connected to the internet by checking the binding to the CIRRENT™ Cloud: 
+You’ve now bound your CCM developer kit to a CIRRENT™ Cloud ID account, and the CCM module in your developer kit is now online. You can now observe that your CCM module is connected to the internet by checking the device binding in CIRRENT™ Cloud: 
 
-1. Log in to your CIRRENT™  account at https://console.cirrent.com/. If you don’t already have a CIRRENT™ account, you can register one, follow these steps.
+1. Log in to your CIRRENT™  account at https://console.cirrent.com/ .
 
 2. On the panel on the left of the screen, select Device Management and Cloud ID, and then select the Binding tab. Alternatively, click this link to go directly to that tab. 
 
@@ -153,7 +160,7 @@ Now you can see that the CCM module is connected to the internet by checking the
 
 4. You should see your device listed on the page. 
 
-.. note:: successful binding of the device to your CIRRENT™ account is required to provision the devices to the AWS developer account using Cloud ID. 
+.. note:: You need to first successfully bind your developer kit to your CIRRENT™ account if you want to use CIRRENT™ Cloud ID to automatically provision your developer kit to your AWS account. 
 
 
 .. _Getting the CCM Connected to Your AWS Account:
