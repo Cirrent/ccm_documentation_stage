@@ -1,73 +1,111 @@
 Using CCM with cloud platforms
+===============================
 
 AIROC™ CCM simplifies the process of connecting your products to your Product Cloud. Key to this functionality is CIRRENT™ Cloud ID, an INFINEON service. When a user first boots up your product CIRRENT™ Cloud ID securely authenticates the device and automatically provisions the device into your Product Cloud.
+
 In this section we outline what you need to do to ensure that your CCM-equipped devices effortlessly connect to your Product Cloud.
+
+
 AWS IoT Core
+*************
 
 CCM-equipped devices and Cloud ID supports AWS IoT Core. Cloud ID acts as a solution to simplify the process of connecting your products to your AWS Product Cloud and to make the process more secure. In one step, CCM:
-Automatically binds your device to your CIRRENT™ Cloud ID account. That is possible because the certificates for AIROC™ CCM modules are pre-populated in CIRRENT™ Cloud ID.
+
+1. Automatically binds your device to your CIRRENT™ Cloud ID account. That is possible because the certificates for AIROC™ CCM modules are pre-populated in CIRRENT™ Cloud ID.
+
+2. Provisions the AWS resources for your device on your AWS Product Cloud. This automated provisioning includes the Thing, the AWS cloud representation of your physical device, as well as the device certificate and the necessary device policies.
 
 
-Provisions the AWS resources for your device on your AWS Product Cloud. This automated provisioning includes the Thing, the AWS cloud representation of your physical device, as well as the device certificate and the necessary device policies.
-
-
-Enables your device to connect to your AWS account. The endpoint of your AWS development account is required for the kit to connect to your AWS account.  Cloud ID pulls the AWS endpoint required from your AWS account and automatically pushes it to your device in the field. 
+3. Enables your device to connect to your AWS account. The endpoint of your AWS development account is required for the kit to connect to your AWS account.  Cloud ID pulls the AWS endpoint required from your AWS account and automatically pushes it to your device in the field. 
 
 
 In the next section we outline what you need to do configure your AWS Product Cloud to interact with your AIROC™ CCM devices and with CIRRENT™ Cloud ID. Note that you need an AWS account before you can get started.
 
 Triggering the cloud formation template 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template. Executing a CloudFormation template creates a stack in your AWS account. A stack is a collection of AWS resources.
+
 The template for creating AWS resources required for connecting your CCM devices to the AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end cloud communication between your CIRRENT™ Cloud ID account and your AWS Product Cloud. 
+
 Instructions for running the Cloud Formation template are here: 
+
 https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html 
 
 Performing an OTA firmware update
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CCM modules are built with a robust over-the-air (OTA) firmware update capability.  Here you can learn how to run an OTA job in your AWS account to update the firmware on your CCM devices. There are several steps involved in sending OTA updates to your device:
-Obtain the firmware package from INFINEON - contact our sales team for this package
-Create an OTA update role in your AWS account and assign the necessary permissions to the role
-Create a firmware update job in your Amazon IoT Console
-On your device, check for an update job and apply it
+
+* Obtain the firmware package from INFINEON - contact our sales team for this package
+* Create an OTA update role in your AWS account and assign the necessary permissions to the role
+* Create a firmware update job in your Amazon IoT Console
+* On your device, check for an update job and apply it
+
 Assuming you’ve obtained a firmware update package from INFINEON we’ll now outline the steps you need to take to apply a firmware update to a single device. You can, of course, automate some of these steps to roll out updates to a fleet of devices.
+
 Create an OTA update role in your account
+""""""""""""""""""""""""""""""""""""""""""
 
 Within AWS IoT you need to configure an AWS role to create and manage OTA update jobs for your devices. The following set of instructions explains the process.
-First, create an OTA service role using these steps
-Sign in to AWS identify and access management, by navigating to https://console.aws.amazon.com/iam/ for example
-View the navigation pane and choose Roles, and then choose Create role.
-From Select type of trusted entity, choose AWS Service, and from the list of AWS servies choose IoT.
-Choose IoT from the options under Select your use case.
-Choose Next: Permissions, then Next: Tags, and then Next: Review.
-Now, type in a role name and a description for your OTA update role, and then choose Create role.
-Next, you need to add OTA update permissions to the service role that you just created
-Find the search box on the AWS identity and access management console page and enter the name of your role, and then choose it from the list.
-Choose Attach policies.
-In the search box, enter "AmazonFreeRTOSOTAUpdate", and select AmazonFreeRTOSOTAUpdate from the search result. 
-Choose Attach policy to attach the policy to your service role.
-You also need to add the required IAM permissions and Amazon S3 permissions through the following steps:
-Using the search box on your AWS IAM console page, enter the name of the role you created in the previous section. When the role appears in the list, select it.
-Choose Add inline policy, and choose the JSON tab.
-Copy and paste the following policy document into the text box:
 
-{
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-            "Effect": "Allow",
-            "Action": [
-                "iam:GetRole",
-                "iam:PassRole"
-            ],
-            "Resource": "arn:aws:iam::your_account_id:role/your_role_name"
-      }
-    ]
-}
-In the above code you need to replace your_account_id with your AWS account ID, and your_role_name with the name you chose for the OTA service role.
+**First, create an OTA service role using these steps**
+
+1. Sign in to AWS identify and access management, by navigating to https://console.aws.amazon.com/iam/ for example
+
+2. View the navigation pane and choose **Roles**, and then choose **Create role**.
+
+3. From **Select type of trusted entity**, choose **AWS Service**, and from the list of AWS servies choose **IoT**.
+
+4. Choose IoT from the options under **Select your use case**.
+
+5. Choose **Next: Permissions**, then **Next: Tags**, and then **Next: Review**.
+
+Now, type in a role name and a description for your OTA update role, and then choose Create role.
+
+**Next, you need to add OTA update permissions to the service role that you just created**
+
+1. Find the search box on the AWS identity and access management console page and enter the name of your role, and then choose it from the list.
+
+2. Choose **Attach policies**.
+
+3. In the search box, enter "AmazonFreeRTOSOTAUpdate", and select AmazonFreeRTOSOTAUpdate from the search result. 
+
+4. Choose **Attach policy** to attach the policy to your service role.
+
+**You also need to add the required IAM permissions and Amazon S3 permissions through the following steps:**
+
+Using the search box on your AWS IAM console page, enter the name of the role you created in the previous section. When the role appears in the list, select it.
+
+1. Choose Add inline policy, and choose the JSON tab.
+
+2. Copy and paste the following policy document into the text box:
+   
+   ::
+
+     {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:GetRole",
+                        "iam:PassRole"
+                    ],
+                    "Resource": "arn:aws:iam::your_account_id:role/your_role_name"
+              }
+            ]
+        }
+
+   In the above code you need to replace your_account_id with your AWS account ID, and your_role_name with the name you chose for the OTA service role.
+
 5. Choose Review policy.
+
 6. Enter a name for your policy, and then select Create policy.
-Note: The following steps are not required if your Amazon S3 bucket name begins with "afr-ota". If it does, the AWS-managed policy AmazonFreeRTOSOTAUpdate is already includes the required permissions.
+
+.. note:: The following steps are not required if your Amazon S3 bucket name begins with "afr-ota". If it does, the AWS-managed policy AmazonFreeRTOSOTAUpdate is already includes the required permissions.
+
+
 In addition to IAM permissions you also need to add the needed Amazon S3 permissions to your OTA service role.
 In the search box on the IAM console page, enter the name of your role, and then choose it from the list.
 
