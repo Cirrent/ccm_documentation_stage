@@ -11,6 +11,7 @@ CCM Documentation
    /how-ccm-works
    /getting-started-with-the-ccm-development-kit
    /ccm-api-guide
+   /using-ccm-with-cloud-platforms
    /cirrent-services
 
    
