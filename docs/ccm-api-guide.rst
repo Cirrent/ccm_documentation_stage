@@ -1,12 +1,12 @@
 CCM API Guide
 ===============
 
-The AIROC™ CCM module supports a full range of AT commands, that includes all relevant AWS IoT ExpressLink AT commands. CCM modules also follow the AWS IoT ExpressLink AT command format. In this section we outline how you should use AT commands, and list the commands you can use.
+The AIROC™ CCM module supports a full range of AT commands, including all relevant AWS IoT ExpressLink AT commands. CCM modules also follow the AWS IoT ExpressLink AT command format. In this section we outline how you should use AT commands, and list the commands you can use.
 
-AT Command Usage
+AT command usage
 ******************
 
-AIROC™ CCM modules support execution of AT commands through USB serial device COM port or over the air. Every CCM module command must be sent in this format:
+AIROC™ CCM modules support the execution of AT commands through a USB serial device COM port or over the air. Every command must be sent in this format:
 
 ::
 
@@ -34,11 +34,11 @@ The above format contains the following elements:
                   return ‘PARSE ERROR’.
 ===============   ===============================================================================================================
 
-.. note:: The parameter includes every byte between the separator and eol, but does not include either separator or eol. ASCII values from 0 to 0x1F are valid for the parameter string.
+.. note:: The parameter includes every byte between the separator and EOL, but does not include either separator or EOL. ASCII values from 0 to 0x1F are valid for the parameter string.
 
-.. note:: The complete formatted command string is capped to 5KB in length.
+.. note:: The complete, formatted command string is capped to 5KB in length.
 
-.. note:: The maximum runtime for every command must be listed in the datasheet. No command can take more than 120 seconds to complete (the maximum time for a TCP connection timeout).
+.. note:: No command can take more than 120 seconds to complete (the maximum time for a TCP connection timeout).
 
 Command error codes
 ********************
@@ -99,10 +99,10 @@ Diagnostic commands                                AT+DIAG
 Configuration commands                             AT+CONF
 Read configuration                                 AT+CONF?
 Enter WiFi credentials, SoftAP mode                AT+CONFMODE
-Publish msg on the specified topic                 AT+SEND
+Publish message on the specified topic             AT+SEND
 Request next message pending on a topic            AT+GET
 Subscribe to a specific topic                      AT+SUBSCRIBE
-Unsubscribe from Topic                             AT+UNSUBSCRIBE
+Unsubscribe from topic                             AT+UNSUBSCRIBE
 Request the next event in the queue                AT+EVENT
 OTA update                                         AT+OTA
 ================================================   ================================================
@@ -128,7 +128,7 @@ So, if the module is connected and if the command parser is active, the module w
 Connect to the AWS IoT Core
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Request a connection to the cloud, which also brings the active device into a higher power consumption mode to communicate with the cloud endpoint.
+Requests a connection to the cloud, which also brings the active device into a higher power consumption mode to communicate with the cloud endpoint.
 
 Command: 
 
@@ -146,7 +146,7 @@ If the connection the cloud endpoint was successful, or
 
 ::
 
-	ERR14 UNABLE TO CONNECT [detail]
+	ERR14 UNABLE TO CONNECT [detail]   # if the connection failed
 
 Where the module could not connect, including additional details such as “Invalid Endpoint”. 
 
