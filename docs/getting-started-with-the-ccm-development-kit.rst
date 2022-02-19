@@ -171,21 +171,21 @@ Getting the CCM Connected to Your AWS Account
 How the CCM module interacts with AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Infineon AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect the CCM to your AWS Account, you’ll need to connect your CIRRENT™ account with your AWS account so that devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  You can follow the instructions in the CIRRENT™ Cloud ID documentation to set that up. 
+The Infineon AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
 
-Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ console, and then creating a Thing in your AWS account, using the certificate you just downloaded
+Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ Console, and then creating a Thing in your AWS account, using the certificate you just downloaded.
 
-The CIRRENT™ Cloud flow uses the Cloud ID solution to simplify the process of connecting the kit to your AWS developer account. This method eliminates several manual steps that need to be performed in the AWS flow. Learn more about the Cloud ID solution `here <https://swdocs.cypress.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_.
+However,  CIRRENT™ Cloud ID simplifies the process of connecting the kit to your AWS developer account. This method eliminates several manual steps that need to be performed otherwise. Learn more about the Cloud ID solution `here <https://swdocs.cypress.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_.
 
-At a high level, the CIRRENT™ Cloud flow performs the following functions to connect the kit to your AWS developer account: 
+At a high level, the CIRRENT™ Cloud performs the following functions to connect your CCM developer kit to your AWS account: 
 
-1. Binds your kit to your CIRRENT™ account.
+1. Binds your kit to your CIRRENT™ account. In this guide, you completed the binding step before you connected the CCM module to your PC. In production, you would incorporate the binding step into your workflow.
 
-2. Provisions the AWS resources for the kit on your AWS account, including the Thing (cloud representation of your physical device), device certificate (associates the device certificate from the CIRRENT™ Cloud to your Thing), policies (creates and associates AWS IoT Thing access policies to your Thing)
+2. Provisions the AWS resources for the kit on your AWS account. That includes a Thing, which is the AWS cloud representation of a physical device. It also includes the device certificate which securely links the CCM device to the CIRRENT™ Cloud and to an AWS Thing, as well as creating and associating AWS IoT Thing access policies.
 
-3. The CIRRENT™ Cloud pulls the AWS endpoint required from your AWS account and automatically pushes it to the kit. This enables the kit to connect to your AWS development account.  
+3. The CIRRENT™ Cloud pulls the AWS endpoint from your AWS account and automatically pushes it to the CCM module. This enables the module to connect to your AWS development account.
 
-The CIRRENT™ Cloud flow we describe above is very close to the production flow and demonstrates the ease of securely connecting your products to the product cloud. The CIRRENT™ Cloud is preloaded with the device certificate of all CCM/IFW56810 modules, thus offloading the effort of managing device certificates away from product manufacturers. 
+The CIRRENT™ Cloud ID workflow we describe above demonstrates the ease of securely connecting a product to the Product Cloud. Because the CIRRENT™ Cloud is preloaded with the device certificate of all AIROC™ CCM modules you no longer need to manage device certificates on the production line. Instead, device certificates are managed in CIRRENT™ Cloud ID.
 
 Get connected to AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -195,20 +195,19 @@ You need to follow a few steps to ensure you’re able to interact with your AWS
 .. image:: img/gsd-7.png
 	    :align: center
 
-You’ve already confirmed that the CCM kit binded to your Cloud ID account in the previous step. We’ll now outline the steps you need to take to set up your AWS instance so that you can connect your CCM kit to your Product Cloud.
+You’ve already confirmed that the CCM kit successfully binded to your Cloud ID account in previous sections. We’ll now outline the steps you need to take to set up your AWS instance so that you can connect your CCM kit to your Product Cloud.
 
 1. Execute the CloudFormation template
 
    CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. 
+   
+The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end device communication between your CIRRENT™ account and your AWS account. 
 
-   The template for creating AWS resources required for connecting the IFW956810 evaluation kit to the AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end cloud communication between your CIRRENT™ account and your AWS account. 
-
-   You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the Infineon-provided CloudFormation template can be found here. 
+You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the Infineon-provided CloudFormation template can be found here. 
 
 2. Create a Product Cloud API
-   A Product Cloud API is a software interface that allows the CIRRENT™ Cloud to communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details including the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API must be executed once per CIRRENT™ account. The same API can be used to provision production CCM devices from your CIRRENT™ account to your AWS account.  
 
-   Instructions for configuring the Product Cloud API are here. 
+   A Product Cloud API is a software interface that allows the CIRRENT™ Cloud to communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details. That includes the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API configuration must be executed once per CIRRENT™ account. The same API account can be used to provision production CCM devices from your CIRRENT™ account to your AWS account. Instructions for configuring the Product Cloud API are here.  
 
 3. Provision and prepare to connect the kit to your AWS account. 
 
@@ -255,33 +254,39 @@ Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT
 Connect to the AWS IoT Core
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core
+.. Note:: You can skip this section  if you used the CIRRENT™ Wi-Fi onboarding app to connect the kit to Wi-Fi. Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core.  You will receive an “OK 1 CONNECTED” message in the serial terminal once the device is connected to the AWS IoT Core.
+
+Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core:
 
 ::
 
 	AT+CONNECT
 
-You will receive a response depending on the method of connection. If you used Cloud ID for registration it may take a minute or more to connect and you may see a message
+You will receive a response depending on the method of connection. If you used Cloud ID for registration it may take a minute or more to connect and you may see a message:
 
 ::
 
 	OK Waiting for Cloud ID registration.
 
-After it is configured, then the device will connect to the AWS IoT Core and you will receive the message 
+The device will eventually connect to the AWS IoT Core and you will receive the message:
+
 
 ::
 
 	OK 1 CONNECTED
 
-Now you’re able to send and receive data from your AWS IoT Core account. To send data: 
+Sending and receiving data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, enter this command in the serial terminal: 
 
 ::
 
 	AT+SEND data Hello World!
 
-After a short time, you will receive the message “OK”. You should see the “Hello World!” message appears on the AWS IoT Console under the topic “data”. 
-
-To receive data, you’ll need to subscribe to a topic.  By default, the device subscribes to a topic called “state”. To send a message to the CCM: 
+After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under the topic “data”. 
+To receive data, you’ll need to subscribe to a topic.  By default, the device subscribes to a topic called “state”. To send a message to the CCM
+module: 
 
 1. On the AWS IoT Console, select the MQTT client, and then select **Publish to a topic**. Type **state** in **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
 
@@ -298,47 +303,53 @@ To receive data, you’ll need to subscribe to a topic.  By default, the device 
 
 		OK Hello from the AWS IoT Console
 
-Further Exploration
+Further exploration
 ********************
 
-Now that your CCM module is connected and you can try out the different capabilities of the product. Here are a few suggestions:
+With your CCM module now connected to your Product Cloud you can try out the different capabilities of the product. Here are a few suggestions:
 
 * Run an Over-the-Air firmware update process
 * Try out other CCM Commands
 
-Setting up a serial terminal on the PC
+Setting up a serial terminal on your PC
 *****************************************
 
 .. note:: The following instructions are only for a Windows PC. 
 
 
-The IFW956810 CCM evaluation kit should be recognized by the PC when connected to it. If the device is recognized, COM ports will be available in the Device Manager.
+The IFW956810 CCM evaluation kit should be recognized by your PC as soon as you connect it. If the device is not recognized, you will need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this `link <https://ftdichip.com/drivers/vcp-drivers/>`_. For more information, see the Troubleshooting section.
 
 If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this `link <https://ftdichip.com/drivers/vcp-drivers/>`_. For more information, see the Troubleshooting section. 
 
 Determine the COM port number
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Determine the COM port number from the Device Manager. 
+Once you’ve connected your device, open Windows Device Manager. If your device was recognized you will notice new COM ports appearing in Windows Device Manager. You need to use Windows Device Manager to determine the COM port number assigned to your CCM kit, as below:
   
   .. image:: img/gsd-9.png
 	    :align: center
+	   
+
+.. Note:: You need to choose the higher of the two COM port numbers, in this example it would be COM29.
+
 
 Serial terminal settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open a terminal such as Tera Term.
+Next, you need to configure your serial terminal. The example below uses Tera Term, which you can download here, but you can use another suitable serial terminal.
 
-2. Choose the higher of the COM port numbers for the IFW956810 CCM evaluation kit.
+1. Open your terminal
 
-3. Select **Set Up** > **Serial port**.
+2. Find the higher of the COM port numbers assigned by Windows to your CCM evaluation kit, as described in the previous section
 
-4. Select the settings as follows:
+3. Select **Set Up**, and **Serial port**.
+
+4. Configure the settings as shown in the screenshot below
    
    .. image:: img/gsd-10.png
 	    :align: center
 
-5. Select **Set Up** > **Terminal**. 
+5. Select **Set Up**, and **Terminal**. 
 
 6. Do the following:
    
@@ -351,15 +362,15 @@ Serial terminal settings
 Troubleshooting the CCM Kit
 ****************************
 
-If two COM ports were enumerated when the kit is connected
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Choosing a COM port where two ports were enumerated when the kit is connected
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The IFW956810 CCM evaluation kit has a FT2232H chip capable of supporting USB to dual-channel UART (USB serial converter A and USB serial converter B). Only USB serial converter B is configured in the kit for USB-to-UART conversion. Therefore, use the higher-number COM port among the enumerated COM ports to communicate with the kit. 
+The IFW956810 CCM evaluation kit has a FT2232H chip capable of supporting USB to dual-channel UART (USB serial converter A and USB serial converter B). Only the second of the two, USB serial converter B, is configured to enable USB-to-UART conversion. Therefore, use the higher-number COM port among the enumerated COM ports to communicate with the kit. 
 
 Diagnosing errors when commands are entered
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For example: 
+For example, if: 
 
 ::
 
@@ -371,26 +382,20 @@ returns
 
 	ERR01 Invalid cmd
 
-1. Make sure that you have typed the command correctly. 
-
-2. Note the error codes and refer to this guide for details of the error code and to determine the cause. 
+First, make sure that you have typed the command correctly. If you’ve entered the command correctly, make a note of the error code and refer to this guide for details of the error code, which will point you to the cause.
 
 
-Onboarding fails when using the CIRRENT™ mobile app
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Onboarding fails when using the CIRRENT™ mobile onboarding app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Check if CONFMODE was enabled using the AT+CONFMODE command.
+Verify that you enabled  CONFMODE using the AT+CONFMODE command
 
 
 ERR 14 UNABLE TO CONNECT received when using the AT+CONNECT command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. 
 
-1. heck the Wi-Fi connection.
-
-2. Check the entered Wi-Fi credentials. 
-
-3. Type the following command to verify whether the kit connects to Wi-Fi:
+The AT+CONNECT command first connects to Wi-Fi if not already connected, and then connects to the AWS IoT Core. If the command fails, first check that the WiFi connection is active, and that you have entered the right Wi-Fi details. Type the following command to verify whether the kit connects to Wi-Fi:
 
    ::
 
@@ -402,23 +407,19 @@ The AT+CONNECT command first connects to Wi-Fi if not already connected and then
 
 	  OK Received ping response in <ping latency ms>
 
-4. If the Wi-Fi connection test is successful, check the AWS IoT connection. 
-
-5. Check the device certificate uploaded to the AWS IoT Core in Section 4.4.
+If the Wi-Fi connection test is successful but you still have no connectivity with your AWS account, first check the AWS IoT connection, and then check that the device certificate successfully uploaded to the AWS IoT Core.
 
 
 Changing the Wi-Fi network the device is connected to
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Execute 
+To change the Wi-Fi network your device is connected to you first need to disconnect the device form the network using the following command on the serial terminal:
    
    ::
 
 	  AT+DISCONNECT 
 
-   on the serial terminal to disconnect from the current Wi-Fi network. 
-
-2. See this section  to configure the required Wi-Fi credentials.  
+Next, follow the steps in the “Get Connected with AWS” section to enter new Wi-Fi credentials.
 
 
 Determine the device connection status to AWS IoT Core
