@@ -552,13 +552,13 @@ Configuration dictionary for non-persistent keys
 Assign a value to the selected configuration parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Command
+Command:
 
 ::
 
 	AT+CONF key=value
 
-Returns
+Returns:
 
 ::
 
@@ -626,9 +626,7 @@ ERR13 KEY WRITEONLY                  The key is write-only and can’t be read
 Entering Wi-Fi credentials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AIROC™ CCM module supports Wi-Fi SoftAP onboarding. To enable this feature you are expected to use CONFMODE to receive additional connection credentials from user input.
-
-Use this command to enter SoftAP mode, where the host temporarily assumes the role of an Access Point. After enabling Wi-Fi SoftAP onboarding, user needs to use CIRRENT™ Wi-Fi Onboarding mobile app to onboard the AIROC™ CCM module. See the Wi-Fi onboarding section.
+AIROC™ CCM modules supports Wi-Fi SoftAP onboarding. To enable this feature you need to use CONFMODE to receive additional connection credentials from user input. Use this command to enter SoftAP mode, where the host temporarily assumes the role of an access point. After enabling Wi-Fi SoftAP onboarding, the user needs to use CIRRENT™ Wi-Fi Onboarding mobile app to onboard the AIROC™ CCM module.
 
 Command:
 
@@ -651,10 +649,10 @@ The device entered CONFMODE and is ready to proceed with SoftAP onboarding.
 
 The device cannot enter CONFMODE due to a current connection, first use DISCONNECT.
 
-A CONFMODE notification event is generated once the SoftAP process is complete. Only after that can the host issue a CONNECT command to establish a connection using the newly entered credentials. See the Event handling section.
+A CONFMODE notification event is generated once the SoftAP process is complete. Only after that can the host issue a CONNECT command to establish a connection using the newly entered credentials.
 
 
-.. note:: While in CONFMODE, the CCM module can continue to respond to commands, with the exception of commands that require an active connection such as ‘AT+CONF? Version’. Where the device in CONFMODE a command that requires an active connection will return an error   'ERR6 NO CONNECTION'. Likewise, if you try to use a CONNECT command while in CONFMODE you will get a response stating:  'ERR14 UNABLE TO CONNECT'.
+.. note:: While in CONFMODE, the CCM module can continue to respond to commands, with the exception of commands that require an active connection such as ‘AT+CONF? Version’. Where the device in CONFMODE a command that requires an active connection will return an error: 'ERR6 NO CONNECTION'. Likewise, if you try to use a CONNECT command while in CONFMODE you will get a response stating: 'ERR14 UNABLE TO CONNECT'.
 
 .. note:: use the RESET command at any time to shut down CONFMODE.
 
@@ -702,19 +700,7 @@ Command:
 
 	AT+SEND {topic} message
 
-Where:
-
-::
-
-	{topic}
-
-A string formatted according to topic rules.
-
-::
-
-	message
-
-The message to publish (string).
+Where **{topic}** is a string formatted according to topic rules and **message** is the message to publish (string).
 
 Sample:
 
@@ -723,6 +709,7 @@ Sample:
 	AT+SEND data Hello World    # Publish the classic 'Hello World' message on topic 'data'
 	OK                          # Message sent
 
+
 Publish msg on a topic selected from topic list
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -730,9 +717,9 @@ Command:
 
 ::
 
-	AT+SEND{#} message: 
+	AT+SEND{#} message 
 
-Where {#} is the index number of a topic in CONFIG dictionary (1..MaxTopic), and message the message to publish (string).
+Where **{#}** is the index number of a topic in CONFIG dictionary (1..MaxTopic), and **message** the message to publish (string).
 
 Sample
 
@@ -745,7 +732,7 @@ or
 
 ::
 
-	ERR6 NO CONNECTION  #  no connection has been made
+	ERR6 NO CONNECTION  #  No connection has been made
 
 or
 
@@ -763,26 +750,26 @@ Or
 Retrieve the next message received
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Command
+Command:
 
 ::
 
 	AT+GET
 
-Returns
+Returns:
 
 ::
 
-	OK{separator}<Topic>{separator}<MESSAGE>{eol}    
+	OK{separator}<topic>{separator}<MESSAGE>{eol}    
 
 If there are any messages available on a topic the CCM module responds with OK, followed by the topic name and the message.
 
-Sample
+Sample:
 
 ::
 
-	AT+GET                 # poll for messages received on any topic
-	OK data Hello World    # a message was received from topic 'data'
+	AT+GET                 # Poll for messages received on any topic
+	OK data Hello World    # A message was received from topic 'data'
 	OK{eol} #  If no message was received on any topic
 
 
@@ -790,30 +777,30 @@ Sample
 Request next message pending on an unassigned topic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Command
+Command:
 
 ::
 
 	AT+GET0
 
-Returns
+Returns:
 
 ::
 
 	OK{separator}<Topic>{separator}<MESSAGE>{eol}
 
-Sample
+Sample:
 
 ::
 
-	AT+GET0                # this command polls for messages received on any unassigned topic
-	OK data Hello World    # a message was received from topic 'data'
+	AT+GET0                # This command polls for messages received on any unassigned topic
+	OK data Hello World    # A message was received from topic 'data'
 
 or
 
 ::
 
-	OK{eol} #If no message was received on any unassigned topic, the module returns 'OK' followed by {eol}.
+	OK{eol} # if no message was received on any unassigned topic, the module returns 'OK' followed by {eol}.
 
 Request next message pending on the indicated topic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -834,18 +821,18 @@ Returns:
 
 If a message is available on the indicated topic, the module responds with 'OK' followed immediately by the message.
 
-Sample
+Sample:
 
 ::
 
-	AT+GET2           # select messages received on Topic2
-	OK Hello World    # a message received on the topic at index 2 in the list of topics
+	AT+GET2           # Select messages received on Topic2
+	OK Hello World    # A message received on the topic at index 2 in the list of topics
 
 or
 
 ::
 
-	OK{eol}  #If a message is NOT available matching the requested topic
+	OK{eol}  # If a message is NOT available matching the requested topic
 
 or
 
@@ -868,7 +855,7 @@ If your device never retrieves a message, and never frees up space, the buffer c
 Subscribe to the indicated topic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Command
+Command:
 
 ::
 
@@ -876,9 +863,9 @@ Command
 
 Subscribes to the topic number and starts receiving messages, any incoming messages will trigger an event. Messages can be read with a GET{#} command. 
 
-.. note:: it is a stateless feature as your device will request a subscription to the MQTT broker, but it will not retain information about its current state.
+.. note:: It is a stateless feature as your device will request a subscription to the MQTT broker, but it will not retain information about its current state.
 
-.. note:: sending a message to a topic to which the device is subscribed results in the broker sending a copy back to the module.
+.. note:: Sending a message to a topic to which the device is subscribed results in the broker sending a copy back to the module.
 
 Example 1:
 
@@ -904,7 +891,7 @@ Example 2:
 Unsubscribe from Topic#
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Command
+Command:
 
 ::
 
@@ -923,7 +910,7 @@ Returns:
 
 ::
 
-	ERR6 NO CONNECTION # if no connection has been made
+	ERR6 NO CONNECTION # If no connection has been made
 	ERR8 TOPIC UNDEFINED # If the requested topic is not defined
 	ERR7 TOPIC INDEX OUT OF RANGE # If the supplied topic index is larger than the maximum allowed topic number
 
