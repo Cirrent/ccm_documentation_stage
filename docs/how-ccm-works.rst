@@ -1,20 +1,20 @@
 How CCM works
 ===============
 
-The AIROC™ Cloud Connectivity Manager (CCM) simplifies the steps that you follow to develop an IoT product that end users can effortlessly and securely connect to your Product Cloud. CCM achieves this by incorporating the following four key IoT features in a single module:
+The AIROC™ Cloud Connectivity Manager module (CCM) simplifies the steps that you follow to develop an IoT product that end users can effortlessly and securely connect to your Product Cloud. CCM modules achieve this by incorporating the following four key IoT features in a single module:
 
-1. Industry-leading Wi-Fi communications, including SoftAP onboarding which helps customers effortlessly connect your Product to their local Wi-Fi
+1. Industry-leading Wi-Fi communications, including SoftAP onboarding which helps your customers effortlessly connect your product to their local Wi-Fi
 2. A standardized AT command set compatible with AWS IoT ExpressLink 
 3. Device authentication, provisioning, and security
 4. Cloud-based device monitoring
 
-Key to CCM security capabilities is a unique X.509 device certificate that’s incorporated in every CCM module. This secure, unspoofable device certificate is used by the host to identify itself in the field. CCM device certificates are pre-populated in CIRRENT™ Cloud ID which means that products in the field can, when first connecting to the internet, automatically authenticate securely with your Product Cloud.
+Key to the security capabilities of a CCM module is a unique X.509 device certificate that’s incorporated in every  module. This secure, unspoofable device certificate is used by the host to identify itself in the field. CCM device certificates are pre-populated in CIRRENT™ Cloud ID which means that products in the field can, when first connecting to the internet, automatically authenticate securely with your Product Cloud.
 
 The process also automatically configures Product Cloud requirements, e.g. configuring a “Thing” in AWS IoT Core. The benefits of using a CCM module during product development and roll-out includes:
 
-* Building on Infineon’s long history with wireless connectivity, including extensive experience acquired through Cypress Semiconductor. That includes access to solutions with a BLE-based or Soft AP onboarding option, which smooths out the process of joining Wi-Fi at customer sites. It removes a key element of friction in getting your IoT devices onboarded and unblocks the ability to earn revenue.
+* Building on INFINEON’s long history with wireless connectivity, including extensive experience acquired through Cypress Semiconductor. That includes access to solutions with a BLE-based or Soft AP onboarding option, which smooths out the process of joining Wi-Fi at customer sites. It removes an element of friction in getting your IoT devices onboarded and unblocks the ability to earn revenue.
 
-* Developers can develop products that use simple AT commands such as “connect” and “send” to connect and stream data to their Product Cloud and to do so within hours, not weeks.
+* Developers can develop products that use simple AT commands such as “CONNECT” and “SEND” to connect and stream data to their Product Cloud and do so within hours, not weeks.
 
 
 * Original equipment manufacturers (OEMs) can easily transform  existing products into IoT devices without the need for a deep understanding of communications and security implementation requirements, and without merging large amounts of code.
@@ -67,7 +67,7 @@ Storage humidity                     less than 60% R.H.
 ==================================   ===============================================================
 
 
-Wireless Features
+Wireless features
 ******************
 
 Every CCM module includes industry-leading INFINEON Wi-Fi technology for long range, robust connectivity. CCM modules support:
@@ -82,11 +82,11 @@ Every CCM module includes industry-leading INFINEON Wi-Fi technology for long ra
 Software description
 ******************
 
-* Cloud Management Features
+* Cloud management features
 * AWS IoT Express Link compatible
 * Supports over-the-air updates
 
-Networking Features include:
+Networking features include:
 
 * Full network stack offload from host: TCP/IP, TLS, DNS, HTTP, and MQTT
 * Fully documented command set for simple configuration from host processor
