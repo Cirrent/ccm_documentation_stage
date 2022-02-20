@@ -81,7 +81,7 @@ Where ERR is the error code, responding to the list of errors below:
 AT operational commands
 **************************
 
-Here is a complete list of AT commands supported by AIROC™ CCM modules.
+Here is a complete list of AT commands supported by AIROC™ CCM modules:
 
 ================================================   ================================================
 Function                                           Command
@@ -98,7 +98,7 @@ Request current location                           AT+WHERE?
 Diagnostic commands                                AT+DIAG
 Configuration commands                             AT+CONF
 Read configuration                                 AT+CONF?
-Enter WiFi credentials, SoftAP mode                AT+CONFMODE
+Enter Wi-Fi credentials, SoftAP mode               AT+CONFMODE
 Publish message on the specified topic             AT+SEND
 Request next message pending on a topic            AT+GET
 Subscribe to a specific topic                      AT+SUBSCRIBE
@@ -150,9 +150,9 @@ If the connection the cloud endpoint was successful, or
 
 Where the module could not connect, including additional details such as “Invalid Endpoint”. 
 
-.. note:: if the module is already connected sending a CONNECT won’t return an error – it would simply return “OK CONNECTED”. 
+.. note:: If the module is already connected sending a CONNECT won’t return an error – it would simply return “OK CONNECTED”. 
 
-.. note:: if connection fails a timestamp of the event will be retained to ensure that subsequent connection attempts do not exceed backoff timing limits. Any request to reconnect falling foul of the timing limits will simply be delayed by the module, and attempted automatically according to the backoff algorithm.
+.. note:: If connection fails a timestamp of the event will be retained to ensure that subsequent connection attempts do not exceed backoff timing limits. Any request to reconnect falling foul of the timing limits will simply be delayed by the module, and attempted automatically according to the backoff algorithm.
 
 Example code:
 
@@ -245,7 +245,7 @@ Code sample:
 Reset the CCM internal state
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use this command to disconnect the device - if it is connected - and to reset its internal state. Any configuration parameters that are non-persistent are reinitialized and all subscriptions are terminated. This command also emptied the message queue.
+Use this command to disconnect the device - if it is connected - and to reset its internal state. Any configuration parameters that are non-persistent are reinitialized and all subscriptions are terminated. This command also empties the message queue.
 
 Command:
 
@@ -308,7 +308,7 @@ If a recent time fix could not be obtained.
 Request CCM location 
 ^^^^^^^^^^^^^^^^^^^^^
 
-This command requests the last location information as available alongside a timestamp that specifies when that location reading was taken. An error is returned if a location fix cannot be determined.
+This command requests the last location information alongside a timestamp that specifies when that location reading was taken. An error is returned if a location fix cannot be determined.
 
 Command:
 
@@ -322,7 +322,7 @@ Returns:
 
 	OK {date} {time} {lat} {long} {elev} {accuracy} {source}
 
-If location coordinates could be obtained at date/time.
+If location coordinates could be obtained.
 
 ::
 
@@ -337,15 +337,10 @@ CCM diagnostic commands
 The Cloud Connectivity Manager (CCM) offers a set of AT commands that can help you understand the networking environment of the device. For CCM devices, the AT DIAG offers users four different functions – LOG, PING, ECHO and SCAN.
 
 
-AT+DIAG LOG
-"""""""""""""
-
-You can enable and disable logging for a device by using the DIAG LOG command. This command is executed as follows:
-
 AT+DIAG LOG X
 """""""""""""
 
-Where parameter X has a value of 0, 1, 2… 9. For each value of X, the level of logging is as follows: 
+You can enable and disable logging for a device by using the DIAG LOG command. Where parameter X has a value of 0, 1, 2… 9. For each value of X, the level of logging is as follows: 
 
 0. "LOG_OFF"
 1. "LOG_ERR"
@@ -376,7 +371,7 @@ AT+DIAG PING
 
 With this command you initiate a ping to a specified IPv4 address from the CCM module.
 
-Command
+Command:
 
 ::
 
@@ -390,7 +385,7 @@ For example:
 
 	AT+DIAG PING 8.8.8.8
 
-Response
+Response:
 
 ::
 
@@ -420,17 +415,17 @@ AT+DIAG SCAN
 
 Initiates a scan of nearby Wi-Fi access points, with a timeout parameter of X seconds. Returns a list of Wi-Fi access points.
 
-Command
+Command:
 
 ::
 
 	AT+DIAG SCAN X
 
-Parameter
+Parameter:
 
 X - Specifies number of seconds
 
-Response
+Response:
 
 :: 
 
@@ -463,7 +458,7 @@ The configuration dictionary is a key-value store containing all the options nec
 
 	ERR9 INVALID KEY LENGTH
 
-Valid key characters are 0-9, A-Z, a-z, a key may only contain alphanumeric characters in any order. If you use non-alphanumeric characters in a key name the CCM module will return:
+Valid key characters are 0-9, A-Z, a-z, a key may only contain alphanumeric characters. If you use non-alphanumeric characters in a key name the CCM module will return:
 
 ::
 
@@ -482,9 +477,9 @@ All keys for the CCM module are predefined, if you use an invalid key is used th
 Persistent keys
 ^^^^^^^^^^^^^^^^^
 
-You can use key-value pairs to set default values for command parameters. You can also use key-value pairs to set credentials, for selecting connectivity options and for timing preferences. The following persistent configuration key-value pairs should be long-lived and constant for the life of your application, and stored in non-volatile memory. A basic set of pairs is defined for all CCM devices. That includes the AP endpoint and the certificate. 
+You can use key-value pairs to set default values for command parameters. You can also use key-value pairs to set credentials, for selecting connectivity options and for setting timing preferences. The following persistent configuration key-value pairs should be long-lived and constant for the life of your application, and stored in non-volatile memory. A basic set of pairs is defined for all CCM devices. That includes the AP endpoint and the certificate. 
 
-.. note:: Some of the below key-value pairs have factory presets, may be read only, or both.
+.. note:: Some of the below key-value pairs may have factory presets, may be read only, or both.
 
 
 +---------------------------------------------------------------------------------------------+----------------------------------------------------+
@@ -492,19 +487,19 @@ You can use key-value pairs to set default values for command parameters. You ca
 +==========================+=======+==========+==============================+================+====================================================+
 | Configuration Parameter  | Type  | Persist  | Initial Value                | Factory Reset  | Description                                        |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
-| About                    | R     | Y        | Vendor - Model               | N              | A string that identifies the device make and model |
+| About                    | R     | Y        | Vendor - model               | N              | A string that identifies the device make, model.   |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
 | Version                  | R     | Y        | Module firmware version      | N              | The specific CCM firmware version.                 |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
-| TechSpec                 | R     | Y        | Technical Specification      | N              | Your CCM module’s technical specification version  |
-|                          |       |          |                              |                | number - e.g v1.1                                  |
+| TechSpec                 | R     | Y        | Technical specification      | N              | Your CCM module’s technical specification version  |
+|                          |       |          |                              |                | number - e.g v1.1.                                  |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
 | ThingName                | R     | Y        | UID                          | N              | A unique identifier specific to the device, the    |
 |                          |       |          |                              |                | unique ID (UID) is hard-coded to every device,     |
 |                          |       |          |                              |                | delivered natively by the module’s hardware root   |
 |                          |       |          |                              |                | of trust.                                          |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
-| Certificate              | R     | Y        | Device Birth Certificate     | N              | Device certificate used to authenticate your CCM   |
+| Certificate              | R     | Y        | Device birth certificate     | N              | Device certificate used to authenticate your CCM   |
 |                          |       |          |                              |                | module with Cloud ID, signed by the INFINEON CA.   |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
 | EndPoint                 | R/W   | Y        | Product Cloud endpoint       | Y              | The endpoint of the Product Cloud account to       |
@@ -513,9 +508,9 @@ You can use key-value pairs to set default values for command parameters. You ca
 | TopicRoot                | R/W   | Y        | UID                          | Y              | A default prefix that is used for user-defined     |
 |                          |       |          |                              |                | topics.                                            |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
-| HOTAcertificate          | R/W   | Y        | {empty}                      | Y              | Host OTA certificate                               |
+| HOTAcertificate          | R/W   | Y        | {empty}                      | Y              | Host OTA certificate.                              |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
-| OTAcertificate           | R/W   | Y        | Vendor OTA Certificate       | N              | Module OTA certificate.                            |
+| OTAcertificate           | R/W   | Y        | Vendor OTA certificate       | N              | Module OTA certificate.                            |
 +--------------------------+-------+----------+------------------------------+----------------+----------------------------------------------------+
 | SSID                     | R/W   | Y        | {Empty}                      | Y              | SSID for the Wi-Fi router the device is            |
 |                          |       |          |                              |                | connected to.                                      |
@@ -535,27 +530,27 @@ Configuration dictionary for non-persistent keys
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
 | Configuration Parameter  | Type  | Persist  | Initial Value                | Description                                 |
 +==========================+=======+==========+==============================+=============================================+
-| IPv4Address              | R     | N        | 0.0.0.0                      | The IPv4 address of the device              |
+| IPv4Address              | R     | N        | 0.0.0.0                      | The IPv4 address of the device.             |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
-| IPv6Address              | R     | N        | ::                           | Current device IPv6 address                 |
+| IPv6Address              | R     | N        | ::                           | Current device IPv6 address.                |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
-| DNSAddress               | R     | N        | 0.0.0.0                      | Current DNS address (IPv4 or IPv6)          |
+| DNSAddress               | R     | N        | 0.0.0.0                      | Current DNS address (IPv4 or IPv6).         |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
-| GatewayAddress           | R     | N        | 0.0.0.0                      | Current router IP address (IPv4 or IPv6)    |
+| GatewayAddress           | R     | N        | 0.0.0.0                      | Current router IP address (IPv4 or IPv6).   |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
-| Topic1                   | R/W   | N        | {Empty}                      | Custom defined topic 1                      |
+| Topic1                   | R/W   | N        | {Empty}                      | Custom defined topic 1.                     |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
-| Topic2                   | R/W   | N        | {Empty}                      | Custom defined topic 2                      |
+| Topic2                   | R/W   | N        | {Empty}                      | Custom defined topic 2.                     |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
 | ...                      |       |          |                              |                                             |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
-| Topic<Max Topic>         | R/W   | N        | {Empty}                      | Custom defined topic MaxTopic               |
+| Topic<Max Topic>         | R/W   | N        | {Empty}                      | Custom defined topic MaxTopic.              |
 +--------------------------+-------+----------+------------------------------+---------------------------------------------+
 
 
 
-Assign a value to selected configuration parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Assign a value to the selected configuration parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Command
 
