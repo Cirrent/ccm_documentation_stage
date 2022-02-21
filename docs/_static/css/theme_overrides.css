@@ -542,9 +542,6 @@ h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend
 .desk-hide {display: none !important;}
 .mob-hide {display: block !important;}
 
-.wy-menu-vertical {
-	padding-top: 30px;
-}
 .wy-breadcrumbs-aside {
 	margin-right:15px;
 }
@@ -1711,8 +1708,24 @@ footer a  {
     content: ""
 }
 
-img.home-icon
+img.home-icon {
+    width: 16.5% !important;
+    margin-top: -2%;
+}
+
+img.community-icon
 {
-    width: 75% !important;
-    margin-top: -20% !important;
+    width: 23% !important;
+}
+
+.left-nav-icons{
+	display: inline-block;
+    margin: 2% 3%;
+    font-size: 90% !important;
+}
+
+.left-nav-icons>hr{
+	border-top: 2px solid #646161 !important;
+    width: 100%;
+    margin: 0%;
 }
