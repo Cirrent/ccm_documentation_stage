@@ -1,9 +1,7 @@
 Using CCM with cloud platforms
 ===============================
 
-AIROC™ CCM simplifies the process of connecting your products to your Product Cloud. Key to this functionality is CIRRENT™ Cloud ID, an INFINEON service. When a user first boots up your product CIRRENT™ Cloud ID securely authenticates the device and automatically provisions the device into your Product Cloud.
-
-In this section we outline what you need to do to ensure that your CCM-equipped devices effortlessly connect to your Product Cloud.
+AIROC™ CCM modules simplify the process of connecting your products to your Product Cloud. Key to this functionality is CIRRENT™ Cloud ID, an INFINEON service. When a user first boots up your product CIRRENT™ Cloud ID securely authenticates the device and automatically provisions the device into your Product Cloud. In this section we outline what you need to do to ensure that your CCM-equipped devices effortlessly connect to your Product Cloud.
 
 
 AWS IoT Core
@@ -15,43 +13,41 @@ CCM-equipped devices and Cloud ID supports AWS IoT Core. Cloud ID acts as a solu
 
 2. Provisions the AWS resources for your device on your AWS Product Cloud. This automated provisioning includes the Thing, the AWS cloud representation of your physical device, as well as the device certificate and the necessary device policies.
 
-
-3. Enables your device to connect to your AWS account. The endpoint of your AWS development account is required for the kit to connect to your AWS account.  Cloud ID pulls the AWS endpoint required from your AWS account and automatically pushes it to your device in the field. 
-
+3. Enables your device to connect to your AWS account. The endpoint of your AWS development account is required for the kit to connect to your AWS account.  Cloud ID pulls the AWS endpoint required from your AWS account and automatically pushes it to your device in the field.
 
 In the next section we outline what you need to do configure your AWS Product Cloud to interact with your AIROC™ CCM devices and with CIRRENT™ Cloud ID. Note that you need an AWS account before you can get started.
 
-Triggering the cloud formation template 
+Triggering the CloudFormation template 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template. Executing a CloudFormation template creates a stack in your AWS account. A stack is a collection of AWS resources.
 
 The template for creating AWS resources required for connecting your CCM devices to the AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end cloud communication between your CIRRENT™ Cloud ID account and your AWS Product Cloud. 
 
-Instructions for running the Cloud Formation template are here: 
+Instructions for running the CloudFormation template are here: 
 
 https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html 
 
 Performing an OTA firmware update
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-CCM modules are built with a robust over-the-air (OTA) firmware update capability.  Here you can learn how to run an OTA job in your AWS account to update the firmware on your CCM devices. There are several steps involved in sending OTA updates to your device:
+CCM modules include a robust over-the-air (OTA) firmware update capability.  Here you can learn how to run an OTA job in your AWS account to update the firmware on your CCM devices. There are several steps involved in sending OTA updates to your device:
 
-* Obtain the firmware package from INFINEON - contact our sales team for this package
+* Obtain the firmware package from INFINEON, you need to contact our sales team for this package
 * Create an OTA update role in your AWS account and assign the necessary permissions to the role
 * Create a firmware update job in your Amazon IoT Console
 * On your device, check for an update job and apply it
 
 Assuming you’ve obtained a firmware update package from INFINEON we’ll now outline the steps you need to take to apply a firmware update to a single device. You can, of course, automate some of these steps to roll out updates to a fleet of devices.
 
-Create an OTA update role in your account
-""""""""""""""""""""""""""""""""""""""""""
+Create an OTA update role in your AWS account
+"""""""""""""""""""""""""""""""""""""""""""""
 
 Within AWS IoT you need to configure an AWS role to create and manage OTA update jobs for your devices. The following set of instructions explains the process.
 
 **First, create an OTA service role using these steps**
 
-1. Sign in to AWS identify and access management, by navigating to https://console.aws.amazon.com/iam/ for example
+1. Sign in to AWS identify and access management, by navigating to https://console.aws.amazon.com/iam/ for example.
 
 2. View the navigation pane and choose **Roles**, and then choose **Create role**.
 
@@ -61,7 +57,7 @@ Within AWS IoT you need to configure an AWS role to create and manage OTA update
 
 5. Choose **Next: Permissions**, then **Next: Tags**, and then **Next: Review**.
 
-Now, type in a role name and a description for your OTA update role, and then choose Create role.
+Now, type in a role name and a description for your OTA update role, and then choose **Create role**.
 
 **Next, you need to add OTA update permissions to the service role that you just created**
 
@@ -97,7 +93,7 @@ Using the search box on your AWS IAM console page, enter the name of the role yo
             ]
         }
 
-   In the above code you need to replace your_account_id with your AWS account ID, and your_role_name with the name you chose for the OTA service role.
+   In the above code you need to replace **your_account_id** with your AWS account ID, and **your_role_name** with the name you chose for the OTA service role.
 
 5. Choose **Review policy**.
 
@@ -110,9 +106,9 @@ In addition to IAM permissions you also need to add the needed Amazon S3 permiss
 
 1. In the search box on the IAM console page, enter the name of your role, and then choose it from the list.
 
-2. Choose Add inline policy, and choose the JSON tab.
+2. Choose **Add inline policy**, and choose the **JSON** tab.
 
-3. Copy and paste the following policy document into the box.
+3. Copy and paste the following policy document into the box:
 
    ::
 
@@ -133,7 +129,7 @@ In addition to IAM permissions you also need to add the needed Amazon S3 permiss
             ]
         }
 
-That policy grants the OTA service role you create the permission to read Amazon S3 objects. Ensure that you replace example-bucket with the name of your AWS S3 bucket.
+That policy grants the OTA service role you created the permission to read Amazon S3 objects. Ensure that you replace **example-bucket** with the name of your AWS S3 bucket.
 
 1. Choose **Review policy**.
 
@@ -144,7 +140,7 @@ Create a firmware update job in AWS IoT Console
 
 Now that you’ve created an AWS role that can execute OTA updates, you can proceed to create a firmware update job. The following set of instructions illustrates how you create an update job for an individual device. Once you’ve completed these steps an update job will be logged in AWS IoT, and the device will pick up the update job during its regular polling sequence, or when it next goes online, if it is currently offline.
 
-.. note:: before you get started, ensure you get a signed firmware image from INFINEON. Contact the Infineon sales team for the firmware. The firmware will be provided along with the signature hashing algorithm used and signature encryption algorithm used. This information is required in subsequent steps. 
+.. note:: Before you get started, ensure you get a signed firmware image from INFINEON. Contact the INFINEON sales team for the firmware. The firmware will be provided along with the signature hashing algorithm used and signature encryption algorithm used. This information is required in subsequent steps. 
 
 1. Open the `AWS IoT Console <http://console.aws.amazon.com/iot>`_.
 
@@ -160,20 +156,20 @@ Now that you’ve created an AWS role that can execute OTA updates, you can proc
 
 7. On the form that appears you will need important details supplied with the INFINEON firmware update. Do the following:
 
-   * In the **signature** field, provide the base64-encoded signature for the image
-   * From the **Original hashing algorithm** drop-down list, select the hashing algorithm provided by Infineon.
-   * From the **Original encryption algorithm** drop-down list, select the encryption algorithm provided by Infineon.
-   * In the **Path name of code signing certificate on device** field, enter NA.
+   * In the **Signature** field, provide the base64-encoded signature for the image
+   * From the **Original hashing algorithm** drop-down list, select the hashing algorithm provided by INFINEON.
+   * From the **Original encryption algorithm** drop-down list, select the encryption algorithm provided by INFINEON.
+   * In the **Path name of code signing certificate on device** field, enter **NA**.
 
 8. Select **Upload a new file**. Click **Choose file**, and navigate to the location where you stored the image file that you obtained from INFINEON.
 
-9. Click **Create S3 bucket** to create a new bucket for the newly uploaded image (or click **Browse S3** to select an existing bucket in your account.)
+9. Click **Create S3 bucket** to create a new bucket for the newly uploaded image (or click **Browse S3** to select an existing bucket in your account).
 
-10. Under **Path Name of file on device**, enter NA if the image is not targeted as an executable file within a filesystem.
+10. Under **Path Name of file on device**, enter **NA** if the image is not targeted as an executable file within a filesystem.
 
 11. From the **File type** drop-down list, select the value “101” to signify that it is an IFW56810 CCM firmware update, and not a host firmware update.
 
-12. Choose the OTA update role created above from the **Role** drop-down list under the **IAM role** section, and then click Next.
+12. Choose the OTA update role created above from the **Role** drop-down list under the **IAM role** section, and then click **Next**.
 
 13. Click **Create Job**.
 
@@ -239,7 +235,7 @@ The host application or the user can then apply the firmware by performing the f
 Receive data and commands from the cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We discuss the use of AT communications commands in detail in the section dedicated to AT messaging commands, in the CCM API section. Here we’ll show you how you use the AWS IoT Console to publish messages to topics and to view messages received from the CCM module. 
+We discuss the use of AT communications commands in detail in the CCM API section. Here we’ll show you how you use the AWS IoT Console to publish messages to topics and to view messages received from the CCM module. 
 
 By default, every CCM device subscribes to a topic called “state”. You can test cloud to device communications by publishing content to this topic. To try it out you need to complete some steps in AWS IoT Console, while sending commands to your device using the serial terminal. Do the following on the AWS IoT Console:
 
@@ -270,7 +266,7 @@ If you want to publish data on a non-default topic you can make use of the follo
 Subscribe to a non-default topic
 """""""""""""""""""""""""""""""
 
-IF you want to subscribe to a non-default topic, you first need to enter a set of commands on your CCM module using the serial terminal:
+If you want to subscribe to a non-default topic, you first need to enter a set of commands on your CCM module:
 
 ::
 
@@ -279,7 +275,7 @@ IF you want to subscribe to a non-default topic, you first need to enter a set o
 
 Next, you need to perform a sequence of actions in AWS to publish to a topic. Do the following on the AWS IoT Console:
 
-* Select the **MQTT client**, and then select Publish to a topic.
+* Select the **MQTT client**, and then select **Publish to a topic**.
 * Type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message.
 * Click **Publish**.
 
