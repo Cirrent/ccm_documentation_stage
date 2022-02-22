@@ -12,10 +12,11 @@ Key to the security capabilities of a CCM module is a unique X.509 device certif
 
 The process also automatically configures Product Cloud requirements, e.g. configuring a “Thing” in AWS IoT Core. The benefits of using a CCM module during product development and roll-out includes:
 
-* Building on INFINEON’s long history with wireless connectivity, including extensive experience acquired through Cypress Semiconductor. That includes access to solutions with a BLE-based or Soft AP onboarding option, which smooths out the process of joining Wi-Fi at customer sites. It removes an element of friction in getting your IoT devices onboarded and unblocks the ability to earn revenue.
+* | Building on INFINEON’s long history with wireless connectivity, including extensive experience acquired through Cypress Semiconductor. That includes access to solutions with a BLE-based or Soft AP onboarding option, which smooths out the process of joining Wi-Fi at customer sites. It removes an element of friction in getting your IoT devices onboarded and unblocks the ability to earn revenue.
+  |
 
-* Developers can develop products that use simple AT commands such as “CONNECT” and “SEND” to connect and stream data to their Product Cloud and do so within hours, not weeks.
-
+* | Developers can develop products that use simple AT commands such as “CONNECT” and “SEND” to connect and stream data to their Product Cloud and do so within hours, not weeks.
+  |
 
 * | Original equipment manufacturers (OEMs) can easily transform  existing products into IoT devices without the need for a deep understanding of communications and security implementation requirements, and without merging large amounts of code.
   |
