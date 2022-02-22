@@ -43,7 +43,8 @@ Every CCM module shipped with the CCM developer kit also contains a unique devic
 
 Binding your CCM developer kit to a Cloud ID account is simple. The unique device ID is embedded in the QR code printed on your developer kit module. Simply scan the QR code located on the module, or use your browser and retype the URL printed below the QR code. 
 
-ABCDEFGHIJKL - Tahir insert image CCM001 here ABCDEFGHJKLAAAAAAAAAAAAAAAA
+.. image:: img/gsd-12.png
+       :align: center
 
 The QR code will redirect you to the INFINEON website. If  if you already have a CIRRENT™ Cloud ID account, you can simply select the Cloud ID account you want to bind your developer kit to. Alternatively, click Create Account to create a new CIRRENT™ account.
 
@@ -64,7 +65,8 @@ The PC can be used as a host for evaluation. AT commands can be sent through a s
 
 Before you connect the CCM module to your PC ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12 of header J60 are closed as shown in the figure below. 
 
-ABCDEFGHIJKL*** Tahir, kindly insert images/gsd-2.png here ****
+.. image:: img/gsd-2.png
+       :align: center
 
 Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to your PC using either the Type-C connector or Type-A male to Type-C female cable.
 
