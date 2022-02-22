@@ -17,17 +17,17 @@ The process also automatically configures Product Cloud requirements, e.g. confi
 * Developers can develop products that use simple AT commands such as “CONNECT” and “SEND” to connect and stream data to their Product Cloud and do so within hours, not weeks.
 
 
-* Original equipment manufacturers (OEMs) can easily transform  existing products into IoT devices without the need for a deep understanding of communications and security implementation requirements, and without merging large amounts of code.
+* | Original equipment manufacturers (OEMs) can easily transform  existing products into IoT devices without the need for a deep understanding of communications and security implementation requirements, and without merging large amounts of code.
+  |
 
+* | Software that is upgradable over-the-air (OTA). Upgrades of CCM modules are possible with IFX-signed code, including support for host OTA upgrades to ensure security and future proofing.
+  |
 
-* Software that is upgradable over-the-air (OTA). Upgrades of CCM modules are possible with IFX-signed code, including support for host OTA upgrades to ensure security and future proofing.
+* | Support for CIRRENT™ Cloud ID, which ensures that each device has a unique device identity and is assigned to a specific Product Company. This device identity is stored in a secure hardware element to ensure a fail-proof mechanism.
+  |
 
-
-* Support for CIRRENT™ Cloud ID, which ensures that each device has a unique device identity and is assigned to a specific Product Company. This device identity is stored in a secure hardware element to ensure a fail-proof mechanism.
-
-
-* Maintaining fleet security and health at scale by providing an out-of-the-box solution that securely transmits data to and from the cloud via Wi-Fi, including online device monitoring.
-
+* | Maintaining fleet security and health at scale by providing an out-of-the-box solution that securely transmits data to and from the cloud via Wi-Fi, including online device monitoring.
+  |
 
 Hardware Description
 *********************
