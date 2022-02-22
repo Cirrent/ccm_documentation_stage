@@ -247,8 +247,6 @@ Use the MQTT client in the AWS IoT Console to monitor the communication between 
 
 3. In Subscribe to a topic panel, enter #, and then click Subscribe. 
 
-Skip Section 4.6.1 if you used CIRRENT Wi-Fi onboarding app to connect the kit to Wi-Fi. 
-
 Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core. You will receive “OK 1 CONNECTED” in the serial terminal once the device is connected to the AWS IoT Core.  
 
 Connect to the AWS IoT Core
@@ -489,7 +487,7 @@ Do the following if a new job is available for your device.
          AT+CLOUD_SYNC
 
 
-Device registration with CloudID service failed 
+Device registration with Cloud ID service failed 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This message appears after connecting to Wi-Fi. The cause depends on the method of connection used.
