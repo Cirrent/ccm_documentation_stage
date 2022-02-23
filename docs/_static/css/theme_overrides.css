@@ -1721,17 +1721,16 @@ img.community-icon
 
 .left-nav-icons{
 	display: inline-block;
-    margin: 2% 3%;
+    margin: 4% 3% 2% 3%;
     font-size: 90% !important;
 }
 
-.left-nav-icons>hr{
+.wy-side-scroll>hr{
 	border-top: 2px solid #dad6d6 !important;
-    width: 100%;
-    margin: 0%;
+	width: 100%;
+	margin: 0%;
 	padding-bottom: 5%;
 }
-
 
 .left-nav-icons a {
     color: #404040 !important;
