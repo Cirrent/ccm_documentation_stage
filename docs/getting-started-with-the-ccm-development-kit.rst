@@ -16,7 +16,7 @@ INFINEON offers a CCM development kit containing a single AIROC™ CCM module wh
 
 This getting started section walks you through: 
 
-1. :ref:`Steps required to bind your CCM developer kit to an Infineon Account for access to CIRRENT™ Cloud ID <Getting the CCM Bound to your Infineon Accounts>`
+1. :ref:`Steps required to bind your CCM developer kit to an INFINEON Account for access to CIRRENT™ Cloud ID <Getting the CCM Bound to your Infineon Accounts>`
 
 2. :ref:`Steps to get your CCM developer kit online <Getting the CCM Online>`
 
@@ -48,7 +48,7 @@ Binding your CCM developer kit to a Cloud ID account is simple. The unique devic
 
 The QR code will redirect you to the INFINEON website. If  if you already have a CIRRENT™ Cloud ID account, you can simply select the Cloud ID account you want to bind your developer kit to. Alternatively, click Create Account to create a new CIRRENT™ account.
 
-.. note:: You can use the CCM development kit independent of an Infineon Account and independent of CIRRENT™ services by pulling the Device Certificate from your device directly using an AT command, and manually provisioning your device in your cloud using that certificate.
+.. note:: You can use the CCM development kit independent of an INFINEON Account and independent of CIRRENT™ services by pulling the Device Certificate from your device directly using an AT command, and manually provisioning your device in your cloud using that certificate.
 
 You can `learn more about CIRRENT™ accounts here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`_ , and you can `learn more about Cloud ID here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_ .  
 
@@ -153,7 +153,7 @@ You’ve now bound your CCM developer kit to a CIRRENT™ Cloud ID account, and 
 
 1. Log in to your CIRRENT™  account at https://console.cirrent.com/ .
 
-2. On the panel on the left of the screen, select Device Management and Cloud ID, and then select the Binding tab. Alternatively, click this link to go directly to that tab. 
+2. On the panel on the left of the screen, select **Device Management** and then **Cloud ID**, and then select the **Binding tab**.
 
 3. Choose your account number as follows: 
    
@@ -173,7 +173,7 @@ Getting the CCM Connected to Your AWS Account
 How the CCM module interacts with AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Infineon AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
+The INFINEON AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
 
 Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ Console, and then creating a Thing in your AWS account, using the certificate you just downloaded.
 
@@ -201,11 +201,7 @@ You’ve already confirmed that the CCM kit successfully binded to your Cloud ID
 
 1. Execute the CloudFormation template
 
-   CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. 
-   
-The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end device communication between your CIRRENT™ account and your AWS account. 
-
-You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the Infineon-provided CloudFormation template can be found here. 
+   CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the INFINEON-provided CloudFormation template can be found here. 
 
 2. Create a Product Cloud API
 
@@ -215,7 +211,7 @@ You need to execute the CloudFormation template only once per AWS account in a r
 
    When new devices are bound to your account, they will be automatically configured in your AWS account, but for this first device you will need to initiate the provisioning manually.  To provision follow these steps: 
 
-   1. In the CIRRENT™ Console, navigate to Device Management and Cloud ID, click on the Binding tab, or following this link.
+   1. In the CIRRENT™ Console, navigate to **Device Management** and then **Cloud ID**, click on the **Binding** tab:
 
       .. image:: img/gsd-8.png
 	    :align: center
@@ -229,9 +225,9 @@ You need to execute the CloudFormation template only once per AWS account in a r
 
    4. Choose the Product Cloud API created in the previous step.
 
-   5. Click Save.
+   5. Click **Save**.
 
-   6. Click the Provision now button 
+   6. Click the **Provision now** button 
 
       .. image:: img/p-btn.png
 	    :align: center
@@ -245,9 +241,9 @@ Use the MQTT client in the AWS IoT Console to monitor the communication between 
 
 1. Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
 
-2. In the navigation pane, select Test and then click MQTT Test Client.
+2. In the navigation pane, select **Test** and then click **MQTT Test Client**.
 
-3. In Subscribe to a topic panel, enter #, and then click Subscribe. 
+3. In Subscribe to a topic panel, enter **#**, and then click **Subscribe**. 
 
 Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core. You will receive “OK 1 CONNECTED” in the serial terminal once the device is connected to the AWS IoT Core.  
 
