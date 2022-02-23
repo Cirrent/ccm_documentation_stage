@@ -35,7 +35,7 @@ Hardware Description
 
 The AIROC™ IFW56810 module, also known as the AIROC™ Cloud Connectivity Manager (CCM) module, contains an integrated antenna and provides everything needed to connect a host processor to the cloud. Pre-certified for FCC, CE, Canada, Japan, Taiwan, Australia, and New Zealand, this module requires no extra RF equipment or clocking circuitry.
 
-With just five host interface signals plus power and ground, connection to a host using an industry-standard UART is straightforward. IEEE 802.11n single band 2.4 GHz Wi-Fi performance is based on the industry’s most widely deployed IoT technology from Infineon®. Bluetooth® LE onboarding to Wi-Fi networks is also supported.
+With just five host interface signals plus power and ground, connection to a host using an industry-standard UART is straightforward. IEEE 802.11n single band 2.4 GHz Wi-Fi performance is based on the industry’s most widely deployed IoT technology from INFINEON®. Bluetooth® LE onboarding to Wi-Fi networks is also supported.
  
 .. image:: img/hw-1.png
 	    :align: center
