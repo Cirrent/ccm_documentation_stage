@@ -1708,8 +1708,9 @@ footer a  {
     content: ""
 }
 
+
 img.home-icon {
-    width: 16.5% !important;
+    width: 15% !important;
     margin-top: -2%;
 }
 
@@ -1725,7 +1726,17 @@ img.community-icon
 }
 
 .left-nav-icons>hr{
-	border-top: 2px solid #646161 !important;
+	border-top: 2px solid #bab8b8 !important;
     width: 100%;
     margin: 0%;
+	padding-bottom: 5%;
+}
+
+
+.left-nav-icons a {
+    color: #404040 !important;
+}
+
+.left-nav-icons a:hover {
+  color: #AB337A !important;
 }
