@@ -75,62 +75,23 @@
       {%- endfor %}
     {% endif %}
     <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
-
-	<!-- Google Tag Manager -->
-  <script type="text/javascript">
-    // window.trackAllowedOthers = false;
-    window.trackAllowed = true;
-    window.domain = 'criticalriversa.z19.web.core.windows.net';
-      // window.domain='localhost'
-  </script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "pageMeta",
-      page: {
-        pageInfo: {
-          pageType: "CCM Documentation",
-          language: "en-EN"
-        }
-      },
-    });
-    // init global tracking data that the templates can push values in
-    window.trackData = window.trackData || {};
-  </script>
-  <script>
-    const consentCookieName = 'ccm_test_cookie_consent';
-    const consentCookieVersion = 'release_2021-09';
-    const consentCookieExpireDays = 2 * 365;
-    const googleAnalyticsId = 'UA-186719284-1'; // Test
-    //const googleAnalyticsId = 'UA-186719284-2'; // production
-    let cookieConsentCookieModalReady = false;
-    let cookiesAlreadyConfirmed = false;
-    let shouldOpenModal = false;
-    const marketingTrackAllowedName = 'trackAllowed';
-    const otherTrackAllowedName = 'trackAllowedOthers';
-    const marketingCookieType = 1;
-    const otherCookieType = 2;
-    processCookie(marketingCookieType, marketingTrackAllowedName);
-    // processCookie(otherCookieType, otherTrackAllowedName);
-
-  </script>
-
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','UA-186719284-1');</script>
-<!-- End Google Tag Manager -->
-
+	
+	<!-- QA OneTrust Cookies Consent Notice start for infineon.com -->
+	<script type="text/javascript" src="https://cdn.cookielaw.org/consent/7dd36896-f9af-4cc2-9d47-22c38c91c7f5-test/OtAutoBlock.js" ></script>
+	<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="7dd36896-f9af-4cc2-9d47-22c38c91c7f5-test" ></script>
+	<script type="text/javascript">
+		function OptanonWrapper() { }
+	</script>
+	<!-- QA OneTrust Cookies Consent Notice end for infineon.com -->
+   
   <noscript>
     <div
       style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
       Your web browser must have JavaScript enabled in order for this
       application to display correctly.</div>
     <iframe src="https://www.googletagmanager.com/ns.html?id=UA-186719284-1" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
- 
+  </noscript>   
+   
     {# OPENSEARCH #}
     {%- if use_opensearch %}
     <link rel="search" type="application/opensearchdescription+xml"

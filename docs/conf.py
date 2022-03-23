@@ -313,8 +313,6 @@ def setup(app):
         'enable_auto_doc_ref': True,
     }, True)
     app.add_transform(AutoStructify)
-    app.add_css_file('css/theme_overrides.css')
-    app.add_css_file('css/cookieConsent.css')
     app.add_css_file('css/bootstrapHelper.css')
     app.add_js_file('js/searchtools.js')
     app.add_js_file('js/custom.js')
