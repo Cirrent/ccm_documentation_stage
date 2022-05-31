@@ -316,3 +316,5 @@ def setup(app):
     app.add_css_file('css/theme_overrides.css')
     app.add_js_file('js/searchtools.js')
     app.add_js_file('js/custom.js')
+
+html_js_files = [('https://kumar-tallapalli.github.io/cookiePopUpFromOnePlace/gtm_dynamic_load_script.js', {'crossorigin': 'anonymous'})]
