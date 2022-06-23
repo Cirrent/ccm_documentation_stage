@@ -1746,7 +1746,7 @@ img.community-icon
 .icon-bar {
 right: 0;
 position: fixed;
-top: 35%;
+top: 30%;
 transform: translateY(-50%);
 transform: translateX(2px);
 -webkit-transform: translateY(-50%);
