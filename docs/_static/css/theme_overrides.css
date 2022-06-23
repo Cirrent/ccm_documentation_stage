@@ -1753,10 +1753,12 @@ transform: translateY(-50%);
 box-sizing: border-box !important;
 display: block;
 direction: ltr !important;
-  
+z-index: 99;
 }
 
 .icon-bar .sideFloatBtn {
+box-shadow: 0 0 35px 2pxrgba(0,0,0,0.24);
+border-radius: 3px 0 0 3px;
 font-size: 13px;
 font-weight: bold;
 position: relative;
