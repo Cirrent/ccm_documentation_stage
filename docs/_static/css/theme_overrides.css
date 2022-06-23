@@ -1739,3 +1739,54 @@ img.community-icon
 .left-nav-icons a:hover {
   color: #AB337A !important;
 }
+
+
+
+
+.icon-bar {
+right: 0;
+position: fixed;
+top: 50%;
+transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+box-sizing: border-box !important;
+display: block;
+direction: ltr !important;
+  
+}
+
+.icon-bar .sideFloatBtn {
+font-size: 13px;
+font-weight: bold;
+position: relative;
+border: none;
+outline: none;
+padding: 12px 14px 12px 12px;
+cursor: pointer;
+white-space: nowrap;
+background-color: #f4364c !important;
+transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+opacity: 0.96;
+width: 40px;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.icon-bar a{
+text-decoration: none !important;
+}
+
+.btnText{
+overflow-wrap: normal !important;
+word-break: normal !important;
+word-wrap: normal !important;
+white-space: nowrap !important;
+cursor: pointer;
+-ms-writing-mode: tb-rl;
+-webkit-writing-mode: vertical-lr;
+writing-mode: vertical-lr;
+transform: rotate(180deg);
+color: #ffffff !important;
+}
