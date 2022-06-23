@@ -1746,8 +1746,9 @@ img.community-icon
 .icon-bar {
 right: 0;
 position: fixed;
-top: 50%;
+top: 35%;
 transform: translateY(-50%);
+transform: translateX(2px);
 -webkit-transform: translateY(-50%);
 -ms-transform: translateY(-50%);
 box-sizing: border-box !important;
@@ -1755,9 +1756,13 @@ display: block;
 direction: ltr !important;
 z-index: 99;
 }
+.icon-bar .sideFloatBtn:hover {
+	box-shadow: 0 0 35px 2pxrgba(0,0,0,0.24);
+	transform: translateX(0px);
+	opacity: 
+}
 
 .icon-bar .sideFloatBtn {
-box-shadow: 0 0 35px 2pxrgba(0,0,0,0.24);
 border-radius: 3px 0 0 3px;
 font-size: 13px;
 font-weight: bold;
