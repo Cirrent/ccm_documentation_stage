@@ -180,7 +180,7 @@ Getting the CCM Connected to Your AWS Account
 How the CCM module interacts with AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The INFINEON AIROC™ CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
+The INFINEON AIROC™ IFW56810 CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
 
 Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ Console, and then creating a Thing in your AWS account, using the certificate you just downloaded.
 
@@ -239,7 +239,7 @@ You’ve already confirmed that the CCM kit successfully binded to your Cloud ID
       .. image:: img/p-btn.png
 	    :align: center
 
-Provisioning via the Product Cloud API performs two functions. First, it creates the Thing for your device in the AWS Console and attaches the related policy and device certificate. It also pulls the AWS endpoint required by the device to connect to your AWS account and pushes it to the device so that the device connects to the AWS Cloud automatically. 
+Provisioning via the Product Cloud API performs two functions. First, it creates the Thing for your device in the AWS Console and attaches the related policy and device certificate. It also pulls the AWS endpoint required by the device to connect to your AWS account and pushes it to the device so that the device connects to the AWS Cloud automatically. Retrieving the AWS endpoint from the CIRRENT Cloud is a one time step. The device connects to the  endpoint immediately during subsequent connection attempts. 
 
 Connect and interact with the AWS Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -320,9 +320,7 @@ Setting up a serial terminal on your PC
 .. note:: The following instructions are only for a Windows PC. 
 
 
-The IFW956810 CCM evaluation kit should be recognized by your PC as soon as you connect it. If the device is not recognized, you will need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this `link <https://ftdichip.com/drivers/vcp-drivers/>`_. For more information, see the Troubleshooting section.
-
-If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this `link <https://ftdichip.com/drivers/vcp-drivers/>`_. For more information, see the Troubleshooting section. 
+The IFW956810 CCM evaluation kit should be recognized by your PC as soon as you connect it. If the device is not recognized, see the troubleshooting section. 
 
 Determine the COM port number
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
