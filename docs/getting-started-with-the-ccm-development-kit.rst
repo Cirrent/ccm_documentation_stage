@@ -368,6 +368,14 @@ Choosing a COM port where two ports were enumerated when the kit is connected
 
 The IFW956810 CCM evaluation kit has a FT2232H chip capable of supporting USB to dual-channel UART (USB serial converter A and USB serial converter B). Only the second of the two, USB serial converter B, is configured to enable USB-to-UART conversion. Therefore, use the higher-number COM port among the enumerated COM ports to communicate with the kit. 
 
+
+Device is not recognised
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this link.
+
+
+
 Diagnosing errors when commands are entered
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
