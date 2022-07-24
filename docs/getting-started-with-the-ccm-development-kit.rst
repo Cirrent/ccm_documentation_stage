@@ -117,13 +117,13 @@ To activate the Wi-Fi onboarding process on the CCM module type the following co
 
 ::
 
-AT+CONFMODE
+	AT+CONFMODE
 
 You should receive this response from the module:
 
 ::
 
-OK CONFMODE Enabled
+	OK CONFMODE Enabled
 
 Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
 Follow the onscreen instructions and enter your Wi-Fi router’s SSID and password.
