@@ -35,9 +35,7 @@ The IFW956810 CCM evaluation kit consists of an IFW56810 single-band Wi-Fi 4 Clo
 Bind your CCM developer kit to your CIRRENT™ Cloud ID account
 *************************************************************
 
-CIRRENT™ Cloud ID provides the secure cloud-based device authentication that helps you to give your products secure and effortless access to your Product Cloud. This process works thanks to a unique device certificate embedded into every CCM module. These device certificates are pre-populated in CIRRENT™ Cloud ID.
-
-Every CCM module shipped with the CCM developer kit also contains a unique device certificate. To get started with your developer kit you first need to bind your CCM developer kit to your CIRRENT™ Cloud ID account, which confirms ownership of the device.
+CIRRENT™ Cloud ID provides the secure cloud-based device authentication that helps you to give your products secure and effortless access to your Product Cloud. This process works based on a unique device certificate embedded into every CCM module. These device certificates are pre-populated in CIRRENT™ Cloud ID. To get started with your developer kit you first need to bind your CCM developer kit to your CIRRENT™ Cloud ID account, which confirms ownership of the device.
 
 .. note:: CIRRENT™ Cloud ID is an INFINEON service and you access Cloud ID using your INFINEON account. If you do not already have an INFINEON account, you need to register one first. Follow the instructions here.
 
@@ -63,7 +61,7 @@ Connect the CCM module to your PC
 
 The PC can be used as a host for evaluation. AT commands can be sent through a serial terminal on the PC to the IFW956810 CCM kit. 
 
-Before you connect the CCM module to your PC ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12 of header J60 are closed as shown in the figure below. 
+Before you connect the CCM module to your PC ensure that pin 3 to pin 4, pin 5 to pin 6, pin 9 to pin 10 and pin 11 to pin 12 of header J60 are closed as shown in the figure below. J61 must be connected in position 1 and 2.
 
 .. image:: img/gsd-2.png
        :align: center
@@ -115,24 +113,20 @@ Android                         IOS
 .. image:: img/gsd-4.png        .. image:: img/gsd-5.png     
 =============================   =============================
 
+To activate the Wi-Fi onboarding process on the CCM module type the following command in the serial terminal on your PC: 
 
-1. To activate the Wi-Fi onboarding process on the CCM module type the following command in the serial terminal on your PC: 
+::
 
-   ::
+AT+CONFMODE
 
-	  AT+CONFMODE
+You should receive this response from the module:
 
-   You should receive this response from the module:
+::
 
-   :: 
+OK CONFMODE Enabled
 
-      OK CONFMODE Enabled
-
-2. Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in.
-
-3. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
-
-4. Follow the onscreen instructions and enter your Wi-Fi router’s SSID and password.
+Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
+Follow the onscreen instructions and enter your Wi-Fi router’s SSID and password.
 
 When you complete these steps you should see a ??? prompt which means that your CCM module has successfully connected to your Wi-Fi network. 
 
