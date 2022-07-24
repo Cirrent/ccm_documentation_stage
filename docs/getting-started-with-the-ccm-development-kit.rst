@@ -128,7 +128,20 @@ You should receive this response from the module:
 Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
 Follow the onscreen instructions and enter your Wi-Fi router’s SSID and password.
 
-When you complete these steps you should see a ??? prompt which means that your CCM module has successfully connected to your Wi-Fi network. 
+When you complete these steps type the following in the serial terminal to ensure verify your connection to Wi-Fi:
+
+::
+
+	AT+CONF DIAG PING 8.8.8.8.
+	
+You should see a you should see a response:
+
+::
+
+	OK, Ping received in x ms
+
+That means that your CCM module has successfully connected to your Wi-Fi network.
+
 
 If you prefer to configure Wi-Fi networking using AT commands you can instead type the following command in sequence into your terminal application:
 
