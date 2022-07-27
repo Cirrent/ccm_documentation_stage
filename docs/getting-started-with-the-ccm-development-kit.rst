@@ -434,7 +434,7 @@ Next, follow the steps in the “Get Connected with AWS” section to enter new 
 Determine the device connection status to AWS IoT Core
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-These steps will help you to verify whether the device is waiting for the endpoint from the CIRRENT™ Cloud after the device is connected to Wi-Fi  To complete the following you needed to onboard the device using the CIRRENT™ Cloud flow, and ensure that you received an “OK 1 CONNECTED” message. 
+These steps will help you to verify whether the device is waiting for the endpoint from the CIRRENT™ Cloud after the device is connected to Wi-Fi  To complete the following you needed to onboard the device using the CIRRENT™ Cloud flow. Follow these steps if you do not receive an "OK 1 CONNECTED" response from the device. 
 
 Check if a Thing is present in the AWS IoT Console for your device
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -491,24 +491,28 @@ Do the following if a new job is available for your device.
 
      If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account
 
-     Execute the following command in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
+     Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
 
      ::
 
          AT+CLOUD_SYNC
+         AT+DISCONNECT
+         AT+CONNECT
+
 
 
 Device registration with Cloud ID service failed 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This message appears after connecting to Wi-Fi. The cause depends on the method of connection used.
+This message appears after connecting to Wi-Fi. The cause depends on the method of connection used. There is an error in the provisioning step. Do the following:
 
-There is an error in the provisioning step. Do the following:
-
-1. Redo Step  Provision and prepare to connect the kit to your AWS account
+1. Redo Step Provision and prepare to connect the kit to your AWS account
 
 2. Execute the following command in the serial terminal to pull the endpoint to the device after connecting to Wi-Fi. 
 
    ::
 
       AT+CLOUD_SYNC
+      AT+DISCONNECT
+      AT+CONNECT
+
