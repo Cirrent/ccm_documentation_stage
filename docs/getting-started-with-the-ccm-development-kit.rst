@@ -199,6 +199,11 @@ The CIRRENT™ Cloud ID workflow we describe above demonstrates the ease of secu
 Get connected to AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Here is some text
+
+This is the extra section
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 You need to follow a few steps to ensure you’re able to interact with your AWS developer account while using the CIRRENT™ Cloud ID flow for device onboarding. The following diagram illustrates the process:
 
 .. image:: img/gsd-7.png
