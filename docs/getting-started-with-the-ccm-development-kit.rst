@@ -289,6 +289,36 @@ Create a Product Cloud API
 
 A Product Cloud API is a software interface that allows the CIRRENT™ Cloud to communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details. That includes the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API configuration must be executed once per CIRRENT™ account. The same API account can be used to provision production CCM devices from your CIRRENT™ account to your AWS account. Instructions for configuring the Product Cloud API are here.  
 
+
+To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. 
+
+.. image:: ../img/pca-6.png
+        :align: center
+        :alt: Dashboard 2
+
+You’ll be presented with a dialog box where you need to complete your Product Cloud API details.
+
+Configuring Amazon Web Services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Cloud ID has specific steps for Cloud ID users that rely on Amazon Web Services for their Product Cloud. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
+
+.. image:: ../img/pca-7.png
+        :align: center
+        :alt: Dashboard 2
+
+Next, configure the fields as follows:
+
+* **Account ID.** This is your Amazon Web Services account identifier.
+* **API Gateway ID.** Here, enter the API gateway ID you have set up.
+* **Region.** Select the AWS region your AWS service operates in.
+* **Stage.** Provide the name of the stage in your deployment that you want to use for this API link.
+
+You have now added your AWS-based Product Cloud to CIRRENT™ Cloud ID and can now provision devices bound to your Cloud ID account directly into your Product Cloud.
+
+
+
+
 Provision and Prepare
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
