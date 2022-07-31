@@ -226,9 +226,9 @@ You’ve already confirmed that the CCM kit successfully binded to your Cloud ID
 Execute Cloud Formation Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the INFINEON-provided CloudFormation template can be found here. 
+CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. 
 
-
+The stack created by this template provides some outputs that can be used to establish a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the INFINEON-provided CloudFormation template can be found here. 
 
 CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template. Executing a CloudFormation template creates a stack in your AWS account. A stack is a collection of AWS resources.
 
@@ -287,21 +287,9 @@ Create a Product Cloud API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-A Product Cloud API is a software interface that allows the CIRRENT™ Cloud to communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details. That includes the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API configuration must be executed once per CIRRENT™ account. The same API account can be used to provision production CCM devices from your CIRRENT™ account to your AWS account. Instructions for configuring the Product Cloud API are here.  
+Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details. That includes the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API configuration must be executed once per CIRRENT™ account. The same API account can be used to provision production CCM devices from your CIRRENT™ account to your AWS account. Instructions for configuring the Product Cloud API are here.  
 
-
-To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. 
-
-.. image:: ../img/pca-6.png
-        :align: center
-        :alt: Dashboard 2
-
-You’ll be presented with a dialog box where you need to complete your Product Cloud API details.
-
-Configuring Amazon Web Services
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Cloud ID has specific steps for Cloud ID users that rely on Amazon Web Services for their Product Cloud. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
+To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
 
 .. image:: ../img/pca-7.png
         :align: center
@@ -315,8 +303,6 @@ Next, configure the fields as follows:
 * **Stage.** Provide the name of the stage in your deployment that you want to use for this API link.
 
 You have now added your AWS-based Product Cloud to CIRRENT™ Cloud ID and can now provision devices bound to your Cloud ID account directly into your Product Cloud.
-
-
 
 
 Provision and Prepare
@@ -351,7 +337,7 @@ Provisioning via the Product Cloud API performs two functions. First, it creates
 Connect and interact with the AWS Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
+Now that you've linked your AWS account with Cloud ID you can use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
 
 1. Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
 
