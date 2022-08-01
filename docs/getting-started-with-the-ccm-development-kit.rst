@@ -402,7 +402,7 @@ We strongly recommend that you connect your AIROC™ IFW56810 to your AWS cloud 
 
 **Configure the AWS Thing**
 
-Open the AWS IoT Console. From the left pane, select **Manage**, and then select ****Things**. **Click ****Create Things**. **On the** **Create things**** page,** select **Create Single **Thing****, and then click **Next**. In the terminal application, type
+Open the AWS IoT Console. From the left pane, select **Manage**, and then select **Things**. Click **Create Things**. On the **Create things** page, select **Create Single Thing**, and then click **Next**. In the terminal application, type
 the following command: 
 
    ::
