@@ -196,6 +196,10 @@ At a high level, the CIRRENT™ Cloud performs the following functions to connec
 
 The CIRRENT™ Cloud ID workflow we describe above demonstrates the ease of securely connecting a product to the Product Cloud. Because the CIRRENT™ Cloud is preloaded with the device certificate of all AIROC™ CCM modules you no longer need to manage device certificates on the production line. Instead, device certificates are managed in CIRRENT™ Cloud ID.
 
+
+.. note:: If you are unable to complete the process of connected your AWS account to Cloud ID using the steps described below you connect your device directly to your AWS instance using the AWS flow, described in the last section of this guide.
+
+
 Get connected to AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -226,16 +230,9 @@ You’ve already confirmed that the CCM kit successfully binded to your Cloud ID
 Execute Cloud Formation Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template (JSON or YAML file). Executing a CloudFormation template creates a stack in the AWS CloudFormation service. A stack is a collection of AWS resources. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. 
+Executing a CloudFormation template creates a stack in the AWS CloudFormation service. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. This stack establishes a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. 
 
-The stack created by this template provides some outputs that can be used to establish a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. The same stack can be reused to provision multiple kits to the AWS account in that region. Instructions for the INFINEON-provided CloudFormation template can be found here. 
-
-CloudFormation is an AWS service that helps in setting up the required resources in AWS through a template. Executing a CloudFormation template creates a stack in your AWS account. A stack is a collection of AWS resources.
-
-A sample template for creating AWS resources required for connecting your CCM devices to the AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. The stack created by this template provides some outputs that can be used to establish cloud to cloud communication between your CIRRENT™ Cloud ID account and your AWS Product Cloud. 
-
-You may want to review the CloudFormation Best Practices and Security section in the AWS documentation. You need to execute the CloudFormation template only once per AWS account in a region. Do the following to execute the INFINEON-provided CloudFormation template:
-
+The same stack can be reused to provision multiple kits to the AWS account in that region. You need to execute the CloudFormation template only once per AWS account in a region. Do the following to execute the INFINEON-provided CloudFormation template:
 
 1. Click on the following link to execute the CloudFormation template. By default, the link uses the **us-west-1** region: 
 
@@ -286,10 +283,7 @@ You may want to review the CloudFormation Best Practices and Security section in
 Create a Product Cloud API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To achieve this, the Product Cloud API requires certain AWS developer account details. That includes the AWS Gateway ID obtained as part of the AWS CloudFormation template output. This API configuration must be executed once per CIRRENT™ account. The same API account can be used to provision production CCM devices from your CIRRENT™ account to your AWS account. Instructions for configuring the Product Cloud API are here.  
-
-To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
+Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
 
 .. image:: ../img/pca-7.png
         :align: center
@@ -403,6 +397,45 @@ module:
 
 AWS Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We strongly recommend that you connect your AIROC™ IFW56810 to your AWS cloud using Cloud ID as described above as Cloud ID is central to the functionality of the AIROC™ IFW56810. However, we provide the following instructions as an alternative way to connect the AIROC™ IFW56810.
+
+**Configure the AWS Thing**
+
+Open the AWS IoT Console. From the left pane, select **Manage**, and then select ****Things**. **Click ****Create Things**. **On the** **Create things**** page,** select **Create Single **Thing****, and then click **Next**. In the terminal application, type
+the following command: 
+
+   ::
+
+		AT+CONF? ThingName
+
+
+Copy the returned string (a sequence of alphanumeric characters) from the terminal. On the console, on the **Specify Thing** properties page, paste the copied string from the terminal into the **Thing Name** field under **Thing Properties**. Retain the ThingName as you will need it in the next step. Leave other fields at their default values, and then click **Next**. 
+
+**Configure device certificate**
+
+First, you need to prepare the device certificate. In the terminal application, type the following command: 
+
+   ::
+
+		AT+CONF? Certificate 
+
+
+You will receive the device certificate in PEM format as part of the response. Copy the returned string (a longer sequence of alphanumeric symbols), and save it into a text file on your host machine as “ThingName.cert.pem”. Replace “ThingName” with the name of the Thing obtained after you executed AT+CONF? ThingName in the previous section.
+
+Next, you need to attach the device certificate to the Thing. On the **Configure device certificate** page in the AWS Console, select **Use my certificate**, and then choose **CA is not registered with AWS IoT**. Under Certificate, select **Choose File** and find ThingName.cert.pem file you created, replacing “ThingName” with the name of the Thing obtained in the previous section. Under **Certificate Status**, select **Active**. Click **Next**. 
+
+You now need to attach policies to the certificate. Click **Create** to create a policy. This opens a new tab. Enter the policy name (e.g., “IoTDevPolicy”) and click **Advanced** mode. Copy the following section into the console:
+
+   ::
+
+		{ "Version": "2012-10-17", "Statement": [ { "Effect": "Allow", "Action": "*", "Resource": "*" } ] }
+
+
+Click **Create**.
+
+Note: The examples in this document are intended only for development environments. All devices in your end product must have credentials with privileges that authorize only intended actions on specific resources. The specific permission policies can vary for your use case. Identify the permission policies that best meet your business and security requirements.
+
 
 
 Further exploration
