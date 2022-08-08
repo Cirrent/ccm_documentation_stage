@@ -8,7 +8,7 @@ AT command usage
 
 AIROC™ CCM modules support the execution of AT commands through a USB serial device COM port or over the air. Every command must be sent in this format:
 
-.. code-block:: shell
+.. code-block:: none
 
 	AT+{command}[#][?]{separator}[parameter]{eol}
 
