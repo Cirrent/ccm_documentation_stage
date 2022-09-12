@@ -285,7 +285,7 @@ Create a Product Cloud API
 
 Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
 
-.. image:: ../img/pca-7.png
+.. image:: img/pca-7.png
         :align: center
         :alt: Dashboard 2
 
