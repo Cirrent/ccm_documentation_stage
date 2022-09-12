@@ -242,7 +242,7 @@ The same stack can be reused to provision multiple kits to the AWS account in th
 
 2. You should now be on the **Create Stack** page in the AWS CloudFormation service, and the Infineon CloudFormation template should be preloaded. Click **Next**.
    
-   .. image:: ../img/pca-2.png
+   .. image:: img/pca-2.png
         :align: center
         :alt: Dashboard 2
 
@@ -252,7 +252,7 @@ The same stack can be reused to provision multiple kits to the AWS account in th
 
 5. Select all the boxes as shown below to provide permissions to access the resources required by the CloudFormation template.
 
-   .. image:: ../img/pca-3.png
+   .. image:: img/pca-3.png
         :align: center
         :alt: Dashboard 2
  
@@ -260,7 +260,7 @@ The same stack can be reused to provision multiple kits to the AWS account in th
 
 7. Wait for up to five minutes for the stack creation to complete.
 
-   .. image:: ../img/pca-4.png
+   .. image:: img/pca-4.png
         :align: center
         :alt: Dashboard 2
  
@@ -270,7 +270,7 @@ The same stack can be reused to provision multiple kits to the AWS account in th
    
    The output of the stack that you created is shown on this page. Note the details as you will be required to enter it in the next section when you create a Product Cloud API endpoint in CIRRENT™ Cloud ID. 
 
-   .. image:: ../img/pca-5.png
+   .. image:: img/pca-5.png
         :align: center
         :alt: Dashboard 2
 
@@ -643,7 +643,7 @@ This message appears after connecting to Wi-Fi. The cause depends on the method 
 2. Execute the following command in the serial terminal to pull the endpoint to the device after connecting to Wi-Fi. 
 
    ..  code-block:: none
-   
+
       AT+CLOUD_SYNC
       AT+DISCONNECT
       AT+CONNECT
