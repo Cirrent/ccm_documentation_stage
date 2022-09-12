@@ -625,7 +625,7 @@ Do the following if a new job is available for your device.
 
      Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
 
-     ::
+     .. codeblock:: none
 
          AT+CLOUD_SYNC
          AT+DISCONNECT
@@ -642,7 +642,7 @@ This message appears after connecting to Wi-Fi. The cause depends on the method 
 
 2. Execute the following command in the serial terminal to pull the endpoint to the device after connecting to Wi-Fi. 
 
-   ::
+   .. codeblock:: none
 
       AT+CLOUD_SYNC
       AT+DISCONNECT
