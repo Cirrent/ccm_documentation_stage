@@ -446,6 +446,42 @@ With your CCM module now connected to your Product Cloud you can try out the dif
 * Run an Over-the-Air firmware update process
 * Try out other CCM Commands
 
+Test CCM low power mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before trying out the low-power modes, ensure that the IFW56810 CCM evaluation kit is not connected to Wi-Fi. To disconnect the device. enter the following command in the serial terminal:
+
+::
+
+	AT+DISCONNECT
+
+**System sleep mode**
+
+To put the IFW56810 CCM evaluation kit to sleep mode for a particular duration, enter the following command:
+
+::
+
+	AT+SLEEP <Sleep time in seconds> 
+
+Enter the following command to put the device in system sleep mode indefinitely untill it receives an external interrupt: 
+
+::
+
+	AT+SLEEP
+
+In sleep mode the device stays in sleep state until it receives an external interrupt. An external interrupt can be triggered through sending an AT command or by deasserting the INT pin.
+
+**Deep sleep mode**
+
+Enter the following command to put the device in deep sleep mode:  
+
+::
+
+	AT+SLEEP1
+
+When deep sleep mode is activated the device will stay in deep sleep state until the device is reset (using RST pin) or is deasserting the INT pin.
+
+
 Setting up a serial terminal on your PC
 *****************************************
 
