@@ -5,7 +5,7 @@ Getting Started With the CCM Development Kit
 Overview
 **************
 
-(testing publishing) INFINEON offers a CCM development kit containing a single AIROC™ CCM module which you can connect to any PC. It is designed to help you walk through the main capabilities of the CCM product, including:
+Infineon offers a CCM development kit containing a single AIROC™ CCM module which you can connect to any PC. It is designed to help you walk through the main capabilities of the CCM product, including:
 
 * CIRRENT™ Cloud ID for effortless, secure cloud authentication using the device certificate pre-programmed into the CCM module
 * Wi-Fi onboarding with additional assistance from the CIRRENT™ mobile app for testing, and a mobile app SDK which simplifies development of your own app
@@ -16,11 +16,72 @@ Overview
 
 This getting started section walks you through: 
 
-1. :ref:`Steps required to bind your CCM developer kit to an INFINEON Account for access to CIRRENT™ Cloud ID <Getting the CCM Bound to your Infineon Accounts>`
+1. :ref:`Steps required to bind your CCM developer kit to an Infineon Account for access to CIRRENT™ Cloud ID <Getting the CCM Bound to your Infineon Accounts>`
 
 2. :ref:`Steps to get your CCM developer kit online <Getting the CCM Online>`
 
 3. :ref:`Getting your CCM developer kit connected to your AWS account <Getting the CCM Connected to Your AWS Account>`
+
+
+
+Quick evaluation flow
+**********************
+
+
+The IFW956810 CCM evaluation kit comes with a quick evaluation flow that lets you test your device right out of the box without creating an AWS account. The following steps will enable you to connect the kit to the internet through Wi-Fi and send random data points to the AWS staging account. 
+
+Note:	              1.     If you don’t want to do a quick evaluation of the CCM device jump to Section 6. 
+                          2.     AWS Staging account provides users who do not have an AWS account to quickly evaluate the kit.
+                          3.     To connect programmatically to an AWS service like the AWS IoT core, you use an endpoint. An  endpoint is the entry point URL for an AWS web service. All CCM devices come with a preconfigured Endpoint of AWS staging account for evaluating the Quick connect flow.
+                         4.   Quick connect is meant for evaluation purposes only. 
+			 
+
+Connect the CCM module to your PC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			 
+Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable.
+<<<< insert image here >>>>  Figure 4	Connect the USB dongle to the PC
+
+
+Steps for Quick Connect evaluation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+1. Download the following quick connect pakage and extract Infineon-qc-utility.zip.
+https://quickconnectexpresslinkutility.s3.us-west-2.amazonaws.com/infineon/QuickConnect_infineon_v1.0.zip
+
+2. Extract the utility package inside the Infineon-qc-utility folder with respect to your OS.
+
+3. Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable and determine the serial port. 
+
+To find the serial port of the device, please refer to section (INSERT LINK HERE) 5.2.
+
+3. Fill the details in the config.txt file to have the correct serial port, as well as Wi-Fi SSID and password.
+	For eg: 
+	
+Serial_port: 
+SSID: <yourWifiSsid>
+Passphrase: <yourWifiPassword>
+
+4. Execute the executable in the quick connect package.
+
+Note:	Run the Start_Quick_Connect.exe in the case of Windows OS.
+
+Note:	In linux and mac, go inside the extracted folder, open the terminal and enter the following commands 
+               chmod +x Start_Quick_Connect (for giving Executable permission)
+              . / Start_Quick_Connect
+
+5.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
+
+ 
+Figure 5	Random values displayed in visualizer from IFW956810 CCM evaluation kit 
+
+
+Note:	   Visualizer is a GUI that displays random data points getting published to AWS staging account as a graph.
+
+
+
+
 
 Kit Contents
 **************
@@ -37,16 +98,16 @@ Bind your CCM developer kit to your CIRRENT™ Cloud ID account
 
 CIRRENT™ Cloud ID provides the secure cloud-based device authentication that helps you to give your products secure and effortless access to your Product Cloud. This process works based on a unique device certificate embedded into every CCM module. These device certificates are pre-populated in CIRRENT™ Cloud ID. To get started with your developer kit you first need to bind your CCM developer kit to your CIRRENT™ Cloud ID account, which confirms ownership of the device.
 
-.. note:: CIRRENT™ Cloud ID is an INFINEON service and you access Cloud ID using your INFINEON account. If you do not already have an INFINEON account, you need to register one first. Follow the instructions here.
+.. note:: CIRRENT™ Cloud ID is an Infineon service and you access Cloud ID using your Infineon account. If you do not already have an Infineon account, you need to register one first. Follow the instructions here.
 
 Binding your CCM developer kit to a Cloud ID account is simple. The unique device ID is embedded in the QR code printed on your developer kit module. Simply scan the QR code located on the module, or use your browser and retype the URL printed below the QR code. 
 
 .. image:: img/gsd-12.png
        :align: center
 
-The QR code will redirect you to the INFINEON website. If  if you already have a CIRRENT™ Cloud ID account, you can simply select the Cloud ID account you want to bind your developer kit to. Alternatively, click Create Account to create a new CIRRENT™ account.
+The QR code will redirect you to the Infineon website. If  if you already have a CIRRENT™ Cloud ID account, you can simply select the Cloud ID account you want to bind your developer kit to. Alternatively, click Create Account to create a new CIRRENT™ account.
 
-.. note:: You can use the CCM development kit independent of an INFINEON Account and independent of CIRRENT™ services by pulling the Device Certificate from your device directly using an AT command, and manually provisioning your device in your cloud using that certificate.
+.. note:: You can use the CCM development kit independent of an Infineon Account and independent of CIRRENT™ services by pulling the Device Certificate from your device directly using an AT command, and manually provisioning your device in your cloud using that certificate.
 
 You can `learn more about CIRRENT™ accounts here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-console.html#cirrent-console-user-architecture>`_ , and you can `learn more about Cloud ID here <https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html>`_ .  
 
@@ -180,7 +241,7 @@ Getting the CCM Connected to Your AWS Account
 How the CCM module interacts with AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The INFINEON AIROC™ IFW56810 CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
+The Infineon AIROC™ IFW56810 CCM is pre-configured to work with AWS IoT Core.  To connect your CCM developer kit to your AWS account, you’ll need to connect your CIRRENT™ account to your AWS account so that new devices are automatically provisioned to your AWS account using CIRRENT™ Cloud ID.  Follow the instructions in the CIRRENT™ Cloud ID documentation.
 
 Alternatively, you can configure a single CCM module’s device certificate manually in your AWS account by downloading the device certificate from the CIRRENT™ Console, and then creating a Thing in your AWS account, using the certificate you just downloaded.
 
@@ -225,18 +286,16 @@ You’ve already confirmed that the CCM kit successfully binded to your Cloud ID
 
 
 
-
-
 Execute Cloud Formation Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Executing a CloudFormation template creates a stack in the AWS CloudFormation service. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by INFINEON and stored in Amazon S3 storage. This stack establishes a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. 
+Executing a CloudFormation template creates a stack in the AWS CloudFormation service. The template for creating the AWS resources needed to connect the IFW956810 evaluation kit to AWS IoT Core is already created by Infineon and stored in Amazon S3 storage. This stack establishes a channel of back-end device communication between your CIRRENT™ account and your AWS account. You need to execute the CloudFormation template only once per AWS account in a region. 
 
-The same stack can be reused to provision multiple kits to the AWS account in that region. You need to execute the CloudFormation template only once per AWS account in a region. Do the following to execute the INFINEON-provided CloudFormation template:
+The same stack can be reused to provision multiple kits to the AWS account in that region. You need to execute the CloudFormation template only once per AWS account in a region. Do the following to execute the Infineon-provided CloudFormation template:
 
 1. Click on the following link to execute the CloudFormation template. By default, the link uses the **us-west-1** region: 
 
-    `https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/create/template?stackName=infineon-iot-quickstart&templateURL=https://cirrent-quickstarts.s3.uswest-2.amazonaws.com/infineon-iot-quickstart.yaml  <https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/create/template?stackName=infineon-iot-quickstart&templateURL=https://cirrent-quickstarts.s3.uswest-2.amazonaws.com/infineon-iot-quickstart.yaml>`_
+    `https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/create/template?stackName=infineon-iot-quickstart&templateURL=https://cirrent-quickstarts.s3.us-west-2.amazonaws.com/infineon-iot-quickstart.yaml  <https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/create/template?stackName=infineon-iot-quickstart&templateURL=https://cirrent-quickstarts.s3.us-west-2.amazonaws.com/infineon-iot-quickstart.yaml>`_
  
     You can change the region in which you want to execute this template by changing the region=us-west-1 in this link to your required region. See `Choosing a Region <https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/select-region.html>`_ in the AWS documentation.
 
