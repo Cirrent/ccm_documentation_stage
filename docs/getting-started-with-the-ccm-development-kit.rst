@@ -587,6 +587,21 @@ Next, you need to configure your serial terminal. The example below uses Tera Te
      .. image:: img/gsd-11.png
 	    :align: center
 
+
+7. Once you open the serial terminal, type the following command into the serial terminal:
+
+::
+
+	AT+CONF? About 
+
+You should see a response 
+
+::
+
+	OK Infineon - IFW56810
+
+
+
 Troubleshooting the CCM Kit
 ****************************
 
