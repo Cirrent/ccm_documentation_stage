@@ -541,6 +541,26 @@ Enter the following command to put the device in deep sleep mode:
 When deep sleep mode is activated the device will stay in deep sleep state until the device is reset (using RST pin) or is deasserting the INT pin.
 
 
+
+Reference guides
+^^^^^^^^^^^^^^^^
+
+For connecting the CCM IFW956810 evaluation kit to the MCU, refer to the following link:
+
+https://community.infineon.com/t5/Knowledge-Base-Articles/How-to-connect-the-AIROC-IFW956810-CCM-evaluation-kit-to-the-MCU-development/ta-p/369154
+
+Refer to the following links for code examples using CCM and CY8CKIT-062s2-43012 as the host microcontroller
+
+https://github.com/Infineon/mtb-example-ccm-mqtt-publish-capsense-slider
+https://github.com/Infineon/mtb-example-ccm-mqtt-ota-subscribe
+https://github.com/Infineon/mtb-example-ccm-mqtt-helloworld
+
+Refer to the following link for AWS ExpressLink spec:
+
+https://docs.aws.amazon.com/iot-expresslink/latest/programmersguide/expresslink-pg.pdf
+
+
+
 Setting up a serial terminal on your PC
 *****************************************
 
@@ -661,6 +681,20 @@ The AT+CONNECT command first connects to Wi-Fi if not already connected, and the
 If the Wi-Fi connection test is successful but you still have no connectivity with your AWS account, first check the AWS IoT connection, and then check that the device certificate successfully uploaded to the AWS IoT Core.
 
 
+ERR14 5 UNABLE TO CONNECT MQTT device authentication failure error for the AT+CONNECT command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. IF you receive the
+
+ERR14 5 UNABLE TO CONNECT MQTT device authentication failure
+
+Error you should try the following steps
+
+1.   Check Your AWS endpoint.
+2.   Check the device certificate uploaded to the AWS IoT Core and the device certificate present in the CCM       device.
+
+
+
 Changing the Wi-Fi network the device is connected to
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -673,8 +707,8 @@ To change the Wi-Fi network your device is connected to you first need to discon
 Next, follow the steps in the “Get Connected with AWS” section to enter new Wi-Fi credentials.
 
 
-Determine the device connection status to AWS IoT Core
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Steps to follow if CIRRENT(TM) Cloud ID connectivity to AWS is not working
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These steps will help you to verify whether the device is waiting for the endpoint from the CIRRENT™ Cloud after the device is connected to Wi-Fi  To complete the following you needed to onboard the device using the CIRRENT™ Cloud flow. Follow these steps if you do not receive an "OK 1 CONNECTED" response from the device. 
 
@@ -729,11 +763,7 @@ Do the following if a new job is available for your device.
 
    * Under the Pending Jobs section, verify that the Job ID, Action, and Action Details are the same as shown in the previous section.
 
-     If the “OK 1 CONNECTED” message is received in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. 
-
-     If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account
-
-     Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
+     If the “OK 1 CONNECTED” message is received in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account. Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
 
      ..  code-block:: none
 
