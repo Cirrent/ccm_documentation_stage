@@ -28,8 +28,8 @@ Instructions for running the CloudFormation template are here:
 
 https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html 
 
-Performing an OTA firmware update
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Performing an OTA firmware update for the AIROC™ IFW56810
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CCM modules include a robust over-the-air (OTA) firmware update capability.  Here you can learn how to run an OTA job in your AWS account to update the firmware on your CCM devices. There are several steps involved in sending OTA updates to your device:
 
@@ -234,8 +234,8 @@ The host application or the user can then apply the firmware by performing the f
    
 
 
-Create a host update job in AWS IoT Console
-"""""""""""""""""""""""""""""""""""""""""""
+Performing a host OTA firmware update
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 
