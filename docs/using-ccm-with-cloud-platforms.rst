@@ -135,10 +135,10 @@ That policy grants the OTA service role you created the permission to read Amazo
 
 2. Enter a name for the policy, and then choose **Create policy**.
 
-Create a firmware update job in AWS IoT Console
-"""""""""""""""""""""""""""""""""""""""""""""""""
+Create an AIROC™ IFW56810 firmware update job in AWS IoT Console
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Now that you’ve created an AWS role that can execute OTA updates, you can proceed to create a firmware update job. The following set of instructions illustrates how you create an update job for an individual device. Once you’ve completed these steps an update job will be logged in AWS IoT, and the device will pick up the update job during its regular polling sequence, or when it next goes online, if it is currently offline.
+Now that you’ve created an AWS role that can execute OTA updates, you can proceed to create a job that updates the firmware for the Infineon AIROC™ IFW56810 module. The following set of instructions illustrates how you create an update job for an individual device. Once you’ve completed these steps an update job will be logged in AWS IoT, and the device will pick up the update job during its regular polling sequence, or when it next goes online, if it is currently offline.
 
 .. note:: Before you get started, ensure you get a signed firmware image from INFINEON. Contact the INFINEON sales team for the firmware. The firmware will be provided along with the signature hashing algorithm used and signature encryption algorithm used. This information is required in subsequent steps. 
 
@@ -231,6 +231,13 @@ The host application or the user can then apply the firmware by performing the f
    The IFW56810 CCM module should now connect to AWS IoT, complete the self-test and mark the image as valid. This prevents further rollback to the old image.
 
    You can check the job status by going back to the AWS IoT Console. You should see the job status as completed.
+   
+
+
+Create a host update job in AWS IoT Console
+"""""""""""""""""""""""""""""""""""""""""""
+
+
 
 Receive data and commands from the cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -250,6 +257,7 @@ Type the following command into the serial terminal:
     AT+GET
 
 You will receive the message “OK Hello from the AWS IoT Console.”
+
 
 
 Publish to a non-default topic
