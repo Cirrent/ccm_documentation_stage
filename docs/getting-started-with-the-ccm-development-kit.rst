@@ -625,13 +625,13 @@ For example, if:
 
 ::
 
-	AT+SUBSCRIBE
+	AT+SUBSCRIBE2
 
 returns
 
 ::
 
-	ERR01 Invalid cmd
+	ERR3 COMMAND NOT FOUND
 
 First, make sure that you have typed the command correctly. If you’ve entered the command correctly, make a note of the error code and refer to this guide for details of the error code, which will point you to the cause.
 
