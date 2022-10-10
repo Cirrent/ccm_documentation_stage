@@ -495,6 +495,16 @@ Click **Create**.
 
 Note: The examples in this document are intended only for development environments. All devices in your end product must have credentials with privileges that authorize only intended actions on specific resources. The specific permission policies can vary for your use case. Identify the permission policies that best meet your business and security requirements.
 
+**Configure endpoint**
+
+1.	In the AWS IoT Console, choose Settings, and then copy your account endpoint string under Device data endpoint.
+2.	Type the following AT command in the serial terminal to configure the endpoint: 
+
+   ::
+
+		AT+CONF Endpoint= endpoint copied in step 1. 
+
+The above step replaces the configured default endpoint used for evaluating the quick connect flow.
 
 
 Further exploration
