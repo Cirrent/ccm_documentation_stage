@@ -22,65 +22,7 @@ This getting started section walks you through:
 
 3. :ref:`Getting your CCM developer kit connected to your AWS account <Getting the CCM Connected to Your AWS Account>`
 
-
-
-Quick evaluation flow
-**********************
-
-
-The IFW956810 CCM evaluation kit comes with a quick evaluation flow that lets you test your device right out of the box without creating an AWS account. The following steps will enable you to connect the kit to the internet through Wi-Fi and send random data points to the AWS staging account. 
-
-Note:	              1.     If you don’t want to do a quick evaluation of the CCM device jump to Section 6. 
-                          2.     AWS Staging account provides users who do not have an AWS account to quickly evaluate the kit.
-                          3.     To connect programmatically to an AWS service like the AWS IoT core, you use an endpoint. An  endpoint is the entry point URL for an AWS web service. All CCM devices come with a preconfigured Endpoint of AWS staging account for evaluating the Quick connect flow.
-                         4.   Quick connect is meant for evaluation purposes only. 
-			 
-
-Connect the CCM module to your PC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-			 
-Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable.
-<<<< insert image here >>>>  Figure 4	Connect the USB dongle to the PC
-
-
-Steps for Quick Connect evaluation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-1. Download the following quick connect pakage and extract Infineon-qc-utility.zip.
-https://quickconnectexpresslinkutility.s3.us-west-2.amazonaws.com/infineon/QuickConnect_infineon_v1.0.zip
-
-2. Extract the utility package inside the Infineon-qc-utility folder with respect to your OS.
-
-3. Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable and determine the serial port. 
-
-To find the serial port of the device, please refer to section (INSERT LINK HERE) 5.2.
-
-3. Fill the details in the config.txt file to have the correct serial port, as well as Wi-Fi SSID and password.
-	For eg: 
-	
-Serial_port: 
-SSID: <yourWifiSsid>
-Passphrase: <yourWifiPassword>
-
-4. Execute the executable in the quick connect package.
-
-Note:	Run the Start_Quick_Connect.exe in the case of Windows OS.
-
-Note:	In linux and mac, go inside the extracted folder, open the terminal and enter the following commands 
-               chmod +x Start_Quick_Connect (for giving Executable permission)
-              . / Start_Quick_Connect
-
-5.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
-
- 
-Figure 5	Random values displayed in visualizer from IFW956810 CCM evaluation kit 
-
-
-Note:	   Visualizer is a GUI that displays random data points getting published to AWS staging account as a graph.
-
-
-
+.. note:: We recommend that you follow the complete getting started guide including setting up a CIRRENT(TM) account so you can test sending and data from your AWS IoT Core instance. However, we offer a **Quick Evaluation Flow** which enables you to rapidly test your unit. You can read more about the quick evaluation flow under Further Exploration.
 
 
 Kit Contents
@@ -549,6 +491,63 @@ Enter the following command to put the device in deep sleep mode:
 	AT+SLEEP1
 
 When deep sleep mode is activated the device will stay in deep sleep state until the device is reset (using RST pin) or is deasserting the INT pin.
+
+
+Quick evaluation flow
+^^^^^^^^^^^^^^^^^^^^^
+
+
+The IFW956810 CCM evaluation kit comes with a quick evaluation flow that lets you test your device right out of the box without creating an AWS account. The following steps will enable you to connect the kit to the internet through Wi-Fi and send random data points to the AWS staging account. 
+
+We provide an AWS Staging account that enables users who do not have an AWS account to quickly evaluate the kit. To connect programmatically to an AWS service like the AWS IoT core, you use an endpoint. An  endpoint is the entry point URL for an AWS web service. All CCM devices come with a preconfigured Endpoint of AWS staging account for evaluating the Quick connect flow. 
+
+.. NOTE:: Quick connect is meant to evaluate the physical CCM device only, we strongly recommend that you follow the complete Getting Started Guide.
+			 
+
+**Connect the CCM module to your PC**
+			 
+
+Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable.
+
+<<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_01 here >>>>  Figure 4	Connect the USB dongle to the PC
+
+
+**Steps for Quick Connect evaluation**
+
+1. Download the following quick connect pakage and extract Infineon-qc-utility.zip: https://quickconnectexpresslinkutility.s3.us-west-2.amazonaws.com/infineon/QuickConnect_infineon_v1.0.zip
+
+2. Extract the utility package inside the Infineon-qc-utility folder with respect to your OS.
+
+3. Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable and determine the serial port. To find the serial port of the device, please refer to section (ABCDEFGHI INSERT LINK HERE) 
+
+3. Complete the details in the config.txt file to have the correct serial port, as well as Wi-Fi SSID and password.
+
+4. Execute the executable in the quick connect package.
+
+.. Note:: Run the Start_Quick_Connect.exe in the case of Windows OS.
+
+.. Note:: In linux and mac, go inside the extracted folder, open the terminal and enter the following commands 
+
+
+::
+
+	chmod +x Start_Quick_Connect (for giving Executable permission)
+::
+
+	. / Start_Quick_Connect
+
+5.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
+
+ 
+<<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_01 here >>>>  Random values displayed in visualizer from IFW956810 CCM evaluation kit 
+
+
+.. Note:: Visualizer is a GUI that displays random data points getting published to AWS staging account as a graph.
+
+
+
+
+
 
 
 
