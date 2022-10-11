@@ -520,13 +520,11 @@ Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation 
 
 3. Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable and determine the serial port. To find the serial port of the device, please refer to section (ABCDEFGHI INSERT LINK HERE) 
 
-3. Complete the details in the config.txt file to have the correct serial port, as well as Wi-Fi SSID and password.
+4. Complete the details in the config.txt file to have the correct serial port, as well as Wi-Fi SSID and password.
 
-4. Execute the executable in the quick connect package.
+5. Execute the executable in the quick connect package: run the Start_Quick_Connect.exe in the case of Windows OS, or in Linux and Mac, go inside the extracted folder.
 
-.. Note:: Run the Start_Quick_Connect.exe in the case of Windows OS.
-
-.. Note:: In linux and mac, go inside the extracted folder, open the terminal and enter the following commands 
+6. Open the terminal and enter the following commands 
 
 
 ::
@@ -536,7 +534,7 @@ Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation 
 
 	. / Start_Quick_Connect
 
-5.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
+7.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
 
  
 <<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_01 here >>>>  Random values displayed in visualizer from IFW956810 CCM evaluation kit 
