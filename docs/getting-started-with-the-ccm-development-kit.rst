@@ -278,9 +278,6 @@ The same stack can be reused to provision multiple kits to the AWS account in th
 
 
 
-
-
-
 Create a Product Cloud API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -537,7 +534,7 @@ Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation 
 7.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
 
  
-<<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_01 here >>>>  Random values displayed in visualizer from IFW956810 CCM evaluation kit 
+<<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_02 here >>>>  Random values displayed in visualizer from IFW956810 CCM evaluation kit 
 
 
 .. Note:: Visualizer is a GUI that displays random data points getting published to AWS staging account as a graph.
