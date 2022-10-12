@@ -134,7 +134,7 @@ Command:
 
 .. code-block:: none
 
-	AT CONNECT
+	AT+CONNECT
 
 Returns:
 
@@ -173,7 +173,7 @@ Command:
 
 .. code-block:: none
 
-	AT CONNECT?
+	AT+CONNECT?
 
 Returns: 
 
@@ -198,7 +198,7 @@ Command:
 
 .. code-block:: none
 
-	AT DISCONNECT
+	AT+DISCONNECT
 
 Returns:
 
