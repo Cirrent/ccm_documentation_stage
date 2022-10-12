@@ -168,7 +168,7 @@ You’ve now bound your CCM developer kit to a CIRRENT™ Cloud ID account, and 
 
 3. Choose your account number as follows: 
    
-   .. image:: img/gsd-6.png
+   .. image:: img/gsg-6updt.PNG
 	    :align: center
 
 4. You should see your device listed on the page. 
