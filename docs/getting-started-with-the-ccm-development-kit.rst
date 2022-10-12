@@ -88,8 +88,7 @@ End of Line        Line Feed
 
 
 If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a serial terminal on your PC section for more details. 
-Once you open the serial terminal, type 
-
+Once you open the serial terminal, type:
 
 :: 
 
@@ -104,7 +103,7 @@ in the serial terminal.  You should see a response
 
 
 Connect the CCM module to Wi-Fi
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The CCM module has a built-in Wi-Fi onboarding process that works over Bluetooth® LE or SoftAP and which relies on an app available in the Android and iOS app stores. You can use this app to connect your CCM module to your Wi-Fi network.  
 
@@ -159,11 +158,13 @@ If you prefer to configure Wi-Fi networking using AT commands you can instead ty
 Verify that your CCM module is connected to CIRRENT™ Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Your kit is already bound to your CIRRENT account when you registered your kit through the quick start guide provided along with the kit. If you landed on this page without following the quick start guide, see the document provided along with your kit.
+
 You’ve now bound your CCM developer kit to a CIRRENT™ Cloud ID account, and the CCM module in your developer kit is now online. You can now observe that your CCM module is connected to the internet by checking the device binding in CIRRENT™ Cloud: 
 
-1. Log in to your CIRRENT™  account at https://console.cirrent.com/ .
+1. Log in to your Infineon account at https://osts.infineon.com/login and if prompted select the CIRRENT Account you used to register your device.
 
-2. On the panel on the left of the screen, select **Device Management** and then **Cloud ID**, and then select the **Binding tab**.
+2. On the Infineon OSTS home page, select **CIRRENT Cloud ID**, you will be redirected to the Cloud ID **Binding** page.
 
 3. Choose your account number as follows: 
    
@@ -281,13 +282,13 @@ The same stack can be reused to provision multiple kits to the AWS account in th
 Create a Product Cloud API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To configure your first cloud API with Cloud ID, navigate to Device Management and Cloud ID. Select the Provisioning tab, and click on Add Cloud API. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
+Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To configure your first cloud API with Cloud ID, navigate to back to Infineon OSTS. Select **CIRRENT™ Cloud ID**, and navigate to the **Provisioning** tab. Click on **Add Cloud API**. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
 
 .. image:: img/pca-7.png
         :align: center
         :alt: Dashboard 2
 
-Next, configure the fields as follows:
+Next, configure the fields using the valued obtained when you triggered the AWS CloudFormation template, as follows:
 
 * **Account ID.** This is your Amazon Web Services account identifier.
 * **API Gateway ID.** Here, enter the API gateway ID you have set up.
