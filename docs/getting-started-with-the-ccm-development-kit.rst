@@ -470,6 +470,18 @@ Note: The examples in this document are intended only for development environmen
 
 The above step replaces the configured default endpoint used for evaluating the quick connect flow.
 
+Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core if you followed AWS flow
+
+   ::
+
+		AT+CONNECT
+
+After a few seconds, the device will connect to the AWS IoT Core and you will receive the message
+
+   ::
+
+		“OK 1 CONNECTED”.	
+
 
 Further exploration
 ********************
@@ -568,11 +580,6 @@ Random values displayed in visualizer from IFW956810 CCM evaluation kit
 
 
 .. Note:: Visualizer is a GUI that displays random data points getting published to AWS staging account as a graph.
-
-
-
-
-
 
 
 
