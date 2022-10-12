@@ -371,14 +371,14 @@ Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT
 Sending and receiving data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic number e.g. 1 and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
+Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
 ::
 
 	AT+CONF Topic1=/MyPubTopic
 
 
-You can then send data by publishing text to the topic you just configured 
+You then send data by publishing text to the topic you just configured: 
 
 ::
 
@@ -387,13 +387,34 @@ You can then send data by publishing text to the topic you just configured
 Where the "1" in "Topic1" refers to the topic number, where MyPubTopic is a string of your choice, and the "1" in SEND1 refers to the topic number again.
 
 After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under MyPubTopic. 
-To receive data, you’ll need to subscribe to a topic.  
+To receive data, you’ll need to subscribe to a topic. Here is an example:
 
------- replace with sectoin 7.2.
+Create a new topic, topic number 2 with label MySubTopic, using the following command:
 
---- and use topic 2 --- 
+::
 
+	AT+CONF Topic2=/MySubTopic
 
+Next, subscribe to topic number 2:
+
+::
+
+	AT+SUBSCRIBE2
+	
+In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic** in **Topicfiler**. Click **Subscribe**. Navigate to the **Publish to a topic** tab and type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
+
+On your serial terminal, enter the following command to receive avilable messages on topic 2: 
+
+::
+
+	AT+GET2
+	
+
+You will receive the message 
+
+::
+
+	“OK Hello from the AWS IoT Console”.
 
 
 
