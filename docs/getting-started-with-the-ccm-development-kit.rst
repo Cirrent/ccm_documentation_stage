@@ -304,7 +304,7 @@ Provision and Prepare
 
    When new devices are bound to your account, they will be automatically configured in your AWS account, but for this first device you will need to initiate the provisioning manually.  To provision follow these steps: 
 
-   1. In the CIRRENT™ Console, navigate to **Device Management** and then **Cloud ID**, click on the **Binding** tab:
+   1. On the Infineon OSTS landing page, click on **CIRRENT™ Cloud ID**. Click on the **Binding** menu link:
 
       .. image:: img/gsg-8updt.PNG
 	    :align: center
@@ -316,7 +316,7 @@ Provision and Prepare
 
    3. Click the drop-down list in the **API Endpoint** column.
 
-   4. Choose the Product Cloud API created in the previous step.
+   4. Choose the Product Cloud API created in the previous section.
 
    5. Click **Save**.
 
