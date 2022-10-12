@@ -284,7 +284,7 @@ Create a Product Cloud API
 
 Your next step is to link your AWS account to Cloud ID so the CIRRENT™ Cloud service can communicate with your AWS developer account. To configure your first cloud API with Cloud ID, navigate to back to Infineon OSTS. Select **CIRRENT™ Cloud ID**, and navigate to the **Provisioning** tab. Click on **Add Cloud API**. You’ll be presented with a dialog box where you need to complete your Product Cloud API details. In setting up your Product Cloud API, ensure that you select AWS in the Create Cloud API dialog box:
 
-.. image:: img/pca-7.png
+.. image:: img/gsg_qsg_03.png
         :align: center
         :alt: Dashboard 2
 
@@ -510,7 +510,10 @@ We provide an AWS Staging account that enables users who do not have an AWS acco
 
 Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable.
 
-<<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_01 here >>>>  Figure 4	Connect the USB dongle to the PC
+.. image:: img/gsg_qsg_01.png
+      :align: center
+
+Figure 4	Connect the USB dongle to the PC
 
 
 **Steps for Quick Connect evaluation**
@@ -537,8 +540,10 @@ Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation 
 
 7.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
 
- 
-<<<< ABCDEFGHIJKL Tahir insert image gsg_qsg_02 here >>>>  Random values displayed in visualizer from IFW956810 CCM evaluation kit 
+.. image:: img/gsg_qsg_02.png
+      :align: center 
+  
+Random values displayed in visualizer from IFW956810 CCM evaluation kit 
 
 
 .. Note:: Visualizer is a GUI that displays random data points getting published to AWS staging account as a graph.
