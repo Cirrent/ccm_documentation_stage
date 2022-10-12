@@ -263,18 +263,20 @@ Create a firmware update job in AWS IoT
 8.	Select **Use my custom signed file**. 
 
 9.	On the form that appears: 
-•	In the signature field, provide the base64-encoded signature for the image. If the image is not signed, enter NA.
-•	From the Original hashing algorithm drop-down list, select the hashing algorithm. If not used, leave it as is.
-•	From the Original encryption algorithm drop-down list, select the encryption algorithm. If not used, leave it as is.
-•	In the Path name of code signing certificate on device field, enter NA.
+
+   * In the signature field, provide the base64-encoded signature for the image. If the image is not signed, enter NA.
+   * From the Original hashing algorithm drop-down list, select the hashing algorithm. If not used, leave it as is.
+   * From the Original encryption algorithm drop-down list, select the encryption algorithm. If not used, leave it as is.
+   * In the Path name of code signing certificate on device field, enter NA.
 
 10.	Select **Upload a new file**. 
 
 11.	Click **Choose file and upload the image**. 
 
 12.	Do one of the following: 
-•	Click Create S3 bucket to create a new bucket for the new uploaded image.
-•	Click Browse S3 to select an existing bucket in your account.
+
+   * Click Create S3 bucket to create a new bucket for the new uploaded image.
+   * Click Browse S3 to select an existing bucket in your account.
 
 13.	Under **Path Name of file on device**, enter NA if the image is not targeted as an executable file within a filesystem.
 
