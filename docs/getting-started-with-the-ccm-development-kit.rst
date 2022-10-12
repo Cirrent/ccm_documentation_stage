@@ -327,19 +327,6 @@ Provision and Prepare
 
 Provisioning via the Product Cloud API performs two functions. First, it creates the Thing for your device in the AWS Console and attaches the related policy and device certificate. It also pulls the AWS endpoint required by the device to connect to your AWS account and pushes it to the device so that the device connects to the AWS Cloud automatically. Retrieving the AWS endpoint from the CIRRENT Cloud is a one time step. The device connects to the  endpoint immediately during subsequent connection attempts. 
 
-Connect and interact with the AWS Cloud
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Now that you've linked your AWS account with Cloud ID you can use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
-
-1. Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
-
-2. In the navigation pane, select **Test** and then click **MQTT Test Client**.
-
-3. In Subscribe to a topic panel, enter **#**, and then click **Subscribe**. 
-
-Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core. You will receive “OK 1 CONNECTED” in the serial terminal once the device is connected to the AWS IoT Core.  
-
 Connect to the AWS IoT Core
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -364,33 +351,49 @@ The device will eventually connect to the AWS IoT Core and you will receive the 
 
 	OK 1 CONNECTED
 
+
+
+Connect and interact with the AWS Cloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now that you've linked your AWS account with Cloud ID you can use the MQTT client in the AWS IoT Console to monitor the communication between your evaluation kit and the AWS Cloud. 
+
+1. Navigate to the AWS IoT Console (https://console.aws.amazon.com/iot/).
+
+2. In the navigation pane, select **Test** and then click **MQTT Test Client**.
+
+3. In Subscribe to a topic panel, enter **#**, and then click **Subscribe**. 
+
+Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core. You will receive “OK 1 CONNECTED” in the serial terminal once the device is connected to the AWS IoT Core.  
+
+
+
 Sending and receiving data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, enter this command in the serial terminal: 
+Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic number e.g. 1 and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
 ::
 
-	AT+SEND data Hello World!
-
-After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under the topic “data”. 
-To receive data, you’ll need to subscribe to a topic.  By default, the device subscribes to a topic called “state”. To send a message to the CCM
-module: 
-
-1. On the AWS IoT Console, select the MQTT client, and then select **Publish to a topic**. Type **state** in **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
+	AT+CONF Topic1=/MyPubTopic
 
 
-2. Type the following command in the serial terminal:
-   
-   ::
-   	  
-   	    AT+GET
+You can then send data by publishing text to the topic you just configured 
 
-   You will receive the message 
+::
 
-   ::
+	AT+SEND1 Hello World!
 
-		OK Hello from the AWS IoT Console
+Where the "1" in "Topic1" refers to the topic number, where MyPubTopic is a string of your choice, and the "1" in SEND1 refers to the topic number again.
+
+After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under MyPubTopic. 
+To receive data, you’ll need to subscribe to a topic.  
+
+------ replace with sectoin 7.2.
+
+--- and use topic 2 --- 
+
+
 
 
 
