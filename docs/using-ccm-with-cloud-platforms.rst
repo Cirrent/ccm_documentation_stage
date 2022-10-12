@@ -237,57 +237,102 @@ The host application or the user can then apply the firmware by performing the f
 Performing a host OTA firmware update
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-10	Performing host firmware over-the-air update 
-The IFW56810 CCM device supports host firmware over-the-air updates. To do so, follow these steps. 
+Performing host firmware over-the-air update. The IFW56810 CCM device supports host firmware over-the-air updates. To do so, follow these steps. 
 Skip the prerequisites if you already have the OTA update role in your AWS account.
 
 Prerequisites
 """""""""""""""
-Create an OTA update role in your AWS account using the steps outlined here
+Create an OTA update role in your AWS account using the steps outlined in the previous section.
 
 Create a firmware update job in AWS IoT
 """"""""""""""""""""""""""""""""""""""""""""""
 1.	Open AWS IoT Console. 
-2.	Click Manage, and then under Remote actions click Jobs.  
-3.	Click Create job.
-4.	Select Create FreeRTOS OTA Update Job, and then click Next.
-5.	Provide a job name which is unique within your AWS account. Optionally, provide a description, and then click Next.
-6.	From the Devices to update drop-down list, choose the Thing name with which the IFW56810 CCM evaluation kit is registered in the account. 
-7.	Select MQTT as the transfer protocol, and deselect HTTP if selected.
-8.	Select Use my custom signed file. 
+
+2.	Click **Manage**, and then under Remote actions click **Jobs**.  
+
+3.	Click **Create job**.
+
+4.	Select **Create FreeRTOS OTA Update Job**, and then click **Next**.
+
+5.	Provide a job name which is unique within your AWS account. Optionally, provide a description, and then click **Next**.
+
+6.	From the **Devices to update** drop-down list, choose the **Thing name** with which the IFW56810 CCM evaluation kit is registered in the account. 
+
+7.	Select **MQTT** as the transfer protocol, and deselect HTTP if selected.
+
+8.	Select **Use my custom signed file**. 
+
 9.	On the form that appears: 
 •	In the signature field, provide the base64-encoded signature for the image. If the image is not signed, enter NA.
 •	From the Original hashing algorithm drop-down list, select the hashing algorithm. If not used, leave it as is.
 •	From the Original encryption algorithm drop-down list, select the encryption algorithm. If not used, leave it as is.
 •	In the Path name of code signing certificate on device field, enter NA.
-10.	Select Upload a new file. 
-11.	Click Choose file and upload the image. 
+
+10.	Select **Upload a new file**. 
+
+11.	Click **Choose file and upload the image**. 
+
 12.	Do one of the following: 
 •	Click Create S3 bucket to create a new bucket for the new uploaded image.
 •	Click Browse S3 to select an existing bucket in your account.
-13.	Under Path Name of file on device, enter NA if the image is not targeted as an executable file within a filesystem.
-14.	From the File type drop-down list, select a value “202” to signify that it is an IFW56810 CCM host firmware update.
-15.	Choose the OTA update role created above from the Role drop-down list under the IAM role section, and then click Next.
-16.	Click Create Job. 
+
+13.	Under **Path Name of file on device**, enter NA if the image is not targeted as an executable file within a filesystem.
+
+14.	From the **File type** drop-down list, select a value “202” to signify that it is an IFW56810 CCM host firmware update.
+
+15.	Choose the OTA update role created above from the Role drop-down list under the **IAM role section**, and then click **Next**.
+
+16.	Click **Create Job**. 
 
 Monitor and load the firmware update to the host 
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 The host application or the user can perform the following sequence by entering appropriate commands in the serial terminal:
+
 1.Query the state of the job: 
-AT+O	TA? 
-You will receive a response “OK 2” 
+
+   ::
+
+        AT+O	TA? 
+
+You will receive a response
+
+   ::
+
+        OK 2
+
 2.	Accept the new firmware update:
-AT+OTA ACCEPT
+
+   ::
+
+        AT+OTA ACCEPT
+
 The IFW56810 CCM module starts downloading the firmware update from the cloud
+
 3.	Query the state of the job:
-AT+OTA? 
+
+   ::
+
+        AT+OTA? 
+
 Downloading the image takes a few minutes to complete. During the HOTA image download, this command returns “OK 3”. Once the image is downloaded this command will return “OK 5”
+
 4. Host can send the following command to the IFW56810 CCM module to receive the image 
-AT+OTA READ <read size> 
-This command will respond with “OK {count} {data} {checksum}”
+
+   ::
+
+        AT+OTA READ <read size> 
+
+This command will respond with
+
+   ::
+
+        OK {count} {data} {checksum}
+
 The byte count is expressed in hex (from 1 to 6 digits), each byte is then presented as a pair of hex digits (no spaces) for a total of count*2 characters followed by a checksum (2 hex digits).
+
 The reading pointer is advanced by count bytes.
+
 Note:	  The IFW56810 CCM module is capable of reading maximum of 2k bytes at a time. 
 
 
