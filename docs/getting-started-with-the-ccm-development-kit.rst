@@ -306,7 +306,7 @@ Provision and Prepare
 
    1. In the CIRRENT™ Console, navigate to **Device Management** and then **Cloud ID**, click on the **Binding** tab:
 
-      .. image:: img/gsd-8.png
+      .. image:: img/gsg-8updt.PNG
 	    :align: center
 
    2. Click the **Edit button**.
@@ -414,7 +414,7 @@ You will receive the message
 
 ::
 
-	“OK Hello from the AWS IoT Console”.
+	“OK Hello from the AWS IoT Console”
 
 
 
@@ -466,11 +466,9 @@ Note: The examples in this document are intended only for development environmen
 
    ::
 
-		AT+CONF Endpoint= endpoint copied in step 1. 
-
-The above step replaces the configured default endpoint used for evaluating the quick connect flow.
-
-Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core if you followed AWS flow
+		AT+CONF Endpoint
+		
+Where **Endpoint** is the endpoint copied in step 1. The above step replaces the configured default endpoint used for evaluating the quick connect flow. Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core if you followed AWS flow
 
    ::
 
@@ -480,7 +478,7 @@ After a few seconds, the device will connect to the AWS IoT Core and you will re
 
    ::
 
-		“OK 1 CONNECTED”.	
+		“OK 1 CONNECTED”	
 
 
 Further exploration
