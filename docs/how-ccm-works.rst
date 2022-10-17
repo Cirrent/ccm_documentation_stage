@@ -49,7 +49,7 @@ Features                  Description
 Product description       IEEE 802.11 b/g/n wireless LAN and Bluetooth® IoT module
 Host interface            UART
 Dimension                 36.0mm(L) x 18mm(W) x 2.8mm(H)
-Form factor               LGA module, 146p
+Form factor               LGA module, 145p
 Antenna                   Internal PCB antenna
 Weight                    2.3g
 =======================   ====================================================
@@ -77,7 +77,7 @@ Every CCM module includes industry-leading INFINEON Wi-Fi technology for long ra
 * Up to 96Mbps PHY data rate
 * Integrated Antenna
 * Soft AP or BLE Wi-Fi onboarding
-* Certified for US, Canada, EU, Japan, Taiwan, Australia, New Zealand
+* US, Canada, EU
 * On-module flash memory to store second FW image for safe over-the-air updates
 
 Software description
@@ -96,4 +96,4 @@ Networking features include:
 CCM datasheet
 ******************
 
-We publish a complete datasheet for the CCM module here: https://www.infineon.com/cms/en/design-support/tools/hardware-development/wireless-connectivity-hardware/airoc-cloud-connectivity-manager/?redirId=158897 
+We publish a complete datasheet for the CCM module here: https://www.infineon.com/dgdl/Infineon-AIROC%20CCM%20KIT-DataSheet-v01_00-EN.pdf?fileId=8ac78c8c80f4d329018128f3a9791d57
