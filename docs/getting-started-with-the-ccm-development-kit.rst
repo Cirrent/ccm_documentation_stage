@@ -14,7 +14,7 @@ Infineon offers a CCM development kit containing a single AIROC™ CCM module wh
 * Optional use of CIRRENT™ IoT Network Intelligence (INI) for monitoring and managing your CCM fleet and monitoring connectivity reliability
 * Robust AT command set compatible with AWS IoT ExpressLink, making it easy to connect your host to the cloud
 
-This getting started section walks you through: 
+This getting started section walks you through the following: 
 
 1. :ref:`Steps required to bind your CCM developer kit to an Infineon Account for access to CIRRENT™ Cloud ID <Getting the CCM Bound to your Infineon Accounts>`
 
