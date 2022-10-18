@@ -59,6 +59,25 @@ You can `learn more about CIRRENT™ accounts here <https://documentation.infine
 Getting the CCM module online
 ***************************** 
 
+Verify that your CCM module is registered with the CIRRENT™ Cloud ID
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Your kit is already bound (registered) to your CIRRENT account when you registered your kit through the quick start guide provided along with the kit. If you landed on this page without following the quick start guide, see the document provided along with your kit. You can now observe that your CCM module is registered with CIRRENT™ Cloud ID by checking the device binding in CIRRENT™ Cloud ID: 
+
+1. Log in to your Infineon account at https://osts.infineon.com/login and if prompted select the CIRRENT Account you used to register your device.
+
+2. On the Infineon OSTS home page, select **CIRRENT Cloud ID**, you will be redirected to the Cloud ID **Binding** page.
+
+3. Choose your account number as follows: 
+   
+   .. image:: img/gsg-6updt.PNG
+	    :align: center
+
+4. You should see your device listed on the page. 
+
+.. note:: You need to first successfully bind your developer kit to your CIRRENT™ account if you want to use CIRRENT™ Cloud ID to automatically provision your developer kit to your AWS account. 
+
+
 Connect the CCM module to your PC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -160,25 +179,7 @@ Next, set the password for your WiFi network. In our example below, the password
 .. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (e.g. for debugging purposes), any attempt to retrieve the passphrase will return an error.   
 
 
-Verify that your CCM module is connected to CIRRENT™ Cloud
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your kit is already bound to your CIRRENT account when you registered your kit through the quick start guide provided along with the kit. If you landed on this page without following the quick start guide, see the document provided along with your kit.
-
-You’ve now bound your CCM developer kit to a CIRRENT™ Cloud ID account, and the CCM module in your developer kit is now online. You can now observe that your CCM module is connected to the internet by checking the device binding in CIRRENT™ Cloud: 
-
-1. Log in to your Infineon account at https://osts.infineon.com/login and if prompted select the CIRRENT Account you used to register your device.
-
-2. On the Infineon OSTS home page, select **CIRRENT Cloud ID**, you will be redirected to the Cloud ID **Binding** page.
-
-3. Choose your account number as follows: 
-   
-   .. image:: img/gsg-6updt.PNG
-	    :align: center
-
-4. You should see your device listed on the page. 
-
-.. note:: You need to first successfully bind your developer kit to your CIRRENT™ account if you want to use CIRRENT™ Cloud ID to automatically provision your developer kit to your AWS account. 
 
 
 .. _Getting the CCM Connected to Your AWS Account:
