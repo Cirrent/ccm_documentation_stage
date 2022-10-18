@@ -99,7 +99,7 @@ in the serial terminal.  You should see a response
 
 ::
 
-	OK Infineon IFW56810 CCM
+	OK Infineon - IFW56810
 
 
 Connect the CCM module to Wi-Fi
@@ -134,23 +134,28 @@ When you complete these steps type the following in the serial terminal to ensur
 
 ::
 
-	AT+CONF DIAG PING 8.8.8.8.
+	AT+CONF DIAG PING 8.8.8.8
 	
 You should see a you should see a response:
 
 ::
 
-	OK, Ping received in x ms
+	OK Ping received in x ms
 
 That means that your CCM module has successfully connected to your Wi-Fi network.
 
 
-If you prefer to configure Wi-Fi networking using AT commands you can instead type the following command in sequence into your terminal application:
+If you prefer to configure Wi-Fi networking using AT commands you can do so by typing two commands into your terminal application. First, set the SSID you want to connect to. In our example, the SSID is "MyWorWiFI":
 
 ::
 
-	AT+CONF SSID=<your router ssid>
-	AT+CONF Passphrase=<your router passphrase>
+	AT+CONF SSID=MyWorkWiFI
+	
+Next, set the password for your WiFi network. In our example below, the password is "uMCjc3DB":
+
+::
+
+	AT+CONF Passphrase=uMCjc3DB
 
 .. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (e.g. for debugging purposes), any attempt to retrieve the passphrase will return an error.   
 
