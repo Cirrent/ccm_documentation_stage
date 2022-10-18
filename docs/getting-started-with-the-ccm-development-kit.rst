@@ -336,26 +336,34 @@ Provisioning via the Product Cloud API performs two functions. First, it creates
 Connect to the AWS IoT Core
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Note:: You can skip this section  if you used the CIRRENT™ Wi-Fi onboarding app to connect the kit to Wi-Fi. Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT Core.  You will receive an “OK 1 CONNECTED” message in the serial terminal once the device is connected to the AWS IoT Core.
-
 Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core:
 
 ::
 
 	AT+CONNECT
 
-You will receive a response depending on the method of connection. If you used Cloud ID for registration it may take a minute or more to connect and you may see a message:
-
-::
-
-	OK Waiting for Cloud ID registration.
 
 The device will eventually connect to the AWS IoT Core and you will receive the message:
-
 
 ::
 
 	OK 1 CONNECTED
+
+Next, run the following command:
+
+::
+
+	OK 1 CONNECTEDAT+CLOUD_SYNC
+
+Wait for a minute or two while the device pulls the endpoint from the CIRRENT Cloud and connects to the AWS IoT Core.
+
+.. Note:: The above AT command will replace the default endpoint used for quick evaluation flow with your AWS account endpoint and automatically switches the connection to the new endpoint. 
+
+You can verify the endpoint present in the device using the following AT command 
+
+::
+
+	AT+CONF? Endpoint
 
 
 
