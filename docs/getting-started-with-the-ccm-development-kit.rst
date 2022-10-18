@@ -353,7 +353,7 @@ Next, run the following command:
 
 ::
 
-	OK 1 CONNECTEDAT+CLOUD_SYNC
+	AT+CLOUD_SYNC
 
 Wait for a minute or two while the device pulls the endpoint from the CIRRENT Cloud and connects to the AWS IoT Core.
 
@@ -432,7 +432,7 @@ You will receive the message
 
 
 
-AWS Flow
+Connect directly to AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We strongly recommend that you connect your AIROC™ IFW56810 to your AWS cloud using Cloud ID as described above as Cloud ID is central to the functionality of the AIROC™ IFW56810. However, we provide the following instructions as an alternative way to connect the AIROC™ IFW56810.
