@@ -737,11 +737,13 @@ If the Wi-Fi connection test is successful but you still have no connectivity wi
 ERR14 5 UNABLE TO CONNECT MQTT device authentication failure error for the AT+CONNECT command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. IF you receive the
+The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. If you receive the
 
-ERR14 5 UNABLE TO CONNECT MQTT device authentication failure
+   ::
 
-Error you should try the following steps
+	  ERR14 5 UNABLE TO CONNECT MQTT device authentication failure
+
+error you should try the following steps
 
 1.   Check Your AWS endpoint.
 2.   Check the device certificate uploaded to the AWS IoT Core and the device certificate present in the CCM       device.
