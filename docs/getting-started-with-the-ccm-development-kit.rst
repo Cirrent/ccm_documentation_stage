@@ -207,7 +207,7 @@ At a high level, the CIRRENT™ Cloud performs the following functions to connec
 The CIRRENT™ Cloud ID workflow we describe above demonstrates the ease of securely connecting a product to the Product Cloud. Because the CIRRENT™ Cloud is preloaded with the device certificate of all AIROC™ CCM modules you no longer need to manage device certificates on the production line. Instead, device certificates are managed in CIRRENT™ Cloud ID.
 
 
-.. note:: If you are unable to complete the process of connecting your AWS account to CIRRENT™ Cloud ID using the steps described below you can connect your device directly to your AWS instance using the AWS flow, described in the last section of this guide.
+.. note:: If you are unable to complete the process of connecting your AWS account to CIRRENT™ Cloud ID using the steps described below you can connect your device directly to your AWS instance using the AWS flow.
 
 
 Get connected to AWS
@@ -790,9 +790,9 @@ Check for a job in the CIRRENT™ Console
 
 This job should be for sending the endpoint to your device. Do the following:
 
-1. In the CIRRENT™ Console, go to **Product Analytics** > **Device Fleet**.
+1. In the Infineon OSTS Console, navigate to **Services and Tools** and **CIRRENT™ Device Management**.
 
-2. Click the **Jobs** tab, and check the following columns for the new job created:
+2. Click the **Jobs** tab, and review that the following columns for your new job is logged under the Jobs tab:
 
    * Action: ccm_config
 
@@ -810,15 +810,15 @@ Check the pending state of the job
 
 Do the following if a new job is available for your device. 
 
-1. Go to **Product Analytics** > **Device Inspector** in the CIRRENT™ Console.
+1. In the Infineon OSTS Console, navigate to **Services and Tools** and **CIRRENT™ Device Management**.
 
 2. Click the **Jobs** tab, and do the following:
 
-   * Type the device ID noted in the previous section in the Device ID text box. 
+   * Type the device ID noted in the previous section in the Device ID text box as **Infineon_device ID**. 
 
    * Under the Pending Jobs section, verify that the Job ID, Action, and Action Details are the same as shown in the previous section.
 
-     If the “OK 1 CONNECTED” message is received in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account. Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
+     After sending the AT command AT+CLOUD_SYNC in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account. Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
 
      ..  code-block:: none
 
