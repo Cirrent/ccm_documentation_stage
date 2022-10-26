@@ -343,53 +343,46 @@ Receive data and commands from the cloud
 
 We discuss the use of AT communications commands in detail in the CCM API section. Here we’ll show you how you use the AWS IoT Console to publish messages to topics and to view messages received from the CCM module. 
 
-By default, every CCM device subscribes to a topic called “state”. You can test cloud to device communications by publishing content to this topic. To try it out you need to complete some steps in AWS IoT Console, while sending commands to your device using the serial terminal. Do the following on the AWS IoT Console:
-
-* Select the **MQTT client**, and then select **Publish to a topic**.
-* Type state in **Topic name field**. Keep “Hello from the AWS IoT Console” message.
-* Click **Publish**.
-
-Type the following command into the serial terminal:
+To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
 ::
 
-    AT+GET
-
-You will receive the message “OK Hello from the AWS IoT Console.”
+	AT+CONF Topic1=/MyPubTopic
 
 
-
-Publish to a non-default topic
-"""""""""""""""""""""""""""""""
-
-If you want to publish data on a non-default topic you can make use of the following commands which you enter in sequence in the serial terminal:
+You then send data by publishing text to the topic you just configured: 
 
 ::
 
-    AT+CONF Topic1=/MyPubTopic
-    AT+SEND1
+	AT+SEND1 Hello World!
 
+Where the "1" in "Topic1" refers to the topic number, where MyPubTopic is a string of your choice, and the "1" in SEND1 refers to the topic number again. After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under MyPubTopic. 
 
-Subscribe to a non-default topic
-"""""""""""""""""""""""""""""""
+To receive data, you’ll need to subscribe to a topic. Here is an example:
 
-If you want to subscribe to a non-default topic, you first need to enter a set of commands on your CCM module:
-
-::
-
-    AT+CONF Topic2=/MySubTopic
-    AT+SUBSCRIBE2
-
-Next, you need to perform a sequence of actions in AWS to publish to a topic. Do the following on the AWS IoT Console:
-
-* Select the **MQTT client**, and then select **Publish to a topic**.
-* Type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message.
-* Click **Publish**.
-
-You now have content that was published to a topic. Next, you can retrieve that content on your device. To do so, use your serial terminal and enter the following command:
+Create a new topic, topic number 2 with label MySubTopic, using the following command:
 
 ::
 
-    AT+GET2
+	AT+CONF Topic2=/MySubTopic
 
-You will receive the message “OK Hello from the AWS IoT Console”, which is the data contained in the topic you subscribed to.
+Next, subscribe to topic number 2:
+
+::
+
+	AT+SUBSCRIBE2
+	
+In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic** in **Topicfiler**. Click **Subscribe**. Navigate to the **Publish to a topic** tab and type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
+
+On your serial terminal, enter the following command to receive avilable messages on topic 2: 
+
+::
+
+	AT+GET2
+	
+
+You will receive the message 
+
+::
+
+	“OK Hello from the AWS IoT Console”
