@@ -109,13 +109,15 @@ End of Line        Line Feed
 If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a serial terminal on your PC section for more details. 
 Once you open the serial terminal, type:
 
-.. code-block:: none
+:: 
+
 	AT+CONF? About 
 
 in the serial terminal.  You should see a response 
 
 
-.. code-block:: none
+::
+
 	OK Infineon - IFW56810
 
 
@@ -134,12 +136,14 @@ Android                         IOS
 
 To activate the Wi-Fi onboarding process on the CCM module type the following command in the serial terminal on your PC: 
 
-.. code-block:: none
+::
+
 	AT+CONFMODE
 
 You should receive this response from the module:
 
-.. code-block:: none
+::
+
 	OK CONFMODE Enabled
 
 Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
@@ -147,12 +151,14 @@ Follow the onscreen instructions and enter your Wi-Fi router’s SSID and passwo
 
 When you complete these steps type the following in the serial terminal to ensure verify your connection to Wi-Fi:
 
-.. code-block:: none
-	AT+CONF DIAG PING 8.8.8.8
+::
 
+	AT+CONF DIAG PING 8.8.8.8
+	
 You should see a you should see a response:
 
-.. code-block:: none
+::
+
 	OK Ping received in x ms
 
 That means that your CCM module has successfully connected to your Wi-Fi network.
@@ -160,12 +166,14 @@ That means that your CCM module has successfully connected to your Wi-Fi network
 
 If you prefer to configure Wi-Fi networking using AT commands you can do so by typing two commands into your terminal application. First, set the SSID you want to connect to. In our example, the SSID is "MyWorWiFI":
 
-.. code-block:: none
+::
+
 	AT+CONF SSID=MyWorkWiFI
 	
 Next, set the password for your WiFi network. In our example below, the password is "uMCjc3DB":
 
-.. code-block:: none
+::
+
 	AT+CONF Passphrase=uMCjc3DB
 
 .. note:: Your local router’s SSID and passphrase are stored securely inside the IFW56810 CCM module. While the SSID can be retrieved later (e.g. for debugging purposes), any attempt to retrieve the passphrase will return an error.   
@@ -330,18 +338,21 @@ Connect to the AWS IoT Core
 
 Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core:
 
-.. code-block:: none
+::
+
 	AT+CONNECT
 
 
 The device will eventually connect to the AWS IoT Core and you will receive the message:
 
-.. code-block:: none
+::
+
 	OK 1 CONNECTED
 
 Next, run the following command:
 
-.. code-block:: none
+::
+
 	AT+CLOUD_SYNC
 
 Wait for a minute or two while the device pulls the endpoint from the CIRRENT Cloud and connects to the AWS IoT Core.
@@ -350,7 +361,8 @@ Wait for a minute or two while the device pulls the endpoint from the CIRRENT Cl
 
 You can verify the endpoint present in the device using the following AT command 
 
-.. code-block:: none
+::
+
 	AT+CONF? Endpoint
 
 
@@ -375,13 +387,15 @@ Sending and receiving data
 
 Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
-.. code-block:: none
+::
+
 	AT+CONF Topic1=/MyPubTopic
 
 
 You then send data by publishing text to the topic you just configured: 
 
-.. code-block:: none
+::
+
 	AT+SEND1 Hello World!
 
 Where the "1" in "Topic1" refers to the topic number, where MyPubTopic is a string of your choice, and the "1" in SEND1 refers to the topic number again.
@@ -391,24 +405,29 @@ To receive data, you’ll need to subscribe to a topic. Here is an example:
 
 Create a new topic, topic number 2 with label MySubTopic, using the following command:
 
-.. code-block:: none
+::
+
 	AT+CONF Topic2=/MySubTopic
 
 Next, subscribe to topic number 2:
 
-.. code-block:: none
-	AT+SUBSCRIBE2
+::
 
+	AT+SUBSCRIBE2
+	
 In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic** in **Topicfiler**. Click **Subscribe**. Navigate to the **Publish to a topic** tab and type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
 
 On your serial terminal, enter the following command to receive avilable messages on topic 2: 
 
-.. code-block:: none
+::
+
 	AT+GET2
+	
 
 You will receive the message 
 
-.. code-block:: none
+::
+
 	“OK Hello from the AWS IoT Console”
 
 
@@ -423,7 +442,8 @@ We strongly recommend that you connect your AIROC™ IFW56810 to your AWS cloud 
 Open the AWS IoT Console. From the left pane, select **Manage**, and then select **Things**. Click **Create Things**. On the **Create things** page, select **Create Single Thing**, and then click **Next**. In the terminal application, type
 the following command: 
 
-   .. code-block:: none
+   ::
+
 		AT+CONF? ThingName
 
 
@@ -433,7 +453,8 @@ Copy the returned string (a sequence of alphanumeric characters) from the termin
 
 First, you need to prepare the device certificate. In the terminal application, type the following command: 
 
-   .. code-block:: none
+   ::
+
 		AT+CONF? Certificate 
 
 
@@ -443,7 +464,8 @@ Next, you need to attach the device certificate to the Thing. On the **Configure
 
 You now need to attach policies to the certificate. Click **Create** to create a policy. This opens a new tab. Enter the policy name (e.g., “IoTDevPolicy”) and click **Advanced** mode. Copy the following section into the console:
 
-   .. code-block:: none
+   ::
+
 		{ "Version": "2012-10-17", "Statement": [ { "Effect": "Allow", "Action": "*", "Resource": "*" } ] }
 
 
@@ -456,17 +478,20 @@ Note: The examples in this document are intended only for development environmen
 1.	In the AWS IoT Console, choose Settings, and then copy your account endpoint string under Device data endpoint.
 2.	Type the following AT command in the serial terminal to configure the endpoint: 
 
-   .. code-block:: none
+   ::
+
 		AT+CONF Endpoint
 		
 Where **Endpoint** is the endpoint copied in step 1. The above step replaces the configured default endpoint used for evaluating the quick connect flow. Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core if you followed AWS flow
 
-   .. code-block:: none
+   ::
+
 		AT+CONNECT
 
 After a few seconds, the device will connect to the AWS IoT Core and you will receive the message
 
-   .. code-block:: none
+   ::
+
 		“OK 1 CONNECTED”	
 
 
@@ -483,19 +508,22 @@ Test CCM low power mode
 
 Before trying out the low-power modes, ensure that the IFW56810 CCM evaluation kit is not connected to Wi-Fi. To disconnect the device. enter the following command in the serial terminal:
 
-.. code-block:: none
+::
+
 	AT+DISCONNECT
 
 **System sleep mode**
 
 To put the IFW56810 CCM evaluation kit to sleep mode for a particular duration, enter the following command:
 
-.. code-block:: none
+::
+
 	AT+SLEEP <Sleep time in seconds> 
 
 Enter the following command to put the device in system sleep mode indefinitely untill it receives an external interrupt: 
 
-.. code-block:: none
+::
+
 	AT+SLEEP
 
 In sleep mode the device stays in sleep state until it receives an external interrupt. An external interrupt can be triggered through sending an AT command or by deasserting the INT pin.
@@ -504,7 +532,8 @@ In sleep mode the device stays in sleep state until it receives an external inte
 
 Enter the following command to put the device in deep sleep mode:  
 
-.. code-block:: none
+::
+
 	AT+SLEEP1
 
 When deep sleep mode is activated the device will stay in deep sleep state until the device is reset (using RST pin) or is deasserting the INT pin.
@@ -547,10 +576,11 @@ Figure 4	Connect the USB dongle to the PC
 6. Open the terminal and enter the following commands 
 
 
-.. code-block:: none
-	chmod +x Start_Quick_Connect (for giving Executable permission)
+::
 
-.. code-block:: none
+	chmod +x Start_Quick_Connect (for giving Executable permission)
+::
+
 	. / Start_Quick_Connect
 
 7.   The workflow will prompt you to open the visualizer in your browser. You can either select Yes or copy and paste this link into the browser. After a few seconds, you will see random values being published from IFW956810 CCM evaluation kit on the visualizer.
@@ -633,12 +663,14 @@ Next, you need to configure your serial terminal. The example below uses Tera Te
 
 7. Once you open the serial terminal, type the following command into the serial terminal:
 
-.. code-block:: none
+::
+
 	AT+CONF? About 
 
 You should see a response 
 
-.. code-block:: none
+::
+
 	OK Infineon - IFW56810
 
 
@@ -664,12 +696,14 @@ Diagnosing errors when commands are entered
 
 For example, if: 
 
-.. code-block:: none
+::
+
 	AT+SUBSCRIBE2
 
 returns
 
-.. code-block:: none
+::
+
 	ERR3 COMMAND NOT FOUND
 
 First, make sure that you have typed the command correctly. If you’ve entered the command correctly, make a note of the error code and refer to this guide for details of the error code, which will point you to the cause.
@@ -687,12 +721,14 @@ ERR 14 UNABLE TO CONNECT received when using the AT+CONNECT command
 
 The AT+CONNECT command first connects to Wi-Fi if not already connected, and then connects to the AWS IoT Core. If the command fails, first check that the WiFi connection is active, and that you have entered the right Wi-Fi details. Type the following command to verify whether the kit connects to Wi-Fi:
 
-   .. code-block:: none
+   ::
+
 	  AT+DIAG PING 8.8.8.8
 
    If the connection is successful, the device will respond with 
 
-   .. code-block:: none
+   ::
+
 	  OK Received ping response in <ping latency ms>
 
 If the Wi-Fi connection test is successful but you still have no connectivity with your AWS account, first check the AWS IoT connection, and then check that the device certificate successfully uploaded to the AWS IoT Core.
@@ -703,7 +739,8 @@ ERR14 5 UNABLE TO CONNECT MQTT device authentication failure error for the AT+CO
 
 The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. If you receive the
 
-   .. code-block:: none
+   ::
+
 	  ERR14 5 UNABLE TO CONNECT MQTT device authentication failure
 
 error you should try the following steps
@@ -718,7 +755,8 @@ Changing the Wi-Fi network the device is connected to
 
 To change the Wi-Fi network your device is connected to you first need to disconnect the device form the network using the following command on the serial terminal:
    
-   .. code-block:: none
+   ::
+
 	  AT+DISCONNECT 
 
 Next, follow the steps in the “Get Connected with AWS” section to enter new Wi-Fi credentials.
@@ -734,7 +772,8 @@ Check if a Thing is present in the AWS IoT Console for your device
 
 1. Run the following command in the serial terminal to get the ThingName of your device. 
    
-   .. code-block:: none  
+   ::
+      
        AT+CONF? ThingName
 
 2. Open the `AWS IoT Console <http://console.aws.amazon.com/iot>`_.
@@ -782,6 +821,7 @@ Do the following if a new job is available for your device.
      After sending the AT command AT+CLOUD_SYNC in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account. Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
 
      ..  code-block:: none
+
          AT+CLOUD_SYNC
          AT+DISCONNECT
          AT+CONNECT
@@ -798,6 +838,7 @@ This message appears after connecting to Wi-Fi. The cause depends on the method 
 2. Execute the following command in the serial terminal to pull the endpoint to the device after connecting to Wi-Fi. 
 
    ..  code-block:: none
+
       AT+CLOUD_SYNC
       AT+DISCONNECT
       AT+CONNECT
