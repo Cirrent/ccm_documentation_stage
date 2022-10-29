@@ -22,7 +22,7 @@ This getting started section walks you through the following:
 
 3. :ref:`Getting your CCM developer kit connected to your AWS account <Getting the CCM Connected to Your AWS Account>`
 
-.. note:: We recommend that you follow the complete getting started guide including setting up a CIRRENT(TM) account so you can test sending and data from your AWS IoT Core instance. However, we offer a **Quick Evaluation Flow** which enables you to rapidly test your unit. You can read more about the `quick evaluation flow here <quick-evaluation-flow.rst>`.
+.. note:: We recommend that you follow the complete getting started guide including setting up a CIRRENT(TM) account so you can test sending and data from your AWS IoT Core instance. However, we offer a **Quick Evaluation Flow** which enables you to rapidly test your unit. You can read more about the `quick evaluation flow here <quick-evaluation-flow.rst>`_.
 
 
 Kit Contents
