@@ -216,7 +216,7 @@ The host application or the user can then apply the firmware by performing the f
 
 5. Apply the new image received through OTA:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA APPLY
 
@@ -224,7 +224,7 @@ The host application or the user can then apply the firmware by performing the f
 
 6. Connect back to the AWS IoT:
    
-   ::
+   ..  code-block:: none
 
         AT+CONNECT
 
@@ -293,19 +293,19 @@ The host application or the user can perform the following sequence by entering 
 
 1.Query the state of the job: 
 
-   ::
+   ..  code-block:: none
 
         AT+O	TA? 
 
 You will receive a response
 
-   ::
+   ..  code-block:: none
 
         OK 2
 
 2.	Accept the new firmware update:
 
-   ::
+   ..  code-block:: none
 
         AT+OTA ACCEPT
 
@@ -313,7 +313,7 @@ The IFW56810 CCM module starts downloading the firmware update from the cloud
 
 3.	Query the state of the job:
 
-   ::
+   ..  code-block:: none
 
         AT+OTA? 
 
@@ -321,13 +321,13 @@ Downloading the image takes a few minutes to complete. During the HOTA image dow
 
 4. Host can send the following command to the IFW56810 CCM module to receive the image 
 
-   ::
+   ..  code-block:: none
 
         AT+OTA READ <read size> 
 
 This command will respond with
 
-   ::
+   ..  code-block:: none
 
         OK {count} {data} {checksum}
 
@@ -345,14 +345,14 @@ We discuss the use of AT communications commands in detail in the CCM API sectio
 
 To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
-::
+..  code-block:: none
 
 	AT+CONF Topic1=/MyPubTopic
 
 
 You then send data by publishing text to the topic you just configured: 
 
-::
+..  code-block:: none
 
 	AT+SEND1 Hello World!
 
@@ -362,13 +362,13 @@ To receive data, you’ll need to subscribe to a topic. Here is an example:
 
 Create a new topic, topic number 2 with label MySubTopic, using the following command:
 
-::
+..  code-block:: none
 
 	AT+CONF Topic2=/MySubTopic
 
 Next, subscribe to topic number 2:
 
-::
+..  code-block:: none
 
 	AT+SUBSCRIBE2
 	
@@ -376,13 +376,13 @@ In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic*
 
 On your serial terminal, enter the following command to receive avilable messages on topic 2: 
 
-::
+..  code-block:: none
 
 	AT+GET2
 	
 
 You will receive the message 
 
-::
+..  code-block:: none
 
 	“OK Hello from the AWS IoT Console”
