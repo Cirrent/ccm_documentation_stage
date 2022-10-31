@@ -184,7 +184,7 @@ The host application or the user can then apply the firmware by performing the f
 
 1. Query the state of the job:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA?
 
@@ -192,7 +192,7 @@ The host application or the user can then apply the firmware by performing the f
 
 2. Accept the new firmware update:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA ACCEPT
 
@@ -200,7 +200,7 @@ The host application or the user can then apply the firmware by performing the f
 
 3. Query the state of the job:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA?
 
@@ -208,7 +208,7 @@ The host application or the user can then apply the firmware by performing the f
 
 4. Check whether the received image is verified:
    
-   ::
+   ..  code-block:: none
 
         AT+EVENT?
 
