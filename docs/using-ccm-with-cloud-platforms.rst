@@ -295,7 +295,7 @@ The host application or the user can perform the following sequence by entering 
 
    ..  code-block:: none
 
-        AT+O	TA? 
+        AT+OTA?
 
 You will receive a response
 
