@@ -1797,3 +1797,7 @@ writing-mode: vertical-lr;
 transform: rotate(180deg);
 color: #ffffff !important;
 }
+
+pre span:empty {
+	display: none;
+}

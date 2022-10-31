@@ -28,8 +28,8 @@ Instructions for running the CloudFormation template are here:
 
 https://documentation.infineon.com/html/cirrent-support-documentation/en/latest/cirrent-could-id.html 
 
-Performing an OTA firmware update
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Performing an OTA firmware update for the AIROC™ IFW56810
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CCM modules include a robust over-the-air (OTA) firmware update capability.  Here you can learn how to run an OTA job in your AWS account to update the firmware on your CCM devices. There are several steps involved in sending OTA updates to your device:
 
@@ -135,10 +135,10 @@ That policy grants the OTA service role you created the permission to read Amazo
 
 2. Enter a name for the policy, and then choose **Create policy**.
 
-Create a firmware update job in AWS IoT Console
-"""""""""""""""""""""""""""""""""""""""""""""""""
+Create an AIROC™ IFW56810 firmware update job in AWS IoT Console
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Now that you’ve created an AWS role that can execute OTA updates, you can proceed to create a firmware update job. The following set of instructions illustrates how you create an update job for an individual device. Once you’ve completed these steps an update job will be logged in AWS IoT, and the device will pick up the update job during its regular polling sequence, or when it next goes online, if it is currently offline.
+Now that you’ve created an AWS role that can execute OTA updates, you can proceed to create a job that updates the firmware for the Infineon AIROC™ IFW56810 module. The following set of instructions illustrates how you create an update job for an individual device. Once you’ve completed these steps an update job will be logged in AWS IoT, and the device will pick up the update job during its regular polling sequence, or when it next goes online, if it is currently offline.
 
 .. note:: Before you get started, ensure you get a signed firmware image from INFINEON. Contact the INFINEON sales team for the firmware. The firmware will be provided along with the signature hashing algorithm used and signature encryption algorithm used. This information is required in subsequent steps. 
 
@@ -184,7 +184,7 @@ The host application or the user can then apply the firmware by performing the f
 
 1. Query the state of the job:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA?
 
@@ -192,7 +192,7 @@ The host application or the user can then apply the firmware by performing the f
 
 2. Accept the new firmware update:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA ACCEPT
 
@@ -200,7 +200,7 @@ The host application or the user can then apply the firmware by performing the f
 
 3. Query the state of the job:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA?
 
@@ -208,7 +208,7 @@ The host application or the user can then apply the firmware by performing the f
 
 4. Check whether the received image is verified:
    
-   ::
+   ..  code-block:: none
 
         AT+EVENT?
 
@@ -216,7 +216,7 @@ The host application or the user can then apply the firmware by performing the f
 
 5. Apply the new image received through OTA:
    
-   ::
+   ..  code-block:: none
 
         AT+OTA APPLY
 
@@ -224,65 +224,165 @@ The host application or the user can then apply the firmware by performing the f
 
 6. Connect back to the AWS IoT:
    
-   ::
+   ..  code-block:: none
 
         AT+CONNECT
 
    The IFW56810 CCM module should now connect to AWS IoT, complete the self-test and mark the image as valid. This prevents further rollback to the old image.
 
    You can check the job status by going back to the AWS IoT Console. You should see the job status as completed.
+   
+
+
+Performing a host OTA firmware update
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Performing host firmware over-the-air update. The IFW56810 CCM device supports host firmware over-the-air updates. To do so, follow these steps. 
+Skip the prerequisites if you already have the OTA update role in your AWS account.
+
+Prerequisites
+"""""""""""""""
+Create an OTA update role in your AWS account using the steps outlined in the previous section.
+
+Create a firmware update job in AWS IoT
+""""""""""""""""""""""""""""""""""""""""""""""
+1.	Open AWS IoT Console. 
+
+2.	Click **Manage**, and then under Remote actions click **Jobs**.  
+
+3.	Click **Create job**.
+
+4.	Select **Create FreeRTOS OTA Update Job**, and then click **Next**.
+
+5.	Provide a job name which is unique within your AWS account. Optionally, provide a description, and then click **Next**.
+
+6.	From the **Devices to update** drop-down list, choose the **Thing name** with which the IFW56810 CCM evaluation kit is registered in the account. 
+
+7.	Select **MQTT** as the transfer protocol, and deselect HTTP if selected.
+
+8.	Select **Use my custom signed file**. 
+
+9.	On the form that appears: 
+
+   * In the signature field, provide the base64-encoded signature for the image. If the image is not signed, enter NA.
+   * From the Original hashing algorithm drop-down list, select the hashing algorithm. If not used, leave it as is.
+   * From the Original encryption algorithm drop-down list, select the encryption algorithm. If not used, leave it as is.
+   * In the Path name of code signing certificate on device field, enter NA.
+
+10.	Select **Upload a new file**. 
+
+11.	Click **Choose file and upload the image**. 
+
+12.	Do one of the following: 
+
+   * Click Create S3 bucket to create a new bucket for the new uploaded image.
+   * Click Browse S3 to select an existing bucket in your account.
+
+13.	Under **Path Name of file on device**, enter NA if the image is not targeted as an executable file within a filesystem.
+
+14.	From the **File type** drop-down list, select a value “202” to signify that it is an IFW56810 CCM host firmware update.
+
+15.	Choose the OTA update role created above from the Role drop-down list under the **IAM role section**, and then click **Next**.
+
+16.	Click **Create Job**. 
+
+Monitor and load the firmware update to the host 
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+The host application or the user can perform the following sequence by entering appropriate commands in the serial terminal:
+
+1.Query the state of the job: 
+
+   ..  code-block:: none
+
+        AT+OTA?
+
+You will receive a response
+
+   ..  code-block:: none
+
+        OK 2
+
+2.	Accept the new firmware update:
+
+   ..  code-block:: none
+
+        AT+OTA ACCEPT
+
+The IFW56810 CCM module starts downloading the firmware update from the cloud
+
+3.	Query the state of the job:
+
+   ..  code-block:: none
+
+        AT+OTA? 
+
+Downloading the image takes a few minutes to complete. During the HOTA image download, this command returns “OK 3”. Once the image is downloaded this command will return “OK 5”
+
+4. Host can send the following command to the IFW56810 CCM module to receive the image 
+
+   ..  code-block:: none
+
+        AT+OTA READ <read size> 
+
+This command will respond with
+
+   ..  code-block:: none
+
+        OK {count} {data} {checksum}
+
+The byte count is expressed in hex (from 1 to 6 digits), each byte is then presented as a pair of hex digits (no spaces) for a total of count*2 characters followed by a checksum (2 hex digits).
+
+The reading pointer is advanced by count bytes.
+
+Note:	  The IFW56810 CCM module is capable of reading maximum of 2k bytes at a time. 
+
 
 Receive data and commands from the cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We discuss the use of AT communications commands in detail in the CCM API section. Here we’ll show you how you use the AWS IoT Console to publish messages to topics and to view messages received from the CCM module. 
 
-By default, every CCM device subscribes to a topic called “state”. You can test cloud to device communications by publishing content to this topic. To try it out you need to complete some steps in AWS IoT Console, while sending commands to your device using the serial terminal. Do the following on the AWS IoT Console:
+To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
-* Select the **MQTT client**, and then select **Publish to a topic**.
-* Type state in **Topic name field**. Keep “Hello from the AWS IoT Console” message.
-* Click **Publish**.
+..  code-block:: none
 
-Type the following command into the serial terminal:
-
-::
-
-    AT+GET
-
-You will receive the message “OK Hello from the AWS IoT Console.”
+	AT+CONF Topic1=/MyPubTopic
 
 
-Publish to a non-default topic
-"""""""""""""""""""""""""""""""
+You then send data by publishing text to the topic you just configured: 
 
-If you want to publish data on a non-default topic you can make use of the following commands which you enter in sequence in the serial terminal:
+..  code-block:: none
 
-::
+	AT+SEND1 Hello World!
 
-    AT+CONF Topic1=/MyPubTopic
-    AT+SEND1
+Where the "1" in "Topic1" refers to the topic number, where MyPubTopic is a string of your choice, and the "1" in SEND1 refers to the topic number again. After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under MyPubTopic. 
 
+To receive data, you’ll need to subscribe to a topic. Here is an example:
 
-Subscribe to a non-default topic
-"""""""""""""""""""""""""""""""
+Create a new topic, topic number 2 with label MySubTopic, using the following command:
 
-If you want to subscribe to a non-default topic, you first need to enter a set of commands on your CCM module:
+..  code-block:: none
 
-::
+	AT+CONF Topic2=/MySubTopic
 
-    AT+CONF Topic2=/MySubTopic
-    AT+SUBSCRIBE2
+Next, subscribe to topic number 2:
 
-Next, you need to perform a sequence of actions in AWS to publish to a topic. Do the following on the AWS IoT Console:
+..  code-block:: none
 
-* Select the **MQTT client**, and then select **Publish to a topic**.
-* Type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message.
-* Click **Publish**.
+	AT+SUBSCRIBE2
+	
+In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic** in **Topicfiler**. Click **Subscribe**. Navigate to the **Publish to a topic** tab and type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
 
-You now have content that was published to a topic. Next, you can retrieve that content on your device. To do so, use your serial terminal and enter the following command:
+On your serial terminal, enter the following command to receive avilable messages on topic 2: 
 
-::
+..  code-block:: none
 
-    AT+GET2
+	AT+GET2
+	
 
-You will receive the message “OK Hello from the AWS IoT Console”, which is the data contained in the topic you subscribed to.
+You will receive the message 
+
+..  code-block:: none
+
+	“OK Hello from the AWS IoT Console”
