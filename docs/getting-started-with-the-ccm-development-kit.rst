@@ -116,7 +116,8 @@ Once you open the serial terminal, type:
 in the serial terminal.  You should see a response 
 
 
-::
+:: 
+
 	OK Infineon - IFW56810
 
 
