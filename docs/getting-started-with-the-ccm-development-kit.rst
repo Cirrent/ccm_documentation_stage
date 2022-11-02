@@ -509,7 +509,7 @@ Test CCM low power mode
 
 Before trying out the low-power modes, ensure that the IFW56810 CCM evaluation kit is not connected to Wi-Fi. To disconnect the device. enter the following command in the serial terminal:
 
-::
+.. code-block:: none
 
 	AT+DISCONNECT
 
@@ -517,13 +517,13 @@ Before trying out the low-power modes, ensure that the IFW56810 CCM evaluation k
 
 To put the IFW56810 CCM evaluation kit to sleep mode for a particular duration, enter the following command:
 
-::
+.. code-block:: none
 
 	AT+SLEEP <Sleep time in seconds> 
 
 Enter the following command to put the device in system sleep mode indefinitely untill it receives an external interrupt: 
 
-::
+.. code-block:: none
 
 	AT+SLEEP
 
@@ -533,7 +533,7 @@ In sleep mode the device stays in sleep state until it receives an external inte
 
 Enter the following command to put the device in deep sleep mode:  
 
-::
+.. code-block:: none
 
 	AT+SLEEP1
 
@@ -609,13 +609,13 @@ Next, you need to configure your serial terminal. The example below uses Tera Te
 
 7. Once you open the serial terminal, type the following command into the serial terminal:
 
-::
+.. code-block:: none
 
 	AT+CONF? About 
 
 You should see a response 
 
-::
+.. code-block:: none
 
 	OK Infineon - IFW56810
 
@@ -642,13 +642,13 @@ Diagnosing errors when commands are entered
 
 For example, if: 
 
-::
+.. code-block:: none
 
 	AT+SUBSCRIBE2
 
 returns
 
-::
+.. code-block:: none
 
 	ERR3 COMMAND NOT FOUND
 
@@ -667,13 +667,13 @@ ERR 14 UNABLE TO CONNECT received when using the AT+CONNECT command
 
 The AT+CONNECT command first connects to Wi-Fi if not already connected, and then connects to the AWS IoT Core. If the command fails, first check that the WiFi connection is active, and that you have entered the right Wi-Fi details. Type the following command to verify whether the kit connects to Wi-Fi:
 
-   ::
+   .. code-block:: none
 
 	  AT+DIAG PING 8.8.8.8
 
    If the connection is successful, the device will respond with 
 
-   ::
+   .. code-block:: none
 
 	  OK Received ping response in <ping latency ms>
 
@@ -685,7 +685,7 @@ ERR14 5 UNABLE TO CONNECT MQTT device authentication failure error for the AT+CO
 
 The AT+CONNECT command first connects to Wi-Fi if not already connected and then connects to the AWS IoT Core. If you receive the
 
-   ::
+   .. code-block:: none
 
 	  ERR14 5 UNABLE TO CONNECT MQTT device authentication failure
 
@@ -701,7 +701,7 @@ Changing the Wi-Fi network the device is connected to
 
 To change the Wi-Fi network your device is connected to you first need to disconnect the device form the network using the following command on the serial terminal:
    
-   ::
+   .. code-block:: none
 
 	  AT+DISCONNECT 
 
@@ -718,7 +718,7 @@ Check if a Thing is present in the AWS IoT Console for your device
 
 1. Run the following command in the serial terminal to get the ThingName of your device. 
    
-   ::
+   .. code-block:: none
       
        AT+CONF? ThingName
 
