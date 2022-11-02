@@ -40,7 +40,7 @@ Bind your CCM developer kit to your CIRRENT™ Cloud ID account
 
 CIRRENT™ Cloud ID provides the secure cloud-based device authentication that helps you to give your products secure and effortless access to your Product Cloud. This process works based on a unique device certificate embedded into every CCM module. These device certificates are pre-populated in CIRRENT™ Cloud ID. To get started with your developer kit you first need to bind your CCM developer kit to your CIRRENT™ Cloud ID account, which confirms ownership of the device.
 
-.. note:: CIRRENT™ Cloud ID is an Infineon service and you access Cloud ID using your Infineon account. If you do not already have an Infineon account, you need to register one first. Follow the instructions here.
+.. note:: CIRRENT™ Cloud ID is an Infineon service and you access Cloud ID using your Infineon account. If you do not already have an Infineon account, you need to register one first. `Follow the instructions here <https://swdocs.cirrent.com/en/latest/cid/cirrent-console-for-cloud-id.html>`_.
 
 Binding your CCM developer kit to a Cloud ID account is simple. The unique device ID is embedded in the QR code printed on your developer kit module. Simply scan the QR code located on the module, or use your browser and retype the URL printed below the QR code. 
 
@@ -106,7 +106,7 @@ End of Line        Line Feed
 ================   ===========================
 
 
-If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a serial terminal on your PC section for more details. 
+If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a s`erial terminal on your PC section for more details <https://swdocs.cirrent.com/projects/cirrent-ccm-documentation-stage/en/latest/getting-started-with-the-ccm-development-kit.html#getting-the-ccm-module-online>`_. 
 Once you open the serial terminal, type:
 
 :: 
@@ -207,7 +207,7 @@ At a high level, the CIRRENT™ Cloud performs the following functions to connec
 The CIRRENT™ Cloud ID workflow we describe above demonstrates the ease of securely connecting a product to the Product Cloud. Because the CIRRENT™ Cloud is preloaded with the device certificate of all AIROC™ CCM modules you no longer need to manage device certificates on the production line. Instead, device certificates are managed in CIRRENT™ Cloud ID.
 
 
-.. note:: If you are unable to complete the process of connecting your AWS account to CIRRENT™ Cloud ID using the steps described below you can connect your device directly to your AWS instance using the AWS flow.
+.. note:: If you are unable to complete the process of connecting your AWS account to CIRRENT™ Cloud ID using the steps `described below you can connect your device directly to your AWS instance using the AWS flow <https://swdocs.cirrent.com/projects/cirrent-ccm-documentation-stage/en/latest/getting-started-with-the-ccm-development-kit.html#connect-directly-to-aws>`_.
 
 
 Get connected to AWS
@@ -632,7 +632,7 @@ The IFW956810 CCM evaluation kit has a FT2232H chip capable of supporting USB to
 Device is not recognised
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers from this link.
+If the device is not recognized, you need to install the FTDI USB to UART Bridge Virtual Communication Port drivers `from this link <https://ftdichip.com/drivers/vcp-drivers/>`_.
 
 
 
@@ -651,7 +651,7 @@ returns
 
 	ERR3 COMMAND NOT FOUND
 
-First, make sure that you have typed the command correctly. If you’ve entered the command correctly, make a note of the error code and refer to this guide for details of the error code, which will point you to the cause.
+First, make sure that you have typed the command correctly. If you’ve entered the command correctly, make a note of the error code and `refer to this guide for details of the error code <https://swdocs.cirrent.com/projects/cirrent-ccm-documentation-stage/en/latest/ccm-api-guide.html#command-error-codes>`_, which will point you to the cause.
 
 
 Onboarding fails when using the CIRRENT™ mobile onboarding app
