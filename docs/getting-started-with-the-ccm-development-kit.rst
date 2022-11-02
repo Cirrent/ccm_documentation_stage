@@ -137,11 +137,13 @@ Android                         IOS
 To activate the Wi-Fi onboarding process on the CCM module type the following command in the serial terminal on your PC: 
 
 ::
+
  AT+CONFMODE
 
 You should receive this response from the module:
 
 ::
+
 	OK CONFMODE Enabled
 
 Open the CIRRENT™ Wi-Fi onboarding app. You can skip the sign in. From the menu, select **Configuration** and then choose **BLE** onboarding for the best experience. 
