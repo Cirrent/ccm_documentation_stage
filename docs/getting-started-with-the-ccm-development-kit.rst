@@ -151,13 +151,13 @@ Follow the onscreen instructions and enter your Wi-Fi router’s SSID and passwo
 
 When you complete these steps type the following in the serial terminal to ensure verify your connection to Wi-Fi:
 
-::
+.. code-block:: none
 
 	AT+CONF DIAG PING 8.8.8.8
 	
 You should see a you should see a response:
 
-::
+.. code-block:: none
 
 	OK Ping received in x ms
 
@@ -166,13 +166,13 @@ That means that your CCM module has successfully connected to your Wi-Fi network
 
 If you prefer to configure Wi-Fi networking using AT commands you can do so by typing two commands into your terminal application. First, set the SSID you want to connect to. In our example, the SSID is "MyWorWiFI":
 
-::
+.. code-block:: none
 
 	AT+CONF SSID=MyWorkWiFI
 	
 Next, set the password for your WiFi network. In our example below, the password is "uMCjc3DB":
 
-::
+.. code-block:: none
 
 	AT+CONF Passphrase=uMCjc3DB
 
