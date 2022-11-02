@@ -136,13 +136,13 @@ Android                         IOS
 
 To activate the Wi-Fi onboarding process on the CCM module type the following command in the serial terminal on your PC: 
 
-::
+.. code-block:: none
 
  AT+CONFMODE
 
 You should receive this response from the module:
 
-::
+.. code-block:: none
 
 	OK CONFMODE Enabled
 
