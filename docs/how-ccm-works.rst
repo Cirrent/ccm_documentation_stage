@@ -96,4 +96,4 @@ Networking features include:
 CCM datasheet
 ******************
 
-We publish a complete datasheet for the CCM module `here<https://www.infineon.com/dgdl/Infineon-AIROC%20CCM%20KIT-DataSheet-v01_00-EN.pdf?fileId=8ac78c8c80f4d329018128f3a9791d57>`_.
+We publish a complete datasheet for the CCM module `here <https://www.infineon.com/dgdl/Infineon-AIROC%20CCM%20KIT-DataSheet-v01_00-EN.pdf?fileId=8ac78c8c80f4d329018128f3a9791d57>`_.
