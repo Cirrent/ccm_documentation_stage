@@ -207,7 +207,7 @@ At a high level, the CIRRENT™ Cloud performs the following functions to connec
 The CIRRENT™ Cloud ID workflow we describe above demonstrates the ease of securely connecting a product to the Product Cloud. Because the CIRRENT™ Cloud is preloaded with the device certificate of all AIROC™ CCM modules you no longer need to manage device certificates on the production line. Instead, device certificates are managed in CIRRENT™ Cloud ID.
 
 
-.. note:: If you are unable to complete the process of connecting your AWS account to CIRRENT™ Cloud ID using the steps `described below you can connect your device directly to your AWS instance using the AWS flow <https://swdocs.cirrent.com/projects/cirrent-ccm-documentation-stage/en/latest/getting-started-with-the-ccm-development-kit.html#connect-directly-to-aws>`_.
+.. note:: If you are unable to complete the process of connecting your AWS account to CIRRENT™ Cloud ID using the steps :ref:`described below you can connect your device directly to your AWS instance using the AWS flow <Connect directly to AWS>`.
 
 
 Get connected to AWS
@@ -431,6 +431,7 @@ You will receive the message
 	“OK Hello from the AWS IoT Console”
 
 
+.. _Connect directly to AWS:
 
 Connect directly to AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
