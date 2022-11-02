@@ -106,7 +106,7 @@ End of Line        Line Feed
 ================   ===========================
 
 
-If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a s`erial terminal on your PC section for more details <https://swdocs.cirrent.com/projects/cirrent-ccm-documentation-stage/en/latest/getting-started-with-the-ccm-development-kit.html#getting-the-ccm-module-online>`_. 
+If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a `serial terminal on your PC section for more details <https://swdocs.cirrent.com/projects/cirrent-ccm-documentation-stage/en/latest/getting-started-with-the-ccm-development-kit.html#getting-the-ccm-module-online>`_. 
 Once you open the serial terminal, type:
 
 :: 
