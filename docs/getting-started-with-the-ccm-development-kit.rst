@@ -106,7 +106,7 @@ End of Line        Line Feed
 ================   ===========================
 
 
-If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a :ref:`serial terminal on your PC section for more details <Getting the CCM module online>`. 
+If you’re not sure how to connect to your CCM developer kit using a serial terminal you can view the  Setting up a :ref:`serial terminal on your PC section for more details <Getting the CCM Connected to Your AWS Account>`. 
 Once you open the serial terminal, type:
 
 :: 
