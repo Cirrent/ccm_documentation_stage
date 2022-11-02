@@ -761,10 +761,9 @@ Do the following if a new job is available for your device.
 2. Click the **Jobs** tab, and do the following:
 
    * Type the device ID noted in the previous section in the Device ID text box as **Infineon_device ID**. 
-
    * Under the Pending Jobs section, verify that the Job ID, Action, and Action Details are the same as shown in the previous section.
 
-     After sending the AT command AT+CLOUD_SYNC in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account. Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
+After sending the AT command AT+CLOUD_SYNC in the serial terminal, the job will move from the “Pending” section to the jobs list, and the Result column will display Success and the Status column should show Completed. If execution of any of the above steps didn’t match the expectation as mentioned, check the Product Cloud API details and repeat the steps in Provision and prepare to connect the kit to your AWS account. Execute the following commands in the serial terminal if steps in Provision and prepare to connect the kit to your AWS account were completed after connecting to Wi-Fi. 
 
      ..  code-block:: none
 
