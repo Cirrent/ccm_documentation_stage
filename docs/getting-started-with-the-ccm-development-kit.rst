@@ -338,20 +338,20 @@ Connect to the AWS IoT Core
 
 Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core:
 
-::
+.. code-block:: none
 
 	AT+CONNECT
 
 
 The device will eventually connect to the AWS IoT Core and you will receive the message:
 
-::
+.. code-block:: none
 
 	OK 1 CONNECTED
 
 Next, run the following command:
 
-::
+.. code-block:: none
 
 	AT+CLOUD_SYNC
 
@@ -361,7 +361,7 @@ Wait for a minute or two while the device pulls the endpoint from the CIRRENT Cl
 
 You can verify the endpoint present in the device using the following AT command 
 
-::
+.. code-block:: none
 
 	AT+CONF? Endpoint
 
@@ -387,14 +387,14 @@ Sending and receiving data
 
 Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
-::
+.. code-block:: none
 
 	AT+CONF Topic1=/MyPubTopic
 
 
 You then send data by publishing text to the topic you just configured: 
 
-::
+.. code-block:: none
 
 	AT+SEND1 Hello World!
 
@@ -405,13 +405,13 @@ To receive data, you’ll need to subscribe to a topic. Here is an example:
 
 Create a new topic, topic number 2 with label MySubTopic, using the following command:
 
-::
+.. code-block:: none
 
 	AT+CONF Topic2=/MySubTopic
 
 Next, subscribe to topic number 2:
 
-::
+.. code-block:: none
 
 	AT+SUBSCRIBE2
 	
@@ -419,14 +419,14 @@ In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic*
 
 On your serial terminal, enter the following command to receive avilable messages on topic 2: 
 
-::
+.. code-block:: none
 
 	AT+GET2
 	
 
 You will receive the message 
 
-::
+.. code-block:: none
 
 	“OK Hello from the AWS IoT Console”
 
@@ -479,19 +479,19 @@ Note: The examples in this document are intended only for development environmen
 1.	In the AWS IoT Console, choose Settings, and then copy your account endpoint string under Device data endpoint.
 2.	Type the following AT command in the serial terminal to configure the endpoint: 
 
-   ::
+   .. code-block:: none
 
 		AT+CONF Endpoint
 		
 Where **Endpoint** is the endpoint copied in step 1. The above step replaces the configured default endpoint used for evaluating the quick connect flow. Enter the following command in the serial terminal to establish a secure connection to the AWS IoT Core if you followed AWS flow
 
-   ::
+   .. code-block:: none
 
 		AT+CONNECT
 
 After a few seconds, the device will connect to the AWS IoT Core and you will receive the message
 
-   ::
+   .. code-block:: none
 
 		“OK 1 CONNECTED”	
 
