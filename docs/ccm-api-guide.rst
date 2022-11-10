@@ -90,11 +90,8 @@ CCM-to-host communication test                     AT
 Connect to the Product Cloud                       AT+CONNECT
 Disconnect from the Product Cloud                  AT+DISCONNECT
 Check Product Cloud connection status              AT+CONNECT?
-Request to enter a low power mode                  AT+SLEEP
 Reset internal state of the module                 AT+RESET
 Perform a factory reset of the CCM module          AT+FACTORY_RESET
-Request current time                               AT+TIME?
-Request current location                           AT+WHERE?
 Diagnostic commands                                AT+DIAG
 Configuration commands                             AT+CONF
 Read configuration                                 AT+CONF?
@@ -192,7 +189,7 @@ If the connection is inactive the module returns
 Disconnect from the Product Cloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can use this command to allow your host to prepare to transition to low power (you would use this command before the SLEEP command). You can also use this command to update connection parameters before a new connection is made using updated parameters. 
+You can use this command to update connection parameters before a new connection is made using updated parameters. 
 
 Command: 
 
@@ -208,38 +205,7 @@ Returns:
 
 .. note:: If a module is already disconnected the command will simply return ('OK').
 
-Enter a low power mode
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sending this command enters your module into low power mode. If you do not specify a duration the module will remain in low power mode until an external reset event is triggered, or a new AT+CONNECT command is received.
-
-Command:
-
-.. code-block:: none
-
-	AT+SLEEP 
-
-Returns:
-
-.. code-block:: none
-
-	OK
-
-If the device is ready, indicates the device is going to immediately enter into low power mode.
-
-.. code-block:: none
-
-	ERR18 ACTIVE CONNECTION
-
-This error is returned when an active connection to your Product Cloud exists. The device will not enter into low power mode. Use the DISCONNECT command first to terminate the active connection.
-
-Code sample:
-
-.. code-block:: none
-
-	AT+SLEEP 100 		 # Disconnect and suspend all activities for 100 seconds
-	OK 		               # Drop connections and goes to sleep 
-	AT+CONNECT    		# Resume connection and all pending activities 
 
 
 Reset the CCM internal state
@@ -280,55 +246,7 @@ Returns:
 
 Indicating that the command is successful.
 
-Get the time
-^^^^^^^^^^^^^^
 
-This command requests the current time information on the device, or returns an error if for some reason the time information could not be determined.
-
-Command:
-
-.. code-block:: none
-
-	AT+TIME?
-
-Returns:
-
-.. code-block:: none
-
-	OK {date YYYY/MM/DD} {time hh:mm:ss.xx} {source}
-
-If time information is available and if it was recently obtained.
-
-.. code-block:: none
-
-	ERR15 TIME NOT AVAILABLE
-
-If a recent time fix could not be obtained.
-
-Request CCM location 
-^^^^^^^^^^^^^^^^^^^^^
-
-This command requests the last location information alongside a timestamp that specifies when that location reading was taken. An error is returned if a location fix cannot be determined.
-
-Command:
-
-.. code-block:: none
-
-	AT+LOCATION?
-
-Returns:
-
-.. code-block:: none
-
-	OK {date} {time} {lat} {long} {elev} {accuracy} {source}
-
-If location coordinates could be obtained.
-
-.. code-block:: none
-
-	ERR16 LOCATION NOT AVAILABLE
-
-If a location fix could not be obtained.
 
 
 CCM diagnostic commands
