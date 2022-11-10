@@ -385,7 +385,7 @@ Once the kit is connected to Wi-Fi, it will automatically connect to the AWS IoT
 Sending and receiving data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic number has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
+Now that your device is connected you’re able to send and receive data from your AWS IoT Core account. To send data, you must first configure a topic. Each topic name has an associated topic number, e.g. 1, and is associated with a descriptive name, e.g. MyPubTopic. You configure a topic using this command:
 
 .. code-block:: none
 
