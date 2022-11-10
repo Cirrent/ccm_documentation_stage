@@ -26,7 +26,7 @@ Figure 4	Connect the USB dongle to the PC
 
 2. Extract the utility package inside the Infineon-qc-utility folder with respect to your OS.
 
-3. Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable and determine the serial port. To find the serial port of the device, please refer to section (ABCDEFGHI INSERT LINK HERE) 
+3. Connect the IFW956810 Single-band Wi-Fi 4 Cloud Connectivity Manager evaluation kit to the PC using either the Type-C connector or Type-A male to Type-C female cable and determine the serial port. To find the serial port of the device, please refer to section `here <getting-started-with-the-ccm-development-kit.rst#determine-the-com-port-number>`_.
 
 4. Complete the details in the config.txt file to have the correct serial port, as well as Wi-Fi SSID and password.
 
