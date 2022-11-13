@@ -403,7 +403,7 @@ Where the "1" in "Topic1" refers to the topic number, where MyPubTopic is a stri
 After a short time, you will receive the message “OK”. You should see the “Hello World!” message appearing on the AWS IoT Console under MyPubTopic. 
 To receive data, you’ll need to subscribe to a topic. Here is an example:
 
-Create a new topic, topic number 2 with label MySubTopic, using the following command:
+Create a new topic, topic number 2 with label /MySubTopic, using the following command:
 
 .. code-block:: none
 
@@ -415,7 +415,7 @@ Next, subscribe to topic number 2:
 
 	AT+SUBSCRIBE2
 	
-In your AWS IoT Consoler, select the **MQTT test client** and type **MySubTopic** in **Topicfiler**. Click **Subscribe**. Navigate to the **Publish to a topic** tab and type **MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
+In your AWS IoT Consoler, select the **MQTT test client** and type **/MySubTopic** in **Topicfiler**. Click **Subscribe**. Navigate to the **Publish to a topic** tab and type **/MySubTopic** in the **Topic name** field. Keep the “Hello from the AWS IoT Console” message. Click **Publish**.
 
 On your serial terminal, enter the following command to receive avilable messages on topic 2: 
 
