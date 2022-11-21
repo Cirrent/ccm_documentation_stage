@@ -110,6 +110,36 @@ $(document).ready(function(){
 	//This is used to auto enable the toctree after 4 depth menu elements
 	setTimeout(toctreeSettingFunction, 50);
 
+	var elem = $('#' + window.location.hash.replace('#', ''));
+	function scrollOnPageLoad() {
+
+	  var hashLink = window.location.hash;
+	    if ($(hashLink).length) {
+	          // *only* if we have anchor on the url
+	          // smooth scroll to the anchor id
+	          setTimeout(function(){
+	          	//$.scrollify.move("#faqs-smartmates");
+	          	$('html, body').stop().animate({
+	            scrollTop:parseInt(elem.offset().top - 100)+ "px"
+	          }, 800);
+	          },1000);
+
+	    }
+	}
+	$(window).on( 'hashchange', function(e){
+		e.preventDefault();
+		//console.log("change");
+		//$.scrollify.disable();
+		
+		elem = $('#' + window.location.hash.replace('#', ''));
+		// window.location.reload()
+	    scrollOnPageLoad();
+	});
+	$(window).on("load", function(){
+		
+	    scrollOnPageLoad();
+	});
+
 });
 
 function toctreeSettingFunction()
