@@ -13,18 +13,7 @@
   <hr/>
 <!-- {% include "cirrent-footer.html" %} -->
   <div class="contentinfo" role="contentinfo">
-    <p>
-    {%- if show_copyright %}
-      {%- if hasdoc('copyright') %}
-        {% set path = pathto('copyright') %}
-        {% set copyright = copyright|e %}
-        &copy; <a href="{{ path }}">{% trans %}{% endtrans %}</a> {{ copyright }}
-      {%- else %}
-        {% set copyright = copyright|e %}
-        &copy; {% trans %}{% endtrans %} {{ copyright }}
-      {%- endif %}
-    {%- endif %}<br>
-
+    <p>&copy; 1999 - <script type="text/javascript">document.write( new Date().getFullYear() );</script> Infineon Technologies AG<br>
       <a href="https://www.infineon.com/cms/en/about-infineon/usage-terms/"> Usage of this website is subject to our Usage Terms&nbsp;&nbsp;&nbsp;</a>
   <a href="https://www.infineon.com/cms/en/about-infineon/imprint/"> &gt; Imprint&nbsp;&nbsp;&nbsp; </a>
   <a href="https://www.infineon.com/cms/en/about-infineon/company/contacts/"> &gt; Contacts&nbsp;&nbsp;&nbsp; </a>
